@@ -7,31 +7,28 @@
 //
 
 #import "SetupPageThirdViewController.h"
+#import "User.h"
 
 @interface SetupPageThirdViewController ()
+
+@property (nonatomic, weak) IBOutlet UISegmentedControl *priceLimitSegmentedControl;
 
 @end
 
 @implementation SetupPageThirdViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [User new];
 
-/*
-#pragma mark - Navigation
+    [user setPriceLimit:(unsigned)self.priceLimitSegmentedControl.selectedSegmentIndex];
+    [user setIdentifier:@1];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [realm beginWriteTransaction];
+    [User createOrUpdateInRealm:realm withValue:user];
+    [realm commitWriteTransaction];
 }
-*/
 
 @end
