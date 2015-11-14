@@ -7,10 +7,10 @@
 //
 
 #import "SetupPageViewController.h"
-#import "SetupPageFirstViewController.h"
 #import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
+#import "User.h"
 
 static NSString *kSetupPageFirstScene = @"setupPageFirstScene";
 static NSString *kSetupPageSecondScene = @"setupPageSecondScene";
@@ -28,7 +28,7 @@ static NSString *kSetupPageFourthScene = @"setupPageFourthScene";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    SetupPageFirstViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFirstScene];
+    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFirstScene];
     SetupPageSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageSecondScene];
     SetupPageThirdViewController *thirdViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageThirdScene];
     SetupPageFourthViewController *fourthViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFourthScene];

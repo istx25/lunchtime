@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Setup Page First View Controller-->
+        <!--View Controller-->
         <scene sceneID="wqN-wM-FUK">
             <objects>
-                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4c-uj-6P8"/>
                         <viewControllerLayoutGuide type="bottom" id="FZ0-JI-94l"/>
@@ -110,6 +110,9 @@ grup in your area.</string>
                     <navigationItem key="navigationItem" id="bjV-M6-UiR"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="lunchtimeDatePicker" destination="maP-Kw-Tjf" id="QD3-yp-BTm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaY-Mq-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,6 +169,9 @@ grup in your area.</string>
                     <navigationItem key="navigationItem" id="W7n-El-vP1"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="priceLimitSegmentedControl" destination="IEA-c1-8OP" id="8HM-qU-OVU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-23-NKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -212,6 +218,9 @@ grup in your area.</string>
                     <navigationItem key="navigationItem" id="Ktp-AL-xFE"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="doneButton" destination="gNB-KC-aPh" id="Obd-xa-RrY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SR7-z4-bk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

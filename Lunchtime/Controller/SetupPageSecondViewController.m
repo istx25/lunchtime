@@ -7,8 +7,11 @@
 //
 
 #import "SetupPageSecondViewController.h"
+#import "User.h"
 
 @interface SetupPageSecondViewController ()
+
+@property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
 
 @end
 
@@ -16,22 +19,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self.lunchtimeDatePicker setDatePickerMode:UIDatePickerModeTime];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 
-/*
-#pragma mark - Navigation
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    User *user = [User new];
+    
+    [user setLunchtime:self.lunchtimeDatePicker.date];
+    [user setIdentifier:@1];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [realm beginWriteTransaction];
+    [User createOrUpdateInRealm:realm withValue:user];
+    [realm commitWriteTransaction];
 }
-*/
 
 @end
