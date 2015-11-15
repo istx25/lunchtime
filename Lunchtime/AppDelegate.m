@@ -12,15 +12,12 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
 static NSString *kSetupPageViewController = @"SetupPageViewController";
 static NSString *kSetupStoryboardName = @"Setup";
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self checkIfUserExists];
+    [self appearance];
 
     return YES;
 }
@@ -34,6 +31,10 @@ static NSString *kSetupStoryboardName = @"Setup";
         UIStoryboard *setup = [UIStoryboard storyboardWithName:kSetupStoryboardName bundle:[NSBundle mainBundle]];
         [self.window setRootViewController:[setup instantiateViewControllerWithIdentifier:kSetupPageViewController]];
     }
+}
+
+- (void)appearance {
+    // [[UIView appearance] setTintColor:[UIColor blackColor]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
