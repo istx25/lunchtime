@@ -17,10 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQ0-fS-eXO">
-                                <rect key="frame" x="18" y="364" width="284" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We think you're going to like  Bestie in Chinatown." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CX-sV-b5g">
+                                <rect key="frame" x="16" y="141" width="287.5" height="53"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proximity to restaurants is based off of your  last known location. (Gastown, Vancouver)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-uD-2oF">
+                                <rect key="frame" x="36" y="504" width="247" height="29"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQ0-fS-eXO">
+                                <rect key="frame" x="20" y="326.5" width="280" height="45"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="9u6-lm-XtG"/>
+                                    <constraint firstAttribute="height" constant="45" id="P82-lh-0z8"/>
+                                </constraints>
                                 <state key="normal" title="Find me something else">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -28,17 +45,14 @@
                                     <action selector="noButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tM0-TJ-x9k"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We think you're going to like  Bestie in Chinatown." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2CX-sV-b5g">
-                                <rect key="frame" x="12" y="141" width="288" height="53"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCB-Ky-oxf">
-                                <rect key="frame" x="18" y="304" width="284" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCB-Ky-oxf">
+                                <rect key="frame" x="20" y="266.5" width="280" height="45"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="FsW-03-u4H"/>
+                                    <constraint firstAttribute="height" constant="45" id="U1w-ea-c51"/>
+                                </constraints>
                                 <state key="normal" title="Let's go!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -46,16 +60,14 @@
                                     <action selector="yesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DoD-B1-JwK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Proximity to restaurants is based off of your  last known location. (Gastown, Vancouver)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFJ-uD-2oF">
-                                <rect key="frame" x="33" y="504" width="247" height="29"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWI-2t-9jN">
-                                <rect key="frame" x="18" y="424" width="284" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWI-2t-9jN">
+                                <rect key="frame" x="20" y="386.5" width="280" height="45"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="jRQ-e8-F5w"/>
+                                    <constraint firstAttribute="height" constant="45" id="jcr-VD-ida"/>
+                                </constraints>
                                 <state key="normal" title="Previous Days">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -63,9 +75,41 @@
                                     <segue destination="bet-kV-zEd" kind="show" id="ijX-kw-uBf"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpE-ml-EgB">
+                                <rect key="frame" x="20" y="440" width="280" height="56.5"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="sWk-Zs-ebv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyJ-dx-aLg">
+                                <rect key="frame" x="20" y="202" width="280" height="56.5"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="kJU-Lj-zXi"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2CX-sV-b5g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cd5-pj-xhP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iFJ-uD-2oF" secondAttribute="bottom" constant="35" id="IwW-gG-RR4"/>
+                            <constraint firstItem="OyJ-dx-aLg" firstAttribute="top" secondItem="2CX-sV-b5g" secondAttribute="bottom" constant="8" id="JOZ-EE-clF"/>
+                            <constraint firstItem="jpE-ml-EgB" firstAttribute="top" secondItem="eWI-2t-9jN" secondAttribute="bottom" constant="8" id="NJk-cw-92D"/>
+                            <constraint firstItem="iFJ-uD-2oF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pcz-K5-nqr"/>
+                            <constraint firstItem="KQ0-fS-eXO" firstAttribute="top" secondItem="KCB-Ky-oxf" secondAttribute="bottom" constant="15" id="SPB-Lh-dnJ"/>
+                            <constraint firstItem="KCB-Ky-oxf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y0r-Ze-Itn"/>
+                            <constraint firstItem="KCB-Ky-oxf" firstAttribute="top" secondItem="OyJ-dx-aLg" secondAttribute="bottom" constant="8" id="Yjc-uP-fj6"/>
+                            <constraint firstItem="2CX-sV-b5g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="121" id="gae-95-atY"/>
+                            <constraint firstItem="eWI-2t-9jN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kb5-3m-r1y"/>
+                            <constraint firstItem="eWI-2t-9jN" firstAttribute="top" secondItem="KQ0-fS-eXO" secondAttribute="bottom" constant="15" id="r9o-nQ-uxR"/>
+                            <constraint firstItem="OyJ-dx-aLg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rEn-2u-qbd"/>
+                            <constraint firstItem="jpE-ml-EgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tCd-57-ieK"/>
+                            <constraint firstItem="jpE-ml-EgB" firstAttribute="height" secondItem="OyJ-dx-aLg" secondAttribute="height" id="vL2-Ol-7x0"/>
+                            <constraint firstItem="KQ0-fS-eXO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vee-Jv-Cqi"/>
+                            <constraint firstItem="iFJ-uD-2oF" firstAttribute="top" secondItem="jpE-ml-EgB" secondAttribute="bottom" constant="8" id="zIl-2P-Sio"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Pp4-El-xlZ"/>
                     <nil key="simulatedTopBarMetrics"/>
