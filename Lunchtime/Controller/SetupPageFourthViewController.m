@@ -8,7 +8,8 @@
 
 #import "SetupPageFourthViewController.h"
 
-static NSString *kUserCreatedFlag = @"userHasBeenCreated";
+static NSString *kUserCreatedFlag = @"USER_CREATED";
+static NSString *kSegueFromSetupFlow = @"segueFromSetupFlow";
 
 @interface SetupPageFourthViewController ()
 
@@ -20,7 +21,9 @@ static NSString *kUserCreatedFlag = @"userHasBeenCreated";
 
 - (IBAction)doneButtonPressed:(UIButton *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"A user has been created" forKey:kUserCreatedFlag];
+    [defaults setObject:kUserCreatedFlag forKey:kUserCreatedFlag];
+
+    [self performSegueWithIdentifier:kSegueFromSetupFlow sender:self];
 }
 
 @end

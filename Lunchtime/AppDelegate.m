@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 
-static NSString *kUserCreatedFlag = @"userHasBeenCreated";
+static NSString *kUserCreatedFlag = @"USER_CREATED";
 static NSString *kSetupPageViewController = @"SetupPageViewController";
+static NSString *kSetupStoryboardName = @"Setup";
 
 @interface AppDelegate ()
 
@@ -27,9 +28,10 @@ static NSString *kSetupPageViewController = @"SetupPageViewController";
 - (void)checkIfUserExists {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // [defaults removeObjectForKey:kUserCreatedFlag];
 
     if (![defaults objectForKey:kUserCreatedFlag]) {
-        UIStoryboard *setup = [UIStoryboard storyboardWithName:@"Setup" bundle:[NSBundle mainBundle]];
+        UIStoryboard *setup = [UIStoryboard storyboardWithName:kSetupStoryboardName bundle:[NSBundle mainBundle]];
         [self.window setRootViewController:[setup instantiateViewControllerWithIdentifier:kSetupPageViewController]];
     }
 }
