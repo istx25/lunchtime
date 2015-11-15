@@ -10,7 +10,6 @@
 #import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
-#import "User.h"
 
 static NSString *kSetupPageFirstScene = @"setupPageFirstScene";
 static NSString *kSetupPageSecondScene = @"setupPageSecondScene";
