@@ -10,7 +10,6 @@
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like";
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of your last known location.";
-//static NSString *kAlertControllerMessage = @"";
 
 @interface HomeViewController ()
 
