@@ -15,7 +15,6 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 @property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
-
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
 
