@@ -14,6 +14,7 @@
 		A55FBBC61BFA6FC900C30763 /* LunchtimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBC51BFA6FC900C30763 /* LunchtimeTableViewCell.m */; };
 		A55FBBCA1BFA70DD00C30763 /* UIColor+Lunchtime.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBC91BFA70DD00C30763 /* UIColor+Lunchtime.m */; };
 		A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */; };
+		A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */; };
 		A5C074771BF6C8D900F23533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074761BF6C8D900F23533 /* main.m */; };
 		A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074791BF6C8D900F23533 /* AppDelegate.m */; };
 		A5C074801BF6C8D900F23533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0747E1BF6C8D900F23533 /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 		A55FBBC91BFA70DD00C30763 /* UIColor+Lunchtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Lunchtime.m"; path = "View/Helper/UIColor+Lunchtime.m"; sourceTree = "<group>"; };
 		A55FBBCB1BFA817F00C30763 /* LunchtimeMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeMaps.h; path = Model/Location/LunchtimeMaps.h; sourceTree = "<group>"; };
 		A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeMaps.m; path = Model/Location/LunchtimeMaps.m; sourceTree = "<group>"; };
+		A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysMapViewController.h; path = Controller/PreviousDaysMapViewController.h; sourceTree = "<group>"; };
+		A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysMapViewController.m; path = Controller/PreviousDaysMapViewController.m; sourceTree = "<group>"; };
 		A5C074721BF6C8D900F23533 /* Lunchtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C074761BF6C8D900F23533 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5C074781BF6C8D900F23533 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				A5E105961BF6DB2500C71023 /* HomeViewController.m */,
 				A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */,
 				A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */,
+				A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */,
+				A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				A55FBB921BF96A2300C30763 /* LunchtimeGeocoder.m in Sources */,
 				A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */,
 				A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */,
+				A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */,
 				A5E105941BF6DB0F00C71023 /* SetupPageSecondViewController.m in Sources */,
 				A5E105861BF6D03700C71023 /* SetupPageViewController.m in Sources */,
 				A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */,
