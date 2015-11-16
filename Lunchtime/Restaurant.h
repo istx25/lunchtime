@@ -11,8 +11,9 @@
 @interface Restaurant : RLMObject
 
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *address;
 @property (nonatomic) NSString *category;
+@property (nonatomic) NSString *thoroughfare;
+@property (nonatomic) NSString *address;
 
 @end
 
