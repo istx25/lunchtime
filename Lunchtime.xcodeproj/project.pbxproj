@@ -26,8 +26,9 @@
 		A5E1059D1BF6E62100C71023 /* SetupPageThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1059C1BF6E62100C71023 /* SetupPageThirdViewController.m */; };
 		A5E105A01BF6ED1F00C71023 /* SetupPageFifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1059F1BF6ED1F00C71023 /* SetupPageFifthViewController.m */; };
 		A5E105A41BF6F1AA00C71023 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105A31BF6F1AA00C71023 /* User.m */; };
-		A5E105A81BF6F2AC00C71023 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E105A71BF6F2AC00C71023 /* Realm.framework */; };
 		A5E105AA1BF7C95600C71023 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E105A91BF7C95600C71023 /* MapKit.framework */; };
+		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
+		FA2594B51BFA79A30083F624 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2594B41BFA79A30083F624 /* Restaurant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,8 +78,10 @@
 		A5E1059F1BF6ED1F00C71023 /* SetupPageFifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupPageFifthViewController.m; path = Controller/SetupPageFifthViewController.m; sourceTree = "<group>"; };
 		A5E105A21BF6F1AA00C71023 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
 		A5E105A31BF6F1AA00C71023 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
-		A5E105A71BF6F2AC00C71023 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		A5E105A91BF7C95600C71023 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
+		FA2594B31BFA79A30083F624 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		FA2594B41BFA79A30083F624 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */,
 				A5E105AA1BF7C95600C71023 /* MapKit.framework in Frameworks */,
-				A5E105A81BF6F2AC00C71023 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +239,8 @@
 				A55FBB891BF94CBE00C30763 /* Location */,
 				A5E105A21BF6F1AA00C71023 /* User.h */,
 				A5E105A31BF6F1AA00C71023 /* User.m */,
+				FA2594B31BFA79A30083F624 /* Restaurant.h */,
+				FA2594B41BFA79A30083F624 /* Restaurant.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,8 +248,8 @@
 		A5E105A61BF6F29C00C71023 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA2594B11BFA77C10083F624 /* Realm.framework */,
 				A5E105A91BF7C95600C71023 /* MapKit.framework */,
-				A5E105A71BF6F2AC00C71023 /* Realm.framework */,
 			);
 			name = Frameworks;
 			path = Lunchtime;
@@ -370,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E105A41BF6F1AA00C71023 /* User.m in Sources */,
+				FA2594B51BFA79A30083F624 /* Restaurant.m in Sources */,
 				A55FBBC61BFA6FC900C30763 /* LunchtimeTableViewCell.m in Sources */,
 				A5E1059D1BF6E62100C71023 /* SetupPageThirdViewController.m in Sources */,
 				A55FBBCA1BFA70DD00C30763 /* UIColor+Lunchtime.m in Sources */,
