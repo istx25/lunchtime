@@ -7,6 +7,7 @@
 //
 
 #import "PreviousDaysTableViewController.h"
+#import "LunchtimeTableViewCell.h"
 
 static NSString *kReuseIdentifier = @"previousCell";
 
@@ -36,13 +37,12 @@ static NSString *kReuseIdentifier = @"previousCell";
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Open in Google Maps" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Rate Restaurant" style:UIAlertActionStyleDefault handler:nil]];
 
     [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
+    LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
     // Model *model = self.models[indexPath.row];
     // cell.textLabel.text = model.title;
