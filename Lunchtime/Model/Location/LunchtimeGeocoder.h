@@ -13,4 +13,6 @@
 
 - (void)reverseGeocodeLocationWithCoordinate:(CLLocationCoordinate2D)coordinate withCompletionHandler:(void (^)(CLPlacemark *placemark))completionHandler;
 
+- (void)geocodeLocationWithAddress:(NSString *)address withCompletionHandler:(void (^)(CLLocationDegrees latitude, CLLocationDegrees longitude))completionHandler;
+
 @end
