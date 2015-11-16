@@ -16,6 +16,4 @@
 
 @end
 
-// This protocol enables typed collections. i.e.:
-// RLMArray<Restaurant>
 RLM_ARRAY_TYPE(Restaurant)
