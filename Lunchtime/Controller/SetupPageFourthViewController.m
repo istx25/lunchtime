@@ -21,5 +21,4 @@
     [[LunchtimeLocationManager defaultManager] setup];
 }
 
-
 @end

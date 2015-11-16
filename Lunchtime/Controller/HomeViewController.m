@@ -62,13 +62,12 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
-
+    // No Button Implementation
 }
 
 #pragma mark - <LunchtimeLocationManagerDelegate>
 - (void)receivedLocation {
     [self configureLayout];
 }
-
 
 @end
