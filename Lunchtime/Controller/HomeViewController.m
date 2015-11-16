@@ -7,25 +7,48 @@
 //
 
 #import "HomeViewController.h"
+#import "LunchtimeLocationManager.h"
+#import "LunchtimeGeocoder.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like";
-static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of your last known location.";
+static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 
-@interface HomeViewController ()
+@interface HomeViewController () <LunchtimeLocationManagerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
 
+@property (nonatomic) LunchtimeLocationManager *locationManager;
+
 @end
 
 @implementation HomeViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.locationManager = [LunchtimeLocationManager defaultManager];
+    [self.locationManager setup];
+    [self.locationManager start];
+    [self.locationManager setDelegate:self];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+- (void)configureLayout {
+    CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
+    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
+    [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.locationLabel setText:[NSString stringWithFormat:@"%@ (%@)", kLocationLabelConstant, placemark.thoroughfare]];
+        });
+    }];
 }
 
 #pragma mark - Actions
@@ -41,5 +64,11 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 - (IBAction)noButtonPressed:(UIButton *)sender {
 
 }
+
+#pragma mark - <LunchtimeLocationManagerDelegate>
+- (void)receivedLocation {
+    [self configureLayout];
+}
+
 
 @end
