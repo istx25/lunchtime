@@ -8,5 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+
 @interface PreviousDaysMapViewController : UIViewController
+
+@property (nonatomic) User *user;
+
 @end

@@ -8,6 +8,9 @@
 
 #import "PreviousDaysMapViewController.h"
 #import "LunchtimeLocationManager.h"
+#import "LunchtimeGeocoder.h"
+#import "Restaurant.h"
+#import "User.h"
 #import <MapKit/MapKit.h>
 
 static int const kMapZoomValue = 2100;
@@ -28,6 +31,17 @@ static int const kMapZoomValue = 2100;
     [self.mapView setShowsUserLocation:YES];
     [self.locationManager setup];
     [self zoomMapToUserLocation];
+    [self addRestaurantAnnotationsToMapView];
+}
+
+- (void)addRestaurantAnnotationsToMapView {
+    if (self.user.savedRestaurants.count <= 0) {
+        return;
+    }
+
+    for (Restaurant *restaurant in self.user.savedRestaurants) {
+        [self.mapView addAnnotation:restaurant];
+    }
 }
 
 - (void)zoomMapToUserLocation {
