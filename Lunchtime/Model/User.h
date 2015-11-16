@@ -9,11 +9,10 @@
 #import <Realm/Realm.h>
 
 typedef enum NSInteger {
-    PriceLimitFiveDollars,
-    PriceLimitTenDollars,
-    PriceLimitTwentyDollars,
-    PriceLimitThirtyDollars,
-    PriceLimitFortyDollars
+    PriceLimitLessThanTenDollars,
+    PriceLimitTenToTwentyDollars,
+    PriceLimitTwentyToThirtyDollars,
+    PriceLimitGreaterThanThirtyDollars
 } PriceLimit;
 
 @interface User : RLMObject
