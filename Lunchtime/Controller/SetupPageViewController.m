@@ -79,5 +79,4 @@ static NSString *kSetupPageFifthScene = @"setupPageFifthScene";
     return self.scenes[index];
 }
 
-
 @end
