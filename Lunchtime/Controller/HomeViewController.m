@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "LunchtimeLocationManager.h"
+#import "LunchtimeMaps.h"
 #import "LunchtimeGeocoder.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like";
@@ -56,7 +57,9 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Open in Google Maps" style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [LunchtimeMaps openInMapsWithAddress:@"7137 198 street"];
+    }]];
 
     [self presentViewController:alert animated:YES completion:nil];
 }
