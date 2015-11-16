@@ -8,14 +8,29 @@
 
 #import "PreviousDaysTableViewController.h"
 #import "LunchtimeTableViewCell.h"
+#import "Restaurant.h"
+#import "User.h"
 
 static NSString *kReuseIdentifier = @"previousCell";
 
 @interface PreviousDaysTableViewController ()
 
+@property (nonatomic) User *user;
+
 @end
 
 @implementation PreviousDaysTableViewController
+
+#pragma mark - Controller Lifecycle
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+
+    if (self) {
+        _user = [User objectForPrimaryKey:@1];
+    }
+
+    return self;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -30,8 +45,8 @@ static NSString *kReuseIdentifier = @"previousCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // Model *model = self.models[indexPath.row];
-    // model.address (used for Google Maps search)
+    // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    // restaurant.address
 
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
@@ -44,9 +59,9 @@ static NSString *kReuseIdentifier = @"previousCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
-    // Model *model = self.models[indexPath.row];
-    // cell.textLabel.text = model.title;
-    // cell.detailTextLabel.text = model.location;
+    // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    // cell.textLabel.text = restaurant.name;
+    // cell.detailTextLabel.text = restaurant.thoroughfare;
 
     return cell;
 }
