@@ -7,7 +7,7 @@
 //
 
 #import "User.h"
-#import "FourSquareAPI.h"
+#import "FoursquareAPI.h"
 #import "HomeViewController.h"
 #import "LunchtimeLocationManager.h"
 #import "LunchtimeMaps.h"
@@ -30,15 +30,15 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 @implementation HomeViewController
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     
-    self.locationManager = [LunchtimeLocationManager defaultManager];
+    [self setLocationManager:[LunchtimeLocationManager defaultManager]];
+    [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-    [self.locationManager setDelegate:self];
-    
-    FourSquareAPI *fourSquareRequest = [[FourSquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
+
+    FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
     [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1]];
-    
 }
 
 - (void)viewDidLoad {
