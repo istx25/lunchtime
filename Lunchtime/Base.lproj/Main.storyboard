@@ -168,12 +168,37 @@
                             <outlet property="delegate" destination="bet-kV-zEd" id="d4W-Xs-xK6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Previous Days" id="jVW-54-4y5"/>
+                    <navigationItem key="navigationItem" title="Previous Days" id="jVW-54-4y5">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="lzd-7F-nRt">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="wyI-zl-DZP" kind="show" id="0do-L8-KHC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjq-Hb-y9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1105" y="1133"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="zHm-qc-CIz">
+            <objects>
+                <viewController id="wyI-zl-DZP" customClass="PreviousDaysMapViewController" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="2JW-0l-QPB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                    </mapView>
+                    <navigationItem key="navigationItem" title="Map" id="j4Y-xT-Ixv"/>
+                    <connections>
+                        <outlet property="mapView" destination="2JW-0l-QPB" id="18q-Ca-RSX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H77-Ct-EAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="1133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="t8g-Rj-rHN">
