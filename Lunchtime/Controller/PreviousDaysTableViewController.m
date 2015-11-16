@@ -7,12 +7,14 @@
 //
 
 #import "PreviousDaysTableViewController.h"
+#import "PreviousDaysMapViewController.h"
 #import "LunchtimeTableViewCell.h"
 #import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
 static NSString *kReuseIdentifier = @"previousCell";
+static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMapViewController";
 
 @interface PreviousDaysTableViewController ()
 
@@ -37,6 +39,13 @@ static NSString *kReuseIdentifier = @"previousCell";
     [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kSegueToPreviousDaysMapViewController]) {
+        PreviousDaysMapViewController *previousDaysMapViewController = [segue destinationViewController];
+        previousDaysMapViewController.user = self.user;
+    }
 }
 
 #pragma mark - Table view data source
