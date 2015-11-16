@@ -7,6 +7,7 @@
 //
 
 #import <Realm/Realm.h>
+#import "Restaurant.h"
 
 typedef enum NSInteger {
     PriceLimitLessThanTenDollars,
@@ -20,6 +21,9 @@ typedef enum NSInteger {
 @property (nonatomic) NSDate *lunchtime;
 @property (nonatomic) PriceLimit priceLimit;
 @property (nonatomic) NSNumber<RLMInt> *identifier;
+
+@property (nonatomic) RLMArray<Restaurant *><Restaurant> *blacklistedRestaurants;
+@property (nonatomic) RLMArray<Restaurant *><Restaurant> *savedRestaurants;
 
 @end
 
