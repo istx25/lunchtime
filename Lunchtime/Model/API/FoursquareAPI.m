@@ -1,13 +1,12 @@
 //
-//  FourSquareAPI.m
-//  FourSquare
+//  FoursquareAPI.m
+//  Lunchtime
 //
 //  Created by Alex on 2015-11-15.
 //  Copyright © 2015 Alex. All rights reserved.
 //
 
-#import <Realm/Realm.h>
-#import "FourSquareAPI.h"
+#import "FoursquareAPI.h"
 #import "LunchtimeLocationManager.h"
 #import "Restaurant.h"
 #import "User.h"
@@ -17,17 +16,16 @@ static NSString *kClientID = @"CGH3OKEERY3MSUZGPHQVDS2PCPLQEJ5TLTDPG0GRN02J50GL"
 static NSString *kClientSecret =@"1C5YTYJ4JM2Y1OEOIN0WKXMI33TS4Q4LFEEIPW0WSR2TW3FY";
 static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore?v=20151101";
 
-@interface FourSquareAPI ()
+@interface FoursquareAPI ()
 
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 
 @end
 
-@implementation FourSquareAPI
+@implementation FoursquareAPI
 
-- (instancetype)initWithLocation:(CLLocation *)location
-{
+- (instancetype)initWithLocation:(CLLocation *)location {
     self = [super init];
     if (self) {
         _latitude = location.coordinate.latitude;
@@ -35,7 +33,6 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
     }
     return self;
 }
-
 
 - (void)createRestaurants:(NSArray *)restaurants {
     
@@ -48,7 +45,7 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
 
         newRestaurant.name = restaurant[@"venue"][@"name"];
         newRestaurant.address = restaurant[@"venue"][@"location"][@"address"];
-        newRestaurant.URL = restaurant[@"venue"][@"url"];
+        // newRestaurant.URL = restaurant[@"venue"][@"url"];
         newRestaurant.category = restaurant[@"venue"][@"category"][@"name"];
     
         [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
