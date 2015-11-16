@@ -8,6 +8,7 @@
 
 #import "PreviousDaysTableViewController.h"
 #import "LunchtimeTableViewCell.h"
+#import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
@@ -44,14 +45,13 @@ static NSString *kReuseIdentifier = @"previousCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-    // restaurant.address
-
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Open in Google Maps" style:UIAlertActionStyleDefault handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+        [LunchtimeMaps openInMapsWithAddress:@"7137 198 street"];
+    }]];
 
     [self presentViewController:alert animated:YES completion:nil];
 }

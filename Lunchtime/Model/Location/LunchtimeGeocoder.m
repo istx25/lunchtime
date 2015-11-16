@@ -23,4 +23,17 @@
     }];
 }
 
+- (void)geocodeLocationWithAddress:(NSString *)address withCompletionHandler:(void (^)(CLLocationDegrees latitude, CLLocationDegrees longitude))completionHandler {
+
+    CLGeocoder *geocoder = [CLGeocoder new];
+
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> *placemarks, NSError *error) {
+        CLPlacemark *placemark = placemarks[0];
+        CLLocationDegrees latitude = placemark.location.coordinate.latitude;
+        CLLocationDegrees longitude = placemark.location.coordinate.longitude;
+
+        completionHandler(latitude, longitude);
+    }];
+}
+
 @end
