@@ -24,6 +24,8 @@ static NSString *kSegueFromSetupFlow = @"segueFromSetupFlow";
     [defaults setObject:kUserCreatedFlag forKey:kUserCreatedFlag];
 
     [self performSegueWithIdentifier:kSegueFromSetupFlow sender:self];
+    
+    
 }
 
 @end
