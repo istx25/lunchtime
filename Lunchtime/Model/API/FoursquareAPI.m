@@ -15,7 +15,6 @@
 static NSString *kClientID = @"CGH3OKEERY3MSUZGPHQVDS2PCPLQEJ5TLTDPG0GRN02J50GL";
 static NSString *kClientSecret =@"1C5YTYJ4JM2Y1OEOIN0WKXMI33TS4Q4LFEEIPW0WSR2TW3FY";
 static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore?v=20151101";
-
 static NSString *kResultsLimit = @"&limit=50";
 static NSString *kResultsRadius = @"1500";
 
@@ -30,10 +29,12 @@ static NSString *kResultsRadius = @"1500";
 
 - (instancetype)initWithLocation:(CLLocation *)location {
     self = [super init];
+
     if (self) {
         _latitude = location.coordinate.latitude;
         _longitude = location.coordinate.longitude;
     }
+
     return self;
 }
 
@@ -84,7 +85,6 @@ static NSString *kResultsRadius = @"1500";
 
         Restaurant *newRestaurant = [[Restaurant alloc] init];
 
-
         newRestaurant.name = restaurant[@"venue"][@"name"];
         newRestaurant.category = restaurant[@"venue"][@"categories"][0][@"name"];
 
@@ -103,10 +103,9 @@ static NSString *kResultsRadius = @"1500";
             dispatch_async(dispatch_get_main_queue(), ^{
                 newRestaurant.thoroughfare = placemark.thoroughfare;
 
-                RLMRealm *geocoderRealm = [RLMRealm defaultRealm];
-                [geocoderRealm beginWriteTransaction];
-                [Restaurant createOrUpdateInRealm:geocoderRealm withValue:newRestaurant];
-                [geocoderRealm commitWriteTransaction];
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [Restaurant createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:newRestaurant];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
             });
         }];
 

@@ -7,12 +7,13 @@
 //
 
 #import "HomeViewController.h"
+#import "UIAlertController+Extras.h"
 #import "LunchtimeLocationManager.h"
+#import "Realm+Convenience.h"
 #import "LunchtimeGeocoder.h"
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
-#import "UIAlertController+Extras.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
@@ -84,12 +85,11 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     [alert addCancelAction];
 
     [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
-        [[RLMRealm defaultRealm] beginWriteTransaction];
-        [[User objectForPrimaryKey:@1].savedRestaurants addObject:self.currentRestaurant];
-        [[RLMRealm defaultRealm] commitWriteTransaction];
+        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }];
 
     [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
         [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
     }];
 
@@ -97,10 +97,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
-    [[RLMRealm defaultRealm] beginWriteTransaction];
-    [[User objectForPrimaryKey:@1].blacklistedRestaurants addObject:self.currentRestaurant];
-    [[RLMRealm defaultRealm] commitWriteTransaction];
-
+    [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
     [self setupUI];
 }
 

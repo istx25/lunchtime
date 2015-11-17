@@ -8,8 +8,8 @@
 
 #import <Realm/Realm.h>
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@class CLLocation;
 @class User;
 
 @interface FoursquareAPI : NSObject

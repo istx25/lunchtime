@@ -8,14 +8,15 @@
 
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
-#import "LunchtimeTableViewCell.h"
 #import "UIAlertController+Extras.h"
+#import "LunchtimeTableViewCell.h"
+#import "Realm+Convenience.h"
 #import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
-static NSString *kReuseIdentifier = @"previousCell";
 static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMapViewController";
+static NSString *kReuseIdentifier = @"previousCell";
 
 @interface PreviousDaysTableViewController ()
 
@@ -61,16 +62,12 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
     [alert addCancelAction];
 
     [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
-        [[RLMRealm defaultRealm] beginWriteTransaction];
-        [[User objectForPrimaryKey:@1].savedRestaurants addObject:restaurant];
-        [[RLMRealm defaultRealm] commitWriteTransaction];
+        [RealmConvenience addRestaurantToSavedArray:restaurant];
     }];
 
     [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience addRestaurantToSavedArray:restaurant];
         [LunchtimeMaps openInMapsWithAddress:restaurant.address];
-        [[RLMRealm defaultRealm] beginWriteTransaction];
-        [[User objectForPrimaryKey:@1].savedRestaurants addObject:restaurant];
-        [[RLMRealm defaultRealm] commitWriteTransaction];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -79,9 +76,9 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
-     Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-     cell.textLabel.text = restaurant.name;
-     cell.detailTextLabel.text = restaurant.thoroughfare;
+    Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    cell.textLabel.text = restaurant.name;
+    cell.detailTextLabel.text = restaurant.thoroughfare;
 
     return cell;
 }
