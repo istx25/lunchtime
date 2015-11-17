@@ -24,23 +24,17 @@ static NSString *kBaseGoogleMapsURL = @"comgooglemaps://?";
     NSString *encodedAddress = [address stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
     NSURL *GoogleMapsURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@daddr=%@&directionsmode=transit", kBaseGoogleMapsURL, encodedAddress]];
 
-    if (![[UIApplication sharedApplication] openURL: GoogleMapsURL]) {
-        LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
-        [geocoder geocodeLocationWithAddress:address withCompletionHandler:^(CLLocationDegrees latitude, CLLocationDegrees longitude) {
-            CLLocationCoordinate2D endingCoord = CLLocationCoordinate2DMake(latitude, longitude);
-            MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoord addressDictionary:nil];
-            MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
-
-            NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];
-            [launchOptions setObject:MKLaunchOptionsDirectionsModeTransit forKey:MKLaunchOptionsDirectionsModeKey];
-
-            [endingItem openInMapsWithLaunchOptions:launchOptions];
-        }];
+    if ([[UIApplication sharedApplication] openURL: GoogleMapsURL]) {
+        [[UIApplication sharedApplication] openURL: GoogleMapsURL];
 
         return;
     }
 
-    [[UIApplication sharedApplication] openURL: GoogleMapsURL];
+    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
+    [geocoder geocodeLocationWithAddress:address withCompletionHandler:^(CLLocationDegrees latitude, CLLocationDegrees longitude) {
+        MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude) addressDictionary:nil];
+        [[[MKMapItem alloc] initWithPlacemark:endLocation] openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeTransit}];
+    }];
 }
 
 @end

@@ -10,17 +10,16 @@
 
 @implementation LunchtimeNotification
 
-- (instancetype)initWithDate:(NSDate *)date
-{
+- (instancetype)initWithDate:(NSDate *)date {
     self = [super init];
+
     if (self) {
-        
         self.fireDate = date;
         self.repeatInterval = NSCalendarUnitDay;
         self.alertTitle = @"It's Lunchtime!";
         self.alertBody = @"I hope you're hungry.";
-        
     }
+    
     return self;
 }
 

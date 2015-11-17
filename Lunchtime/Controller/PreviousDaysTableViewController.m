@@ -8,13 +8,15 @@
 
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
+#import "UIAlertController+Extras.h"
 #import "LunchtimeTableViewCell.h"
+#import "Realm+Convenience.h"
 #import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
-static NSString *kReuseIdentifier = @"previousCell";
 static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMapViewController";
+static NSString *kReuseIdentifier = @"previousCell";
 
 @interface PreviousDaysTableViewController ()
 
@@ -50,17 +52,31 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.user.savedRestaurants.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-        [LunchtimeMaps openInMapsWithAddress:@"7137 198 street"];
-    }]];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    [alert addCancelAction];
+
+    [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience addRestaurantToSavedArray:restaurant];
+        [self.tableView reloadData];
+    }];
+
+    [alert addDefaultAction:@"I didn't go here" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience removeRestaurantFromSavedArrayAtIndex:indexPath.row];
+        [RealmConvenience addRestaurantToBlacklistedArray:restaurant];
+        [self.tableView reloadData];
+    }];
+
+    [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience addRestaurantToSavedArray:restaurant];
+        [self.tableView reloadData];
+        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+    }];
 
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -68,9 +84,9 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
-    // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-    // cell.textLabel.text = restaurant.name;
-    // cell.detailTextLabel.text = restaurant.thoroughfare;
+    Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    cell.textLabel.text = restaurant.name;
+    cell.detailTextLabel.text = restaurant.thoroughfare;
 
     return cell;
 }
