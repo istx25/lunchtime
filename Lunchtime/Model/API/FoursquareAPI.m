@@ -16,7 +16,6 @@ static NSString *kClientID = @"CGH3OKEERY3MSUZGPHQVDS2PCPLQEJ5TLTDPG0GRN02J50GL"
 static NSString *kClientSecret =@"1C5YTYJ4JM2Y1OEOIN0WKXMI33TS4Q4LFEEIPW0WSR2TW3FY";
 static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore?v=20151101";
 static NSString *kResultsLimit = @"&limit=50";
-static NSString *kResultsRadius = @"1500";
 
 @interface FoursquareAPI ()
 
@@ -44,7 +43,7 @@ static NSString *kResultsRadius = @"1500";
     
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
     NSString *price = [NSString stringWithFormat:@"&price=%u", user.priceLimit + 1];
-    NSString *radius = [NSString stringWithFormat:@"&radius=%@", kResultsRadius];
+    NSString *radius = [NSString stringWithFormat:@"&radius=%@", user.preferredDistance];
     
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
     

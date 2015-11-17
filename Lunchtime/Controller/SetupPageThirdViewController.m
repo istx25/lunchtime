@@ -30,6 +30,7 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
     User *user = [User new];
     
+    [user setPreferredDistance:@1500];
     [user setLunchtime:self.lunchtimeDatePicker.date];
     [user setIdentifier:@1];
 

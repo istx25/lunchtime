@@ -320,7 +320,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="grantNotificationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="H8m-4F-aI1"/>
+                                    <action selector="grantNotificationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="sQx-9t-ILQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4db-tL-CwI">
@@ -335,7 +335,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="grantLocationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="w8j-Nt-F3b"/>
+                                    <action selector="grantLocationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="GAh-qS-Hf2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need access to notifications to let you know when it's lunchtime. Location is used to find local restaurants." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-CW-IGM">
@@ -384,8 +384,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="grantLocationPrivilegesButton" destination="4db-tL-CwI" id="Mwd-sA-dTH"/>
-                        <outlet property="grantNotificationPrivilegesButton" destination="AXk-ld-hgi" id="ifa-Tg-bYv"/>
+                        <outlet property="grantLocationPrivilegesButton" destination="4db-tL-CwI" id="NQv-qj-sre"/>
+                        <outlet property="grantNotificationPrivilegesButton" destination="AXk-ld-hgi" id="Nul-8N-hT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ma-xV-x6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
