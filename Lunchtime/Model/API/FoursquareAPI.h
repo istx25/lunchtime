@@ -15,6 +15,6 @@
 @interface FoursquareAPI : NSObject
 
 - (instancetype)initWithLocation:(CLLocation *)location;
-- (void)findRestaurantsForUser:(User *)user;
+- (void)findRestaurantsForUser:(User *)user withCompletionHandler:(void (^)(void))completionHandler;
 
 @end
