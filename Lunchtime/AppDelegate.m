@@ -19,8 +19,6 @@ static NSString *kSetupStoryboardName = @"Setup";
     // Override point for customization after application launch.
     [self checkIfUserExists];
     [self appearance];
-
-    NSLog(@"%@", [RLMRealm defaultRealm].path);
     
     return YES;
 }
@@ -38,6 +36,10 @@ static NSString *kSetupStoryboardName = @"Setup";
 
 - (void)appearance {
     // [[UIView appearance] setTintColor:[UIColor blackColor]];
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSLog(@"Received Notification!!");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

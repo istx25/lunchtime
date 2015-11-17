@@ -8,6 +8,7 @@
 
 #import "SetupPageSecondViewController.h"
 #import "User.h"
+#import "LunchtimeNotification.h"
 
 @interface SetupPageSecondViewController ()
 
@@ -35,6 +36,11 @@
     [realm beginWriteTransaction];
     [User createOrUpdateInRealm:realm withValue:user];
     [realm commitWriteTransaction];
+    
+    LunchtimeNotification *notification = [[LunchtimeNotification alloc] init];
+    notification.fireDate = self.lunchtimeDatePicker.date;
+    NSLog(@"Setting a reminder for %@", self.lunchtimeDatePicker.date);
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 @end
