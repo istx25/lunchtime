@@ -94,7 +94,8 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
             [self createRestaurants:restaurantsArray];
             
         }
-        
+
+        completionHandler();
     }];
                             
     [task resume];
