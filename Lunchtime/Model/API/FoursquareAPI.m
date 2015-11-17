@@ -84,7 +84,7 @@ static NSString *kResultsLimit = @"&limit=50";
 
         Restaurant *newRestaurant = [[Restaurant alloc] init];
 
-        newRestaurant.name = restaurant[@"venue"][@"name"];
+        newRestaurant.title = restaurant[@"venue"][@"name"];
         newRestaurant.category = restaurant[@"venue"][@"categories"][0][@"name"];
 
         NSNumber *latitude = restaurant[@"venue"][@"location"][@"lat"];
@@ -105,7 +105,7 @@ static NSString *kResultsLimit = @"&limit=50";
         [geocoder reverseGeocodeLocationWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) withCompletionHandler:^(CLPlacemark *placemark) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 newRestaurant.thoroughfare = placemark.thoroughfare;
-
+                
                 [[RLMRealm defaultRealm] beginWriteTransaction];
                 [Restaurant createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:newRestaurant];
                 [[RLMRealm defaultRealm] commitWriteTransaction];
