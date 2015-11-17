@@ -41,6 +41,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
+    [self setupUI];
 
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
         [self updateUI];
@@ -50,7 +51,6 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self setupUI];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
@@ -81,7 +81,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
         });
     }];
 }
-//
+
 #pragma mark - Actions
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
