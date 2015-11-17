@@ -8,7 +8,7 @@
 
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
-#import "UIAlertController+Extras.h"
+#import "Lunchtime-Swift.h"
 #import "LunchtimeTableViewCell.h"
 #import "Realm+Convenience.h"
 #import "LunchtimeMaps.h"
@@ -57,22 +57,22 @@ static NSString *kReuseIdentifier = @"previousCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
     Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-    [alert addCancelAction];
+    [alert addCancelAction:@"Cancel" handler:nil];
 
-    [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
+    [alert addDefaultActionWithTitle:@"I know where it is" handler:^{
         [RealmConvenience addRestaurantToSavedArray:restaurant];
         [self.tableView reloadData];
     }];
 
-    [alert addDefaultAction:@"I didn't go here" withHandler:^(UIAlertAction *action) {
+    [alert addDefaultActionWithTitle:@"I didn't go here" handler:^{
         [RealmConvenience removeRestaurantFromSavedArrayAtIndex:indexPath.row];
         [RealmConvenience addRestaurantToBlacklistedArray:restaurant];
         [self.tableView reloadData];
     }];
 
-    [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+    [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
         [RealmConvenience addRestaurantToSavedArray:restaurant];
         [self.tableView reloadData];
         [LunchtimeMaps openInMapsWithAddress:restaurant.address];
