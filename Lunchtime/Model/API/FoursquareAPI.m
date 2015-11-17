@@ -92,14 +92,13 @@ static NSString *kResultsRadius = @"1500";
         NSNumber *longitude = restaurant[@"venue"][@"location"][@"lng"];
         newRestaurant.latitude = [latitude doubleValue];
         newRestaurant.longitude = [longitude doubleValue];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude);
 
         NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
         newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
 
         [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
 
-        [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
+        [geocoder reverseGeocodeLocationWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) withCompletionHandler:^(CLPlacemark *placemark) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 newRestaurant.thoroughfare = placemark.thoroughfare;
 

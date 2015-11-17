@@ -10,18 +10,12 @@
 
 @implementation Restaurant
 
-- (instancetype)init {
-    self = [super init];
-
-    if (self) {
-        _coordinate = CLLocationCoordinate2DMake(_latitude, _longitude);
-    }
-
-    return self;
-}
-
 + (NSString *)primaryKey {
     return @"name";
+}
+
++ (NSArray *)ignoredProperties {
+    return @[@"coordinate"];
 }
 
 @end

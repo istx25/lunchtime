@@ -11,7 +11,7 @@
 
 @interface Restaurant : RLMObject <MKAnnotation>
 
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 
