@@ -7,7 +7,8 @@
 //
 
 #import "HomeViewController.h"
-#import "UIAlertController+Extras.h"
+//#import "UIAlertController+Extras.h"
+#import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
 #import "Realm+Convenience.h"
 #import "LunchtimeGeocoder.h"
@@ -84,14 +85,15 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 #pragma mark - Actions
 - (IBAction)yesButtonPressed:(UIButton *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addCancelAction];
 
-    [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
+    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancelAction:@"Cancel" handler:nil];
+
+    [alert addDefaultActionWithTitle:@"I know where it is" handler:^{
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }];
 
-    [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+    [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
         [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
     }];
