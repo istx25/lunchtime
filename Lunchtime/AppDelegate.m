@@ -19,6 +19,9 @@ static NSString *kSetupStoryboardName = @"Setup";
     // Override point for customization after application launch.
     [self checkIfUserExists];
     [self appearance];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
     
     return YES;
 }

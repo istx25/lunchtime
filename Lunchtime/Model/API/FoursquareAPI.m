@@ -46,7 +46,12 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
         newRestaurant.name = restaurant[@"venue"][@"name"];
     
         NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
-        newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+        
+        if (formattedAddress.count >= 2) {
+            newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+        } else {
+            newRestaurant.address = formattedAddress[0];
+        }
         
         NSNumber *lat = restaurant[@"venue"][@"location"][@"lat"];
         NSNumber *lng = restaurant[@"venue"][@"location"][@"lng"];
