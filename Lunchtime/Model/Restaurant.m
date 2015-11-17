@@ -11,7 +11,7 @@
 @implementation Restaurant
 
 + (NSString *)primaryKey {
-    return @"name";
+    return @"title";
 }
 
 + (NSArray *)ignoredProperties {

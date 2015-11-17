@@ -15,7 +15,7 @@
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 
-@property (nonatomic) NSString *name;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic) NSString *category;
 @property (nonatomic) NSString *thoroughfare;
 @property (nonatomic) NSString *address;
