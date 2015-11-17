@@ -11,9 +11,7 @@
 @implementation UIAlertController (Extras)
 
 + (instancetype)alertControllerWithTitle:(NSString *)title preferredStyle:(UIAlertControllerStyle)preferredStyle {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:preferredStyle];
-
-    return alert;
+    return [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:preferredStyle];
 }
 
 - (void)addDefaultAction:(NSString *)title withHandler:(void (^)(UIAlertAction *action))handler {
