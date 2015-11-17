@@ -20,7 +20,7 @@ static NSString *kSetupStoryboardName = @"Setup";
     [self checkIfUserExists];
     [self appearance];
 
-    NSLog(@"%@", [RLMRealm defaultRealm].path);
+    NSLog(@"Realm Path: %@", [RLMRealm defaultRealm].path);
     
     return YES;
 }

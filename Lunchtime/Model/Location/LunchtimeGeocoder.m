@@ -17,7 +17,7 @@
 
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> *placemarks, NSError *error) {
         if (error) {
-            NSLog(@"reverseGeocodeLocationWithCoordinate: %@", error);
+            NSLog(@"Reverse Geocoding Location Error: %@", error);
 
             return;
         }
@@ -35,7 +35,7 @@
 
     [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> *placemarks, NSError *error) {
         if (error) {
-            NSLog(@"geocodeLocationWithAddress: %@", error);
+            NSLog(@"Geocoding Location Error: %@", error);
 
             return;
         }
