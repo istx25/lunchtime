@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pMK-qj-g8S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pMK-qj-g8S">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,21 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunchtime uses Foursquare to aggregate the  best restaurants in your area." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvX-VQ-rlk">
-                                <rect key="frame" x="33" y="489" width="255" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunchtime uses Foursquare to aggregate the best restaurants in your area." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvX-VQ-rlk">
+                                <rect key="frame" x="35" y="489" width="251.5" height="29"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order up. It's Lunchtime." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vv5-0h-eAh">
-                                <rect key="frame" x="36" y="141" width="247" height="27"/>
+                                <rect key="frame" x="36" y="141" width="247" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're the easiest way to find the  best grub in your city." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-Ab-XuY">
-                                <rect key="frame" x="34" y="183" width="253" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're the easiest way to find the best grub in your city." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-Ab-XuY">
+                                <rect key="frame" x="36.5" y="183" width="248.5" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="786" y="416"/>
         </scene>
-        <!--Setup Page Second View Controller-->
+        <!--Setup Page Third View Controller-->
         <scene sceneID="8jc-sd-Lob">
             <objects>
-                <viewController storyboardIdentifier="setupPageSecondScene" id="cqU-H5-jMb" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageThirdScene" id="cqU-H5-jMb" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yis-PG-VQc"/>
                         <viewControllerLayoutGuide type="bottom" id="jRJ-TN-6PR"/>
@@ -95,21 +95,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When's lunchtime?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ij-Bh-guN">
-                                <rect key="frame" x="64" y="141" width="192" height="27"/>
+                                <rect key="frame" x="64" y="141" width="192" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll let you know where to go  when the lunch bell rings." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJX-Ef-9bI">
-                                <rect key="frame" x="42" y="183" width="237" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll let you know where to go when the lunch bell rings." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJX-Ef-9bI">
+                                <rect key="frame" x="44.5" y="182.5" width="232" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="maP-Kw-Tjf">
-                                <rect key="frame" x="0.0" y="288" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="287" width="320" height="216"/>
                                 <animations/>
                                 <date key="date" timeIntervalSinceReferenceDate="469164570.28052098">
                                     <!--2015-11-14 03:29:30 +0000-->
@@ -136,12 +136,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaY-Mq-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="1154"/>
+            <point key="canvasLocation" x="1744" y="1154"/>
         </scene>
-        <!--Setup Page Third View Controller-->
+        <!--Setup Page Fourth View Controller-->
         <scene sceneID="qTt-ra-wFc">
             <objects>
-                <viewController storyboardIdentifier="setupPageThirdScene" id="qce-pi-ydj" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFourthScene" id="qce-pi-ydj" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="apy-1i-Qi4"/>
                         <viewControllerLayoutGuide type="bottom" id="Tcz-o3-QXQ"/>
@@ -151,20 +151,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your limit?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGV-09-lK5">
-                                <rect key="frame" x="70" y="141" width="180" height="27"/>
+                                <rect key="frame" x="70" y="141" width="179.5" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the most you would like to spend on lunch every day?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU1-Jm-PqH">
-                                <rect key="frame" x="32" y="183" width="257" height="41"/>
+                                <rect key="frame" x="32" y="182" width="257" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IEA-c1-8OP">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IEA-c1-8OP">
                                 <rect key="frame" x="32" y="365" width="256" height="29"/>
                                 <animations/>
                                 <constraints>
@@ -178,8 +178,8 @@
                                 </segments>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="We'll only recommended restaurants with  meals in your price range." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OM3-Hr-Q7W">
-                                <rect key="frame" x="43" y="408" width="234" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll only recommended restaurants with meals in your price range." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OM3-Hr-Q7W">
+                                <rect key="frame" x="45" y="408.5" width="230.5" height="29"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                 <nil key="highlightedColor"/>
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-23-NKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741" y="1154"/>
+            <point key="canvasLocation" x="2177" y="1154"/>
         </scene>
         <!--Setup Page Fifth View Controller-->
         <scene sceneID="HOh-aa-5Pv">
@@ -222,21 +222,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Okay!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-xh-z0y">
-                                <rect key="frame" x="131" y="141" width="59" height="27"/>
+                                <rect key="frame" x="131" y="141" width="59" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll let you know when it's time  to get something to eat." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdC-63-GOi">
-                                <rect key="frame" x="35" y="183" width="251" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll let you know when it's time to get something to eat." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdC-63-GOi">
+                                <rect key="frame" x="37.5" y="182.5" width="246.5" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNB-KC-aPh">
-                                <rect key="frame" x="20" y="371" width="280" height="45"/>
+                                <rect key="frame" x="20" y="370" width="280" height="45"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -272,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SR7-z4-bk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2707" y="1154"/>
+            <point key="canvasLocation" x="2613" y="1154"/>
         </scene>
         <!--Lunchtime-->
         <scene sceneID="ce4-yE-eRG">
@@ -280,12 +280,12 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="Lunchtime" id="1A4-5Y-iWi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb9-0Q-SKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3065" y="1154"/>
+            <point key="canvasLocation" x="3003" y="1154"/>
         </scene>
-        <!--Setup Page Fourth View Controller-->
+        <!--Setup Page Second View Controller-->
         <scene sceneID="OAz-Xl-R8c">
             <objects>
-                <viewController storyboardIdentifier="setupPageFourthScene" id="AB3-lR-DlV" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSecondScene" id="AB3-lR-DlV" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xh-xG-f6p"/>
                         <viewControllerLayoutGuide type="bottom" id="BRW-5F-XwJ"/>
@@ -294,15 +294,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Privileges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-V1-vw8">
-                                <rect key="frame" x="112" y="141" width="98" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privileges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-V1-vw8">
+                                <rect key="frame" x="111" y="141" width="98" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grant us access to your location  so we know where to look." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-6x-nEL">
-                                <rect key="frame" x="35" y="183" width="251" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For the best experience we need to ask for some privileges" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-6x-nEL">
+                                <rect key="frame" x="35.5" y="183" width="250" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -316,21 +316,66 @@
                                     <constraint firstAttribute="width" constant="280" id="H5N-dD-Mwc"/>
                                     <constraint firstAttribute="height" constant="45" id="KzN-ir-WDD"/>
                                 </constraints>
-                                <state key="normal" title="Grant Privileges">
+                                <state key="normal" title="Grant Notification Privileges">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="grantPrivilegesPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="u8I-rr-zBk"/>
+                                    <action selector="grantNotificationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="sQx-9t-ILQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4db-tL-CwI">
+                                <rect key="frame" x="20" y="311" width="280" height="45"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Jub-9C-gkr"/>
+                                    <constraint firstAttribute="height" constant="45" id="nzD-4c-MAk"/>
+                                </constraints>
+                                <state key="normal" title="Grant Location Privileges">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="grantLocationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="GAh-qS-Hf2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need access to notifications to let you know when it's lunchtime. Location is used to find local restaurants." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-CW-IGM">
+                                <rect key="frame" x="41" y="431" width="238" height="43"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-fc-tva">
+                                <rect key="frame" x="20" y="232" width="280" height="71"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="4Gp-JT-tmZ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMz-Ip-DMZ">
+                                <rect key="frame" x="20" y="482" width="280" height="71"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="y72-lS-BKt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AXk-ld-hgi" firstAttribute="top" secondItem="7cr-6x-nEL" secondAttribute="bottom" constant="147" id="ETm-6t-Jh8"/>
+                            <constraint firstItem="AXk-ld-hgi" firstAttribute="top" secondItem="4db-tL-CwI" secondAttribute="bottom" constant="15" id="0AP-Hf-mm9"/>
+                            <constraint firstItem="eAK-fc-tva" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="4Mh-R6-Top"/>
+                            <constraint firstItem="6jY-CW-IGM" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="5J6-Gp-X9f"/>
+                            <constraint firstItem="BRW-5F-XwJ" firstAttribute="top" secondItem="nMz-Ip-DMZ" secondAttribute="bottom" constant="15" id="D3W-TT-8jY"/>
+                            <constraint firstItem="4db-tL-CwI" firstAttribute="top" secondItem="eAK-fc-tva" secondAttribute="bottom" constant="8" id="FKZ-ty-Uzq"/>
+                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="top" secondItem="6jY-CW-IGM" secondAttribute="bottom" constant="8" id="J4T-bn-unk"/>
                             <constraint firstItem="0XZ-V1-vw8" firstAttribute="top" secondItem="1Xh-xG-f6p" secondAttribute="bottom" constant="121" id="NrU-Cv-8Jx"/>
                             <constraint firstItem="7cr-6x-nEL" firstAttribute="top" secondItem="0XZ-V1-vw8" secondAttribute="bottom" constant="15.5" id="RZZ-fg-3fD"/>
+                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="TaX-Yr-QEg"/>
+                            <constraint firstItem="eAK-fc-tva" firstAttribute="height" secondItem="nMz-Ip-DMZ" secondAttribute="height" id="W46-eh-qeF"/>
+                            <constraint firstItem="4db-tL-CwI" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="WpY-lQ-pJN"/>
+                            <constraint firstItem="eAK-fc-tva" firstAttribute="top" secondItem="7cr-6x-nEL" secondAttribute="bottom" constant="8" id="ZXf-3z-05f"/>
                             <constraint firstItem="7cr-6x-nEL" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="nCr-pv-PHS"/>
+                            <constraint firstItem="6jY-CW-IGM" firstAttribute="top" secondItem="AXk-ld-hgi" secondAttribute="bottom" constant="15" id="oYg-hZ-ZMg"/>
                             <constraint firstItem="AXk-ld-hgi" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="tRO-eO-1Ry"/>
                             <constraint firstItem="0XZ-V1-vw8" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="w5Y-bd-fQn"/>
                         </constraints>
@@ -339,12 +384,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="grantPrivilegesButton" destination="AXk-ld-hgi" id="IJG-xn-8Sk"/>
+                        <outlet property="grantLocationPrivilegesButton" destination="4db-tL-CwI" id="NQv-qj-sre"/>
+                        <outlet property="grantNotificationPrivilegesButton" destination="AXk-ld-hgi" id="Nul-8N-hT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ma-xV-x6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="1154"/>
+            <point key="canvasLocation" x="1263" y="1154"/>
         </scene>
     </scenes>
 </document>
