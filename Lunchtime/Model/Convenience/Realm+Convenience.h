@@ -16,4 +16,7 @@
 + (void)addRestaurantToSavedArray:(Restaurant *)restaurant;
 + (void)addRestaurantToBlacklistedArray:(Restaurant *)restaurant;
 
++ (void)removeRestaurantFromSavedArrayAtIndex:(NSUInteger)index;
++ (void)removeRestaurantFromBlacklistedArrayAtIndex:(NSUInteger)index;
+
 @end

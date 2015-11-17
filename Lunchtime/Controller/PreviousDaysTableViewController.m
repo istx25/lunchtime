@@ -65,6 +65,12 @@ static NSString *kReuseIdentifier = @"previousCell";
         [RealmConvenience addRestaurantToSavedArray:restaurant];
     }];
 
+    [alert addDefaultAction:@"I didn't go here" withHandler:^(UIAlertAction *action) {
+        [RealmConvenience removeRestaurantFromSavedArrayAtIndex:indexPath.row];
+        [RealmConvenience addRestaurantToBlacklistedArray:restaurant];
+        [self.tableView reloadData];
+    }];
+
     [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
         [RealmConvenience addRestaurantToSavedArray:restaurant];
         [LunchtimeMaps openInMapsWithAddress:restaurant.address];
