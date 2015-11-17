@@ -31,7 +31,6 @@ static int const kMapZoomValue = 2100;
     [self.mapView setShowsUserLocation:YES];
     [self.locationManager setup];
     [self zoomMapToUserLocation];
-    [self addRestaurantAnnotationsToMapView];
 }
 
 - (void)addRestaurantAnnotationsToMapView {
@@ -50,6 +49,7 @@ static int const kMapZoomValue = 2100;
     MKCoordinateRegion adjustedRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, kMapZoomValue, kMapZoomValue);
 
     [self.mapView setRegion:adjustedRegion animated:YES];
+    [self addRestaurantAnnotationsToMapView];
 }
 
 @end

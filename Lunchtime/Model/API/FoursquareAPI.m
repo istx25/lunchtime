@@ -8,13 +8,16 @@
 
 #import "FoursquareAPI.h"
 #import "LunchtimeLocationManager.h"
+#import "LunchtimeGeocoder.h"
 #import "Restaurant.h"
 #import "User.h"
 
-static NSString *kResultsLimit = @"&limit=50";
 static NSString *kClientID = @"CGH3OKEERY3MSUZGPHQVDS2PCPLQEJ5TLTDPG0GRN02J50GL";
 static NSString *kClientSecret =@"1C5YTYJ4JM2Y1OEOIN0WKXMI33TS4Q4LFEEIPW0WSR2TW3FY";
 static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore?v=20151101";
+
+static NSString *kResultsLimit = @"&limit=50";
+static NSString *kResultsRadius = @"1500";
 
 @interface FoursquareAPI ()
 
@@ -34,49 +37,18 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
     return self;
 }
 
-- (void)createRestaurants:(NSArray *)restaurants {
-    
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    
-    for (NSDictionary *restaurant in restaurants) {
-        
-        Restaurant *newRestaurant = [[Restaurant alloc] init];
-
-        newRestaurant.name = restaurant[@"venue"][@"name"];
-    
-        NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
-        newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
-        
-        NSNumber *lat = restaurant[@"venue"][@"location"][@"lat"];
-        NSNumber *lng = restaurant[@"venue"][@"location"][@"lng"];
-
-        newRestaurant.latitude = [lat doubleValue];
-        newRestaurant.longitude = [lng doubleValue];
-        
-        // newRestaurant.URL = restaurant[@"venue"][@"url"];
-        
-        newRestaurant.category = restaurant[@"venue"][@"categories"][0][@"name"];
-    
-        [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
-    }
-    
-    [realm commitWriteTransaction];
-}
-
 - (void)findRestaurantsForUser:(User *)user withCompletionHandler:(void (^)(void))completionHandler {
     
     __block NSArray *restaurantsArray = [NSArray new];
     
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
     NSString *price = [NSString stringWithFormat:@"&price=%u", user.priceLimit + 1];
-    NSString *radius = @"&radius=1500";
+    NSString *radius = [NSString stringWithFormat:@"&radius=%@", kResultsRadius];
     
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
     
     NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius];
-    
-    NSLog(@"%@", URLString);
+
     
     NSURL *url = [NSURL URLWithString:URLString];
     
@@ -99,6 +71,48 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
     }];
                             
     [task resume];
+}
+
+- (void)createRestaurants:(NSArray *)restaurants {
+
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+
+    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
+
+    for (NSDictionary *restaurant in restaurants) {
+
+        Restaurant *newRestaurant = [[Restaurant alloc] init];
+
+
+        newRestaurant.name = restaurant[@"venue"][@"name"];
+        newRestaurant.category = restaurant[@"venue"][@"categories"][0][@"name"];
+
+        NSNumber *latitude = restaurant[@"venue"][@"location"][@"lat"];
+        NSNumber *longitude = restaurant[@"venue"][@"location"][@"lng"];
+        newRestaurant.latitude = [latitude doubleValue];
+        newRestaurant.longitude = [longitude doubleValue];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude);
+
+        NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
+        newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+
+        [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
+
+        [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                newRestaurant.thoroughfare = placemark.thoroughfare;
+
+                RLMRealm *geocoderRealm = [RLMRealm defaultRealm];
+                [geocoderRealm beginWriteTransaction];
+                [Restaurant createOrUpdateInRealm:geocoderRealm withValue:newRestaurant];
+                [geocoderRealm commitWriteTransaction];
+            });
+        }];
+
+    }
+
+    [realm commitWriteTransaction];
 }
 
 @end
