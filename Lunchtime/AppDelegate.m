@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Realm/Realm.h>
 
 static NSString *kUserCreatedFlag = @"USER_CREATED";
 static NSString *kSetupPageViewController = @"SetupPageViewController";
@@ -18,6 +19,8 @@ static NSString *kSetupStoryboardName = @"Setup";
     // Override point for customization after application launch.
     [self checkIfUserExists];
     [self appearance];
+
+    NSLog(@"%@", [RLMRealm defaultRealm].path);
     
     return YES;
 }
