@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50C5DE21BFBBCAC003E3516 /* LunchtimeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */; };
 		A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */; };
 		A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */; };
 		A55FBB8F1BF958E100C30763 /* SetupPageFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8E1BF958E100C30763 /* SetupPageFourthViewController.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A50C5DE01BFBBCAC003E3516 /* LunchtimeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeNotification.h; path = Model/Notification/LunchtimeNotification.h; sourceTree = "<group>"; };
+		A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeNotification.m; path = Model/Notification/LunchtimeNotification.m; sourceTree = "<group>"; };
 		A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysTableViewController.h; path = Controller/PreviousDaysTableViewController.h; sourceTree = "<group>"; };
 		A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysTableViewController.m; path = Controller/PreviousDaysTableViewController.m; sourceTree = "<group>"; };
 		A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeLocationManager.h; path = Model/Location/LunchtimeLocationManager.h; sourceTree = "<group>"; };
@@ -119,6 +122,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A50C5DDC1BFBBA53003E3516 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				A50C5DE01BFBBCAC003E3516 /* LunchtimeNotification.h */,
+				A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 		A55FBB891BF94CBE00C30763 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +297,7 @@
 			children = (
 				A55FBBDF1BFAD56F00C30763 /* Convenience */,
 				A55FBBD41BFAA42D00C30763 /* API */,
+				A50C5DDC1BFBBA53003E3516 /* Notification */,
 				A55FBB891BF94CBE00C30763 /* Location */,
 				A5E105A21BF6F1AA00C71023 /* User.h */,
 				A5E105A31BF6F1AA00C71023 /* User.m */,
@@ -441,6 +454,7 @@
 				A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */,
 				A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */,
 				A5E105941BF6DB0F00C71023 /* SetupPageSecondViewController.m in Sources */,
+				A50C5DE21BFBBCAC003E3516 /* LunchtimeNotification.m in Sources */,
 				A5E105861BF6D03700C71023 /* SetupPageViewController.m in Sources */,
 				A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */,
 				A5C074771BF6C8D900F23533 /* main.m in Sources */,

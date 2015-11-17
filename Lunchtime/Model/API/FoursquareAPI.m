@@ -94,7 +94,12 @@ static NSString *kResultsRadius = @"1500";
         newRestaurant.longitude = [longitude doubleValue];
 
         NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
-        newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+
+        if (formattedAddress.count >= 2) {
+            newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+        } else {
+            newRestaurant.address = formattedAddress[0];
+        }
 
         [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
 
