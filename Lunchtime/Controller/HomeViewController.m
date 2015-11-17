@@ -29,20 +29,13 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 @implementation HomeViewController
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
     [self setLocationManager:[LunchtimeLocationManager defaultManager]];
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-
-    FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
-    [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1]];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,7 +72,12 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 #pragma mark - <LunchtimeLocationManagerDelegate>
 - (void)receivedLocation {
-    [self configureLayout];
+    FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
+    [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1] withCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self configureLayout];
+        });
+    }];
 }
 
 @end

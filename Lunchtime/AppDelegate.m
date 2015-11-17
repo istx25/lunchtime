@@ -18,7 +18,7 @@ static NSString *kSetupStoryboardName = @"Setup";
     // Override point for customization after application launch.
     [self checkIfUserExists];
     [self appearance];
-
+    
     return YES;
 }
 
