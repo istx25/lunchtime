@@ -67,9 +67,9 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 - (void)updateUI {
     if (self.currentRestaurant.thoroughfare) {
-        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.name, self.currentRestaurant.thoroughfare]];
+        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
     } else {
-        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.name]];
+        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
     }
 }
 

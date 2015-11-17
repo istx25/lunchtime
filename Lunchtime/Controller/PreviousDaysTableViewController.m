@@ -85,7 +85,7 @@ static NSString *kReuseIdentifier = @"previousCell";
     LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
     Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-    cell.textLabel.text = restaurant.name;
+    cell.textLabel.text = restaurant.title;
     cell.detailTextLabel.text = restaurant.thoroughfare;
 
     return cell;
