@@ -9,9 +9,9 @@
 #import "PreviousDaysMapViewController.h"
 #import "LunchtimeLocationManager.h"
 #import "LunchtimeGeocoder.h"
+#import <MapKit/MapKit.h>
 #import "Restaurant.h"
 #import "User.h"
-#import <MapKit/MapKit.h>
 
 static int const kMapZoomValue = 2100;
 
@@ -31,7 +31,6 @@ static int const kMapZoomValue = 2100;
     [self.mapView setShowsUserLocation:YES];
     [self.locationManager setup];
     [self zoomMapToUserLocation];
-    [self addRestaurantAnnotationsToMapView];
 }
 
 - (void)addRestaurantAnnotationsToMapView {
@@ -40,16 +39,17 @@ static int const kMapZoomValue = 2100;
     }
 
     for (Restaurant *restaurant in self.user.savedRestaurants) {
+        restaurant.coordinate = CLLocationCoordinate2DMake(restaurant.latitude, restaurant.longitude);
         [self.mapView addAnnotation:restaurant];
     }
 }
 
 - (void)zoomMapToUserLocation {
-    CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
-    CLLocationCoordinate2D zoomLocation = coordinate;
+    CLLocationCoordinate2D zoomLocation = self.locationManager.currentLocation.coordinate;
     MKCoordinateRegion adjustedRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, kMapZoomValue, kMapZoomValue);
 
     [self.mapView setRegion:adjustedRegion animated:YES];
+    [self addRestaurantAnnotationsToMapView];
 }
 
 @end
