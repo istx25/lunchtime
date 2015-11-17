@@ -33,11 +33,24 @@ static NSString *kSetupStoryboardName = @"Setup";
     if (![defaults objectForKey:kUserCreatedFlag]) {
         UIStoryboard *setup = [UIStoryboard storyboardWithName:kSetupStoryboardName bundle:[NSBundle mainBundle]];
         [self.window setRootViewController:[setup instantiateViewControllerWithIdentifier:kSetupPageViewController]];
+
+        return;
     }
+
+    [self registerLunchtimeNotificationSettings];
+}
+
+- (void)registerLunchtimeNotificationSettings {
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
 }
 
 - (void)appearance {
     // [[UIView appearance] setTintColor:[UIColor blackColor]];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSLog(@"Lunchtime has received a new notification!");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
