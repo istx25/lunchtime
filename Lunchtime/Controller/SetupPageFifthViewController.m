@@ -22,9 +22,10 @@ static NSString *kSegueFromSetupFlow = @"segueFromSetupFlow";
 - (IBAction)doneButtonPressed:(UIButton *)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:kUserCreatedFlag forKey:kUserCreatedFlag];
+    
+    
 
     [self performSegueWithIdentifier:kSegueFromSetupFlow sender:self];
-    
     
 }
 

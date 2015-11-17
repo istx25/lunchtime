@@ -19,6 +19,7 @@ typedef enum NSInteger {
 @interface User : RLMObject
 
 @property (nonatomic) NSDate *lunchtime;
+@property (nonatomic) NSNumber<RLMInt> *preferredDistance;
 @property (nonatomic) PriceLimit priceLimit;
 @property (nonatomic) NSNumber<RLMInt> *identifier;
 

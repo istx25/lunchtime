@@ -36,8 +36,6 @@ static NSString *kSetupStoryboardName = @"Setup";
 
         return;
     }
-
-    [self registerLunchtimeNotificationSettings];
 }
 
 - (void)appearance {
