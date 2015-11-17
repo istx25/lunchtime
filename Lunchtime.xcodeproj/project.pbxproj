@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50C5DDB1BFBB3C2003E3516 /* UIAlertController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */; };
 		A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */; };
 		A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */; };
 		A55FBB8F1BF958E100C30763 /* SetupPageFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8E1BF958E100C30763 /* SetupPageFourthViewController.m */; };
@@ -17,7 +18,6 @@
 		A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */; };
 		A55FBBD31BFAA42300C30763 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD21BFAA42300C30763 /* Restaurant.m */; };
 		A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD61BFAA43900C30763 /* FoursquareAPI.m */; };
-		A55FBBDB1BFAD08400C30763 /* UIAlertController+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBDA1BFAD08400C30763 /* UIAlertController+Extras.m */; };
 		A55FBBDE1BFAD56A00C30763 /* Realm+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */; };
 		A5C074771BF6C8D900F23533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074761BF6C8D900F23533 /* main.m */; };
 		A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074791BF6C8D900F23533 /* AppDelegate.m */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Extras.swift"; path = "Lib/UIAlertController+Extras.swift"; sourceTree = "<group>"; };
 		A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysTableViewController.h; path = Controller/PreviousDaysTableViewController.h; sourceTree = "<group>"; };
 		A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysTableViewController.m; path = Controller/PreviousDaysTableViewController.m; sourceTree = "<group>"; };
 		A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeLocationManager.h; path = Model/Location/LunchtimeLocationManager.h; sourceTree = "<group>"; };
@@ -67,8 +68,6 @@
 		A55FBBD21BFAA42300C30763 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
 		A55FBBD51BFAA43900C30763 /* FoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareAPI.h; path = Model/API/FoursquareAPI.h; sourceTree = "<group>"; };
 		A55FBBD61BFAA43900C30763 /* FoursquareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareAPI.m; path = Model/API/FoursquareAPI.m; sourceTree = "<group>"; };
-		A55FBBD91BFAD08400C30763 /* UIAlertController+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Extras.h"; path = "Lib/UIAlertController+Extras.h"; sourceTree = "<group>"; };
-		A55FBBDA1BFAD08400C30763 /* UIAlertController+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Extras.m"; path = "Lib/UIAlertController+Extras.m"; sourceTree = "<group>"; };
 		A55FBBDC1BFAD56A00C30763 /* Realm+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Realm+Convenience.h"; path = "Model/Convenience/Realm+Convenience.h"; sourceTree = "<group>"; };
 		A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Realm+Convenience.m"; path = "Model/Convenience/Realm+Convenience.m"; sourceTree = "<group>"; };
 		A5C074721BF6C8D900F23533 /* Lunchtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,8 +162,7 @@
 		A55FBBD81BFAD06200C30763 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBD91BFAD08400C30763 /* UIAlertController+Extras.h */,
-				A55FBBDA1BFAD08400C30763 /* UIAlertController+Extras.m */,
+				A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */,
 			);
 			name = Lib;
 			sourceTree = "<group>";
@@ -440,6 +438,7 @@
 				A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */,
 				A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */,
 				A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */,
+				A50C5DDB1BFBB3C2003E3516 /* UIAlertController+Extras.swift in Sources */,
 				A5E105941BF6DB0F00C71023 /* SetupPageSecondViewController.m in Sources */,
 				A5E105861BF6D03700C71023 /* SetupPageViewController.m in Sources */,
 				A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */,
@@ -447,7 +446,6 @@
 				A55FBB8F1BF958E100C30763 /* SetupPageFourthViewController.m in Sources */,
 				A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */,
 				A5E105A01BF6ED1F00C71023 /* SetupPageFifthViewController.m in Sources */,
-				A55FBBDB1BFAD08400C30763 /* UIAlertController+Extras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -589,6 +588,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.lighthouselabs.Lunchtime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -596,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
