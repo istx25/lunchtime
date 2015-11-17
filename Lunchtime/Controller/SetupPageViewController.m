@@ -7,9 +7,9 @@
 //
 
 #import "SetupPageViewController.h"
-#import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
+#import "SetupPageSecondViewController.h"
 #import "SetupPageFifthViewController.h"
 #import "LunchtimeLocationManager.h"
 
@@ -41,7 +41,7 @@ static NSString *kSetupPageFifthScene = @"setupPageFifthScene";
 
     self.scenes = @[firstViewController, secondViewController, thirdViewController, fifthViewController];
 
-    if ([self.locationManager needsSetup]) {
+    if ([self.locationManager needsSetup] || [[UIApplication sharedApplication] currentUserNotificationSettings]) {
         self.scenes = @[firstViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController];
     }
 
