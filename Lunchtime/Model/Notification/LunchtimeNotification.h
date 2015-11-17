@@ -10,6 +10,6 @@
 
 @interface LunchtimeNotification : UILocalNotification
 
-- (instancetype)initWithDate:(NSDate *)date;
++(instancetype)lunchtimeNotificationWithDate:(NSDate *)date;
 
 @end
