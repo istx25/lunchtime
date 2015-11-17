@@ -54,7 +54,7 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
     [realm commitWriteTransaction];
 }
 
-- (void)findRestaurantsForUser:(User *)user {
+- (void)findRestaurantsForUser:(User *)user withCompletionHandler:(void (^)(void))completionHandler {
     
     __block NSArray *restaurantsArray = [NSArray new];
     
