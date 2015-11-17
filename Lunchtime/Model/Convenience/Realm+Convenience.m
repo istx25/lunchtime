@@ -24,4 +24,16 @@
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
++ (void)removeRestaurantFromSavedArrayAtIndex:(NSUInteger)index {
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[User objectForPrimaryKey:@1].savedRestaurants removeObjectAtIndex:index];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
++ (void)removeRestaurantFromBlacklistedArrayAtIndex:(NSUInteger)index {
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [[User objectForPrimaryKey:@1].blacklistedRestaurants removeObjectAtIndex:index];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
 @end
