@@ -16,6 +16,12 @@
     CLGeocoder *geocoder = [CLGeocoder new];
 
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"reverseGeocodeLocationWithCoordinate: %@", error);
+
+            return;
+        }
+
         NSArray *placeArray = placemarks;
         CLPlacemark *placemark = placeArray[0];
 
@@ -28,11 +34,14 @@
     CLGeocoder *geocoder = [CLGeocoder new];
 
     [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> *placemarks, NSError *error) {
-        CLPlacemark *placemark = placemarks[0];
-        CLLocationDegrees latitude = placemark.location.coordinate.latitude;
-        CLLocationDegrees longitude = placemark.location.coordinate.longitude;
+        if (error) {
+            NSLog(@"geocodeLocationWithAddress: %@", error);
 
-        completionHandler(latitude, longitude);
+            return;
+        }
+
+        CLPlacemark *placemark = placemarks[0];
+        completionHandler(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
     }];
 }
 
