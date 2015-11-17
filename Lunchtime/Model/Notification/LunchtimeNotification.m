@@ -8,6 +8,9 @@
 
 #import "LunchtimeNotification.h"
 
+static NSString *kAlertTitle = @"It's Lunchtime!";
+static NSString *kAlertBody = @"Open the app to see where to go!";
+
 @implementation LunchtimeNotification
 
 - (instancetype)initWithDate:(NSDate *)date {
@@ -16,8 +19,8 @@
     if (self) {
         self.fireDate = date;
         self.repeatInterval = NSCalendarUnitDay;
-        self.alertTitle = @"It's Lunchtime!";
-        self.alertBody = @"I hope you're hungry.";
+        self.alertTitle = kAlertTitle;
+        self.alertBody = kAlertBody;
     }
     
     return self;
