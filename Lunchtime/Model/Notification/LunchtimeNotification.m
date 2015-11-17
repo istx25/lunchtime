@@ -13,17 +13,14 @@ static NSString *kAlertBody = @"Open the app to see where to go!";
 
 @implementation LunchtimeNotification
 
-- (instancetype)initWithDate:(NSDate *)date {
-    self = [super init];
-
-    if (self) {
-        self.fireDate = date;
-        self.repeatInterval = NSCalendarUnitDay;
-        self.alertTitle = kAlertTitle;
-        self.alertBody = kAlertBody;
-    }
++(instancetype)lunchtimeNotificationWithDate:(NSDate *)date {
+    LunchtimeNotification *notification = [[LunchtimeNotification alloc] init];
+    notification.fireDate = date;
+    notification.repeatInterval = NSCalendarUnitDay;
+    notification.alertTitle = kAlertTitle;
+    notification.alertBody = kAlertBody;
     
-    return self;
+    return notification;
 }
 
 @end

@@ -38,7 +38,7 @@
     [realm commitWriteTransaction];
 
     // Setup and schedule the lunchtime notification
-    LunchtimeNotification *notification = [[LunchtimeNotification alloc] initWithDate:self.lunchtimeDatePicker.date];
+    LunchtimeNotification *notification = [LunchtimeNotification lunchtimeNotificationWithDate:self.lunchtimeDatePicker.date];
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 

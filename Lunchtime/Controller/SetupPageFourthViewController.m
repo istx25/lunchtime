@@ -21,4 +21,9 @@
     [[LunchtimeLocationManager defaultManager] setup];
 }
 
+- (IBAction)registerLunchtimeNotificationSettings {
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+}
+
 @end

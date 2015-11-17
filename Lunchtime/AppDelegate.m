@@ -40,11 +40,6 @@ static NSString *kSetupStoryboardName = @"Setup";
     [self registerLunchtimeNotificationSettings];
 }
 
-- (void)registerLunchtimeNotificationSettings {
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-}
-
 - (void)appearance {
     // [[UIView appearance] setTintColor:[UIColor blackColor]];
 }
