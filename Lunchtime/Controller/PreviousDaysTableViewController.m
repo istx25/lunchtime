@@ -50,7 +50,7 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.user.savedRestaurants.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,8 +58,10 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-        [LunchtimeMaps openInMapsWithAddress:@"7137 198 street"];
+         Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+        [[RLMRealm defaultRealm] commitWriteTransaction];
     }]];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -68,9 +70,9 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LunchtimeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier forIndexPath:indexPath];
 
-    // Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
-    // cell.textLabel.text = restaurant.name;
-    // cell.detailTextLabel.text = restaurant.thoroughfare;
+     Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+     cell.textLabel.text = restaurant.name;
+     cell.detailTextLabel.text = restaurant.thoroughfare;
 
     return cell;
 }
