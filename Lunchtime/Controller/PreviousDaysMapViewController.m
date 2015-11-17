@@ -38,7 +38,10 @@ static int const kMapZoomValue = 2100;
         return;
     }
 
+    NSLog(@"%@", self.user.savedRestaurants);
+
     for (Restaurant *restaurant in self.user.savedRestaurants) {
+        restaurant.coordinate = CLLocationCoordinate2DMake(restaurant.latitude, restaurant.longitude);
         [self.mapView addAnnotation:restaurant];
     }
 }

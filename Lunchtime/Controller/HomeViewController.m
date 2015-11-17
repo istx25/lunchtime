@@ -41,7 +41,6 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-    [self setupUI];
 
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
         [self updateUI];
@@ -51,14 +50,18 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    [self setupUI];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)setupUI {
     [self.suggestionLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-    NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
-    self.currentRestaurant = [self.restaurants objectAtIndex:index];
+
+    if (0 < self.restaurants.count) {
+        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
+        self.currentRestaurant = [self.restaurants objectAtIndex:index];
+    }
 }
 
 - (void)updateUI {
@@ -78,7 +81,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
         });
     }];
 }
-
+//
 #pragma mark - Actions
 - (IBAction)yesButtonPressed:(UIButton *)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -97,8 +100,8 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
-    [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
     [self setupUI];
+    [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 }
 
 #pragma mark - <LunchtimeLocationManagerDelegate>
