@@ -6,12 +6,13 @@
 //  Copyright © 2015 Cosmic Labs. All rights reserved.
 //
 
-#import "User.h"
-#import "FoursquareAPI.h"
 #import "HomeViewController.h"
 #import "LunchtimeLocationManager.h"
-#import "LunchtimeMaps.h"
 #import "LunchtimeGeocoder.h"
+#import "LunchtimeMaps.h"
+#import "FoursquareAPI.h"
+#import "User.h"
+#import "UIAlertController+Extras.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
@@ -79,17 +80,18 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 #pragma mark - Actions
 - (IBAction)yesButtonPressed:(UIButton *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancelAction];
+
+    [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
         [[RLMRealm defaultRealm] beginWriteTransaction];
         [[User objectForPrimaryKey:@1].savedRestaurants addObject:self.currentRestaurant];
         [[RLMRealm defaultRealm] commitWriteTransaction];
-    }]];
+    }];
 
-    [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
         [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
-    }]];
+    }];
 
     [self presentViewController:alert animated:YES completion:nil];
 }

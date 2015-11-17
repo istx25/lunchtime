@@ -9,6 +9,7 @@
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
 #import "LunchtimeTableViewCell.h"
+#import "UIAlertController+Extras.h"
 #import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
@@ -54,15 +55,23 @@ static NSString *kSegueToPreviousDaysMapViewController = @"segueToPreviousDaysMa
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"I know where it is" style:UIAlertActionStyleDefault handler:nil]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Open Restaurant in Maps" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
+    [alert addCancelAction];
+
+    [alert addDefaultAction:@"I know where it is" withHandler:^(UIAlertAction *action) {
         [[RLMRealm defaultRealm] beginWriteTransaction];
-        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+        [[User objectForPrimaryKey:@1].savedRestaurants addObject:restaurant];
         [[RLMRealm defaultRealm] commitWriteTransaction];
-    }]];
+    }];
+
+    [alert addDefaultAction:@"Open Restaurant in Maps" withHandler:^(UIAlertAction *action) {
+        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+        [[RLMRealm defaultRealm] beginWriteTransaction];
+        [[User objectForPrimaryKey:@1].savedRestaurants addObject:restaurant];
+        [[RLMRealm defaultRealm] commitWriteTransaction];
+    }];
 
     [self presentViewController:alert animated:YES completion:nil];
 }
