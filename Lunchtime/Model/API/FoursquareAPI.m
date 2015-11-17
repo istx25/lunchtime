@@ -44,9 +44,17 @@ static NSString *kExploreAPIURL = @"https://api.foursquare.com/v2/venues/explore
         Restaurant *newRestaurant = [[Restaurant alloc] init];
 
         newRestaurant.name = restaurant[@"venue"][@"name"];
-        newRestaurant.address = restaurant[@"venue"][@"location"][@"address"];
+    
+        NSArray *formattedAddress = restaurant[@"venue"][@"location"][@"formattedAddress"];
+        newRestaurant.address = [NSString stringWithFormat:@"%@ %@", formattedAddress[0], formattedAddress[1]];
+        
+        NSNumber *lat = restaurant[@"venue"][@"location"][@"lat"];
+        NSNumber *lng = restaurant[@"venue"][@"location"][@"lng"];
+        newRestaurant.coordinate = CLLocationCoordinate2DMake([lat doubleValue],[lng doubleValue]);
+        
         // newRestaurant.URL = restaurant[@"venue"][@"url"];
-        newRestaurant.category = restaurant[@"venue"][@"category"][@"name"];
+        
+        newRestaurant.category = restaurant[@"venue"][@"categories"][@"name"];
     
         [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
     }
