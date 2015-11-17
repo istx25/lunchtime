@@ -6,6 +6,8 @@
 //  Copyright © 2015 Cosmic Labs. All rights reserved.
 //
 
+#import "User.h"
+#import "FoursquareAPI.h"
 #import "HomeViewController.h"
 #import "LunchtimeLocationManager.h"
 #import "LunchtimeMaps.h"
@@ -27,13 +29,20 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.locationManager = [LunchtimeLocationManager defaultManager];
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self setLocationManager:[LunchtimeLocationManager defaultManager]];
+    [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-    [self.locationManager setDelegate:self];
+
+    FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
+    [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1]];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
