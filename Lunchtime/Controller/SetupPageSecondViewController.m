@@ -36,15 +36,9 @@
     [realm beginWriteTransaction];
     [User createOrUpdateInRealm:realm withValue:user];
     [realm commitWriteTransaction];
-    
-    //set up and schedule local notification
-    
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.fireDate = self.lunchtimeDatePicker.date;
-    notification.repeatInterval = NSCalendarUnitDay;
-    notification.alertTitle = @"Lunchtime!";
-    notification.alertBody = @"We hope you're hungry.";
 
+    // Setup and schedule the lunchtime notification
+    LunchtimeNotification *notification = [[LunchtimeNotification alloc] initWithDate:self.lunchtimeDatePicker.date];
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
