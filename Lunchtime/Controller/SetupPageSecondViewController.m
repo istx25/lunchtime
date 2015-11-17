@@ -8,6 +8,7 @@
 
 #import "SetupPageSecondViewController.h"
 #import "User.h"
+#import "LunchtimeNotification.h"
 
 @interface SetupPageSecondViewController ()
 
@@ -35,6 +36,10 @@
     [realm beginWriteTransaction];
     [User createOrUpdateInRealm:realm withValue:user];
     [realm commitWriteTransaction];
+
+    // Setup and schedule the lunchtime notification
+    LunchtimeNotification *notification = [[LunchtimeNotification alloc] initWithDate:self.lunchtimeDatePicker.date];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 @end
