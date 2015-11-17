@@ -40,6 +40,7 @@ static int const kMapZoomValue = 2100;
 
     for (Restaurant *restaurant in self.user.savedRestaurants) {
         restaurant.coordinate = CLLocationCoordinate2DMake(restaurant.latitude, restaurant.longitude);
+//        restaurant.title = restaurant.name;
         [self.mapView addAnnotation:restaurant];
     }
 }
