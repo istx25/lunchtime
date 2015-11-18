@@ -166,6 +166,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="blockButton" destination="eWI-2t-9jN" id="g9u-DK-97z"/>
+                        <outlet property="currentRestaurantView" destination="nGl-NR-YuW" id="JYu-rX-7cy"/>
                         <outlet property="locationLabel" destination="BbW-PZ-6TM" id="5Tf-RW-Wtm"/>
                         <outlet property="noButton" destination="KQ0-fS-eXO" id="f4R-eu-yBe"/>
                         <outlet property="suggestionLabel" destination="2CX-sV-b5g" id="nzY-xQ-c6l"/>
