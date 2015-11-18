@@ -63,7 +63,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (void)updateUI {
-    if ([RLMRealm defaultRealm].isEmpty) {
+    if ([User objectForPrimaryKey:@1].isInvalidated) {
         return;
     }
 
