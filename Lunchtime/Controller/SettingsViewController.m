@@ -10,50 +10,71 @@
 #import "LunchtimeNotification.h"
 #import "User.h"
 
+static NSString *kDistanceLabel = @"Set Distance:";
+
 @interface SettingsViewController ()
 
-@property (nonatomic) User *user;
+@property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *priceLimitSegmentedControl;
+@property (nonatomic, weak) IBOutlet UISlider *distanceSlider;
+@property (nonatomic, weak) IBOutlet UILabel *distanceLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (weak, nonatomic) IBOutlet UISlider *setDistanceSlider;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *setPriceLimitSegControl;
-@property (weak, nonatomic) IBOutlet UIDatePicker *setNotificationTimeDatePicker;
+@property (nonatomic) User *user;
 
 @end
 
 @implementation SettingsViewController
 
+#pragma mark - Controller Lifecycle
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+
+    if (self) {
+        _user = [User objectForPrimaryKey:@1];
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
-    self.user = [User objectForPrimaryKey:@1];
-    
-    self.setDistanceSlider.value = [self.user.preferredDistance floatValue];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%@ m", [self.user.preferredDistance stringValue]];
-    
-    self.setPriceLimitSegControl.selectedSegmentIndex = self.user.priceLimit;
-    
-    self.setNotificationTimeDatePicker.datePickerMode = UIDatePickerModeTime;
-    self.setNotificationTimeDatePicker.date = self.user.lunchtime;
-    
+
 }
 
-- (IBAction)setDistanceSlider:(id)sender {
-    
-    NSNumber *distance = [NSNumber numberWithInt:(int)self.setDistanceSlider.value];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%@ m", [distance stringValue]];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self configureLayout];
 }
 
--(void)viewWillDisappear:(BOOL)animated {
-    
-    self.user.preferredDistance = [NSNumber numberWithFloat:self.setDistanceSlider.value];
-    self.user.priceLimit = self.setPriceLimitSegControl.selectedSegmentIndex;
-    self.user.lunchtime = self.setNotificationTimeDatePicker.date;
-    
-    
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self commitRealmChanges];
 }
 
+#pragma mark - Actions
+- (IBAction)distanceSliderValueDidChange:(UISlider *)sender {
+    NSNumber *distance = [NSNumber numberWithInt:(int)self.distanceSlider.value];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ %@ m", kDistanceLabel, [distance stringValue]];
+}
+
+#pragma mark - Data
+- (void)configureLayout {
+    self.distanceSlider.value = [self.user.preferredDistance floatValue];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ %@ m", kDistanceLabel, [self.user.preferredDistance stringValue]];
+    self.priceLimitSegmentedControl.selectedSegmentIndex = self.user.priceLimit;
+    self.lunchtimeDatePicker.date = self.user.lunchtime;
+    self.lunchtimeDatePicker.datePickerMode = UIDatePickerModeTime;
+}
+
+- (void)commitRealmChanges {
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+    [self.user setPreferredDistance:[NSNumber numberWithFloat:self.distanceSlider.value]];
+    [self.user setPriceLimit:(unsigned)self.priceLimitSegmentedControl.selectedSegmentIndex];
+    [self.user setLunchtime:self.lunchtimeDatePicker.date];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
+}
 
 @end
