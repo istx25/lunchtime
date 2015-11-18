@@ -6,13 +6,13 @@
 //  Copyright © 2015 Cosmic Labs. All rights reserved.
 //
 
-#import "ConfigViewController.h"
+#import "ConfigurationViewController.h"
 #import "LunchtimeNotification.h"
 #import "User.h"
 
 static NSString *kDistanceLabel = @"Search Distance";
 
-@interface ConfigViewController ()
+@interface ConfigurationViewController ()
 
 @property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *priceLimitSegmentedControl;
@@ -23,7 +23,7 @@ static NSString *kDistanceLabel = @"Search Distance";
 
 @end
 
-@implementation ConfigViewController
+@implementation ConfigurationViewController
 
 #pragma mark - Controller Lifecycle
 - (instancetype)initWithCoder:(NSCoder *)coder {
