@@ -9,8 +9,6 @@
 #import "LunchtimeTableViewCell.h"
 #import "UIColor+Lunchtime.h"
 
-static NSTimeInterval kAnimationDuration = 0.2;
-
 @implementation LunchtimeTableViewCell
 
 - (void)setHighlighted:(BOOL)highlighted {
@@ -19,7 +17,7 @@ static NSTimeInterval kAnimationDuration = 0.2;
     if (highlighted) {
         self.backgroundColor = [UIColor lightGray];
     } else {
-        [UIView animateWithDuration:kAnimationDuration animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             self.backgroundColor = [UIColor clearColor];
         }];
     }

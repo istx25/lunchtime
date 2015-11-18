@@ -1,46 +1,24 @@
 //
-//  SetupPageSecondViewController.m
+//  SetupPageFourthViewController.m
 //  Lunchtime
 //
-//  Created by Willow Belle on 2015-11-13.
+//  Created by Willow Belle on 2015-11-15.
 //  Copyright © 2015 Cosmic Labs. All rights reserved.
 //
 
 #import "SetupPageThirdViewController.h"
-#import "User.h"
-#import "LunchtimeNotification.h"
+#import "LunchtimeLocationManager.h"
 
 @interface SetupPageThirdViewController ()
 
-@property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
+@property (nonatomic, weak) IBOutlet UIButton *shareLocationPrivilegeButton;
 
 @end
 
 @implementation SetupPageThirdViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    [self.lunchtimeDatePicker setDatePickerMode:UIDatePickerModeTime];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    User *user = [User new];
-    
-    [user setPreferredDistance:@1500];
-    [user setLunchtime:self.lunchtimeDatePicker.date];
-    [user setIdentifier:@1];
-
-    [realm beginWriteTransaction];
-    [User createOrUpdateInRealm:realm withValue:user];
-    [realm commitWriteTransaction];
-
-    // Setup and schedule the lunchtime notification
-    LunchtimeNotification *notification = [LunchtimeNotification lunchtimeNotificationWithDate:self.lunchtimeDatePicker.date];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+- (IBAction)shareLocationPrivilegeButtonPressed:(UIButton *)sender {
+    [[LunchtimeLocationManager defaultManager] setup];
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-//#import "UIAlertController+Extras.h"
 #import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
 #import "Realm+Convenience.h"
@@ -23,8 +22,10 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 @property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
+@property (nonatomic, weak) IBOutlet UIButton *blockButton;
 
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 @property (nonatomic) RLMResults<Restaurant *> *restaurants;
@@ -58,11 +59,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 - (void)setupUI {
     [self.suggestionLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-
-    if (0 < self.restaurants.count) {
-        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
-        self.currentRestaurant = [self.restaurants objectAtIndex:index];
-    }
+    [self findNewRandomRestaurantObject];
 }
 
 - (void)updateUI {
@@ -73,12 +70,25 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     }
 }
 
+#pragma mark - Conv
+- (void)updateUIWithNewRestaurantObject {
+    [self findNewRandomRestaurantObject];
+    [self updateUI];
+}
+
+- (void)findNewRandomRestaurantObject {
+    if (0 < self.restaurants.count > 0) {
+        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
+        self.currentRestaurant = [self.restaurants objectAtIndex:index];
+    }
+}
+
 - (void)configureLayout {
     CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
     LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
     [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.locationLabel setText:[NSString stringWithFormat:@"%@ (%@)", kLocationLabelConstant, placemark.thoroughfare]];
+            [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
         });
     }];
 }
@@ -102,7 +112,11 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
-    [self setupUI];
+    [self updateUIWithNewRestaurantObject];
+}
+
+- (IBAction)blockButtonPressed:(UIButton *)sender {
+    [self updateUIWithNewRestaurantObject];
     [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 }
 

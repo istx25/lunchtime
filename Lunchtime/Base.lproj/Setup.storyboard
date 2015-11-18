@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Setup Page First View Controller-->
         <scene sceneID="wqN-wM-FUK">
             <objects>
-                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4c-uj-6P8"/>
                         <viewControllerLayoutGuide type="bottom" id="FZ0-JI-94l"/>
@@ -45,6 +45,7 @@
                                     <constraint firstAttribute="height" constant="45" id="7QY-Zq-abr"/>
                                     <constraint firstAttribute="width" constant="280" id="9m8-B0-586"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Swipe Left to Continue">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -82,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="786" y="416"/>
         </scene>
-        <!--Setup Page Third View Controller-->
+        <!--Setup Page Fifth View Controller-->
         <scene sceneID="8jc-sd-Lob">
             <objects>
-                <viewController storyboardIdentifier="setupPageThirdScene" id="cqU-H5-jMb" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFifthScene" id="cqU-H5-jMb" customClass="SetupPageFifthViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yis-PG-VQc"/>
                         <viewControllerLayoutGuide type="bottom" id="jRJ-TN-6PR"/>
@@ -136,12 +137,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaY-Mq-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744" y="1154"/>
+            <point key="canvasLocation" x="2554" y="1154"/>
         </scene>
-        <!--Setup Page Fourth View Controller-->
+        <!--Setup Page Second View Controller-->
         <scene sceneID="qTt-ra-wFc">
             <objects>
-                <viewController storyboardIdentifier="setupPageFourthScene" id="qce-pi-ydj" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSecondScene" id="qce-pi-ydj" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="apy-1i-Qi4"/>
                         <viewControllerLayoutGuide type="bottom" id="Tcz-o3-QXQ"/>
@@ -207,12 +208,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-23-NKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="1154"/>
+            <point key="canvasLocation" x="1237" y="1154"/>
         </scene>
-        <!--Setup Page Fifth View Controller-->
+        <!--Setup Page Sixth View Controller-->
         <scene sceneID="HOh-aa-5Pv">
             <objects>
-                <viewController storyboardIdentifier="setupPageFifthScene" id="TTf-Cn-AhO" customClass="SetupPageFifthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSixthScene" id="TTf-Cn-AhO" customClass="SetupPageSixthViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iSd-NV-go4"/>
                         <viewControllerLayoutGuide type="bottom" id="vTK-vY-hRb"/>
@@ -243,6 +244,7 @@
                                     <constraint firstAttribute="width" constant="280" id="hmk-lC-807"/>
                                     <constraint firstAttribute="height" constant="45" id="oqn-ob-VEd"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -272,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SR7-z4-bk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613" y="1154"/>
+            <point key="canvasLocation" x="2999" y="1154"/>
         </scene>
         <!--Lunchtime-->
         <scene sceneID="ce4-yE-eRG">
@@ -280,12 +282,12 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="Lunchtime" id="1A4-5Y-iWi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cb9-0Q-SKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3003" y="1154"/>
+            <point key="canvasLocation" x="3375" y="1154"/>
         </scene>
-        <!--Setup Page Second View Controller-->
+        <!--Setup Page Third View Controller-->
         <scene sceneID="OAz-Xl-R8c">
             <objects>
-                <viewController storyboardIdentifier="setupPageSecondScene" id="AB3-lR-DlV" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageThirdScene" id="AB3-lR-DlV" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xh-xG-f6p"/>
                         <viewControllerLayoutGuide type="bottom" id="BRW-5F-XwJ"/>
@@ -294,103 +296,155 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privileges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-V1-vw8">
-                                <rect key="frame" x="111" y="141" width="98" height="26.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need your location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XZ-V1-vw8">
+                                <rect key="frame" x="48" y="141" width="224" height="26.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For the best experience we need to ask for some privileges" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-6x-nEL">
-                                <rect key="frame" x="35.5" y="183" width="250" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXk-ld-hgi">
+                                <rect key="frame" x="20" y="387" width="280" height="45"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.12549019607843137" green="0.76078431372549016" blue="0.23921568627450981" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Yis-8D-iFb"/>
+                                    <constraint firstAttribute="width" constant="280" id="dQX-4E-RCK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Share this privilege">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareLocationPrivilegeButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="UAm-Hg-9iS"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-fc-tva">
+                                <rect key="frame" x="0.0" y="250.5" width="320" height="128.5"/>
+                                <animations/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMz-Ip-DMZ">
+                                <rect key="frame" x="0.0" y="440" width="320" height="128"/>
+                                <animations/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll need access to your devices location to provide you with  restaurants near you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-6x-nEL">
+                                <rect key="frame" x="31" y="181" width="258" height="61"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXk-ld-hgi">
-                                <rect key="frame" x="20" y="371" width="280" height="45"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="H5N-dD-Mwc"/>
-                                    <constraint firstAttribute="height" constant="45" id="KzN-ir-WDD"/>
-                                </constraints>
-                                <state key="normal" title="Grant Notification Privileges">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="grantNotificationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="sQx-9t-ILQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4db-tL-CwI">
-                                <rect key="frame" x="20" y="311" width="280" height="45"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Jub-9C-gkr"/>
-                                    <constraint firstAttribute="height" constant="45" id="nzD-4c-MAk"/>
-                                </constraints>
-                                <state key="normal" title="Grant Location Privileges">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="grantLocationPrivilegesButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="GAh-qS-Hf2"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need access to notifications to let you know when it's lunchtime. Location is used to find local restaurants." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-CW-IGM">
-                                <rect key="frame" x="41" y="431" width="238" height="43"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-fc-tva">
-                                <rect key="frame" x="20" y="232" width="280" height="71"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="4Gp-JT-tmZ"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMz-Ip-DMZ">
-                                <rect key="frame" x="20" y="482" width="280" height="71"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="y72-lS-BKt"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AXk-ld-hgi" firstAttribute="top" secondItem="4db-tL-CwI" secondAttribute="bottom" constant="15" id="0AP-Hf-mm9"/>
-                            <constraint firstItem="eAK-fc-tva" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="4Mh-R6-Top"/>
-                            <constraint firstItem="6jY-CW-IGM" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="5J6-Gp-X9f"/>
-                            <constraint firstItem="BRW-5F-XwJ" firstAttribute="top" secondItem="nMz-Ip-DMZ" secondAttribute="bottom" constant="15" id="D3W-TT-8jY"/>
-                            <constraint firstItem="4db-tL-CwI" firstAttribute="top" secondItem="eAK-fc-tva" secondAttribute="bottom" constant="8" id="FKZ-ty-Uzq"/>
-                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="top" secondItem="6jY-CW-IGM" secondAttribute="bottom" constant="8" id="J4T-bn-unk"/>
-                            <constraint firstItem="0XZ-V1-vw8" firstAttribute="top" secondItem="1Xh-xG-f6p" secondAttribute="bottom" constant="121" id="NrU-Cv-8Jx"/>
-                            <constraint firstItem="7cr-6x-nEL" firstAttribute="top" secondItem="0XZ-V1-vw8" secondAttribute="bottom" constant="15.5" id="RZZ-fg-3fD"/>
-                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="TaX-Yr-QEg"/>
-                            <constraint firstItem="eAK-fc-tva" firstAttribute="height" secondItem="nMz-Ip-DMZ" secondAttribute="height" id="W46-eh-qeF"/>
-                            <constraint firstItem="4db-tL-CwI" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="WpY-lQ-pJN"/>
-                            <constraint firstItem="eAK-fc-tva" firstAttribute="top" secondItem="7cr-6x-nEL" secondAttribute="bottom" constant="8" id="ZXf-3z-05f"/>
-                            <constraint firstItem="7cr-6x-nEL" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="nCr-pv-PHS"/>
-                            <constraint firstItem="6jY-CW-IGM" firstAttribute="top" secondItem="AXk-ld-hgi" secondAttribute="bottom" constant="15" id="oYg-hZ-ZMg"/>
-                            <constraint firstItem="AXk-ld-hgi" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="tRO-eO-1Ry"/>
-                            <constraint firstItem="0XZ-V1-vw8" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="w5Y-bd-fQn"/>
+                            <constraint firstItem="eAK-fc-tva" firstAttribute="top" secondItem="7cr-6x-nEL" secondAttribute="bottom" constant="8" id="4El-q2-BMY"/>
+                            <constraint firstAttribute="trailing" secondItem="nMz-Ip-DMZ" secondAttribute="trailing" id="Eas-GM-HZ3"/>
+                            <constraint firstItem="AXk-ld-hgi" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="Eg9-21-GIR"/>
+                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="top" secondItem="AXk-ld-hgi" secondAttribute="bottom" constant="8" id="EiS-52-5Fo"/>
+                            <constraint firstItem="eAK-fc-tva" firstAttribute="leading" secondItem="1ZA-xV-yw8" secondAttribute="leading" id="FuO-24-7cT"/>
+                            <constraint firstItem="0XZ-V1-vw8" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="HBo-jz-PDA"/>
+                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="leading" secondItem="1ZA-xV-yw8" secondAttribute="leading" id="So9-Sf-kQB"/>
+                            <constraint firstItem="BRW-5F-XwJ" firstAttribute="top" secondItem="nMz-Ip-DMZ" secondAttribute="bottom" id="TYu-NB-xMv"/>
+                            <constraint firstItem="0XZ-V1-vw8" firstAttribute="top" secondItem="1Xh-xG-f6p" secondAttribute="bottom" constant="121" id="WSr-VO-Cvc"/>
+                            <constraint firstItem="nMz-Ip-DMZ" firstAttribute="height" secondItem="eAK-fc-tva" secondAttribute="height" id="XCw-lG-Txd"/>
+                            <constraint firstItem="AXk-ld-hgi" firstAttribute="top" secondItem="eAK-fc-tva" secondAttribute="bottom" constant="8" id="op0-E0-tvr"/>
+                            <constraint firstAttribute="trailing" secondItem="eAK-fc-tva" secondAttribute="trailing" id="pki-fh-7Og"/>
+                            <constraint firstItem="7cr-6x-nEL" firstAttribute="centerX" secondItem="1ZA-xV-yw8" secondAttribute="centerX" id="pnF-fv-HDs"/>
+                            <constraint firstItem="7cr-6x-nEL" firstAttribute="top" secondItem="0XZ-V1-vw8" secondAttribute="bottom" constant="14" id="xCG-lX-DiR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fyB-ml-yLQ"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="grantLocationPrivilegesButton" destination="4db-tL-CwI" id="NQv-qj-sre"/>
-                        <outlet property="grantNotificationPrivilegesButton" destination="AXk-ld-hgi" id="Nul-8N-hT9"/>
+                        <outlet property="shareLocationPrivilegeButton" destination="AXk-ld-hgi" id="gvj-dI-xa4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ma-xV-x6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1263" y="1154"/>
+            <point key="canvasLocation" x="1677" y="1154"/>
+        </scene>
+        <!--Setup Page Fourth View Controller-->
+        <scene sceneID="bdq-ah-RBI">
+            <objects>
+                <viewController storyboardIdentifier="setupPageFourthScene" id="lwF-U0-zAD" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wOZ-Wl-el5"/>
+                        <viewControllerLayoutGuide type="bottom" id="ghW-Zw-Ch4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nwr-J6-8I7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunchtime notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OG3-yX-B7o">
+                                <rect key="frame" x="42.5" y="141" width="236.5" height="26.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We would like to send you a push notification around lunchtime  with the best spots near you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCM-rE-AHM">
+                                <rect key="frame" x="33" y="181.5" width="254" height="61"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIs-yf-Kao">
+                                <rect key="frame" x="20" y="387" width="280" height="45"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.12549019610000001" green="0.76078431369999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="gbq-hp-A4b"/>
+                                    <constraint firstAttribute="width" constant="280" id="tSJ-co-cMh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Share this privilege">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareNotificationsPrivilegeButtonPressed:" destination="lwF-U0-zAD" eventType="touchUpInside" id="3vG-bj-xk1"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Un0-I9-4E6">
+                                <rect key="frame" x="0.0" y="440" width="320" height="128"/>
+                                <animations/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhy-Ai-Xe4">
+                                <rect key="frame" x="0.0" y="250.5" width="320" height="128.5"/>
+                                <animations/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OG3-yX-B7o" firstAttribute="centerX" secondItem="nwr-J6-8I7" secondAttribute="centerX" id="9ur-kk-0aO"/>
+                            <constraint firstAttribute="trailing" secondItem="Un0-I9-4E6" secondAttribute="trailing" id="Bo3-on-pMd"/>
+                            <constraint firstItem="TIs-yf-Kao" firstAttribute="centerX" secondItem="nwr-J6-8I7" secondAttribute="centerX" id="GN7-Cb-G1m"/>
+                            <constraint firstItem="Un0-I9-4E6" firstAttribute="top" secondItem="TIs-yf-Kao" secondAttribute="bottom" constant="8" id="IKl-qu-qJb"/>
+                            <constraint firstItem="xhy-Ai-Xe4" firstAttribute="top" secondItem="zCM-rE-AHM" secondAttribute="bottom" constant="8" id="NlF-zN-apf"/>
+                            <constraint firstItem="Un0-I9-4E6" firstAttribute="leading" secondItem="nwr-J6-8I7" secondAttribute="leading" id="OPJ-tn-amQ"/>
+                            <constraint firstItem="zCM-rE-AHM" firstAttribute="top" secondItem="OG3-yX-B7o" secondAttribute="bottom" constant="14" id="aoi-P5-ayB"/>
+                            <constraint firstItem="xhy-Ai-Xe4" firstAttribute="leading" secondItem="nwr-J6-8I7" secondAttribute="leading" id="bxd-UT-kTO"/>
+                            <constraint firstItem="xhy-Ai-Xe4" firstAttribute="height" secondItem="Un0-I9-4E6" secondAttribute="height" id="dxs-vv-a9T"/>
+                            <constraint firstItem="ghW-Zw-Ch4" firstAttribute="top" secondItem="Un0-I9-4E6" secondAttribute="bottom" id="fa7-Jc-HnX"/>
+                            <constraint firstAttribute="trailing" secondItem="xhy-Ai-Xe4" secondAttribute="trailing" id="mPM-hn-CXN"/>
+                            <constraint firstItem="TIs-yf-Kao" firstAttribute="top" secondItem="xhy-Ai-Xe4" secondAttribute="bottom" constant="8" id="r5M-Cl-iEd"/>
+                            <constraint firstItem="OG3-yX-B7o" firstAttribute="top" secondItem="wOZ-Wl-el5" secondAttribute="bottom" constant="121" id="vBU-tp-aGe"/>
+                            <constraint firstItem="zCM-rE-AHM" firstAttribute="centerX" secondItem="nwr-J6-8I7" secondAttribute="centerX" id="y3s-hQ-G9M"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="C8Q-Ab-ZxN"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="shareNotificationsPrivilegeButton" destination="TIs-yf-Kao" id="VCd-7S-Hbh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HR9-gd-LCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115" y="1154"/>
         </scene>
     </scenes>
 </document>
