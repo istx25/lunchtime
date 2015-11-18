@@ -22,8 +22,10 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 
 @property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
+@property (nonatomic, weak) IBOutlet UIButton *blockButton;
 
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 @property (nonatomic) RLMResults<Restaurant *> *restaurants;
@@ -57,11 +59,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 - (void)setupUI {
     [self.suggestionLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-
-    if (0 < self.restaurants.count) {
-        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
-        self.currentRestaurant = [self.restaurants objectAtIndex:index];
-    }
+    [self findNewRandomRestaurantObject];
 }
 
 - (void)updateUI {
@@ -69,6 +67,19 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
         [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
     } else {
         [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
+    }
+}
+
+#pragma mark - Conv
+- (void)updateUIWithNewRestaurantObject {
+    [self findNewRandomRestaurantObject];
+    [self updateUI];
+}
+
+- (void)findNewRandomRestaurantObject {
+    if (0 < self.restaurants.count > 0) {
+        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
+        self.currentRestaurant = [self.restaurants objectAtIndex:index];
     }
 }
 
@@ -101,7 +112,11 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
-    [self setupUI];
+    [self updateUIWithNewRestaurantObject];
+}
+
+- (IBAction)blockButtonPressed:(UIButton *)sender {
+    [self updateUIWithNewRestaurantObject];
     [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 }
 
