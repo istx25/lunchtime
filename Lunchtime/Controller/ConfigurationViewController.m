@@ -70,6 +70,10 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
 }
 
 - (void)commitRealmChanges {
+    if ([RLMRealm defaultRealm].isEmpty) {
+        return;
+    }
+
     [[RLMRealm defaultRealm] beginWriteTransaction];
     [self.user setPreferredDistance:[NSNumber numberWithFloat:self.distanceSlider.value]];
     [self.user setPriceLimit:(unsigned)self.priceLimitSegmentedControl.selectedSegmentIndex];
@@ -86,13 +90,13 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
             [alert addCancelAction:@"Cancel" handler:nil];
             [alert addDestructiveActionWithTitle:@"Erase All Restaurant Data" handler:^{
 
-                /*
+
                 NSLog(@"%@", [User objectForPrimaryKey:@1]);
                 RLMRealm *realm = [RLMRealm defaultRealm];
                 [realm beginWriteTransaction];
                 [realm deleteAllObjects];
                 [realm commitWriteTransaction];
-                */
+                
 
                 [self performSegueWithIdentifier:kSegueToOnboardingFlowAfterDestruction sender:self];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserCreatedFlag];
