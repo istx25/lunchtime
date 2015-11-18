@@ -85,13 +85,17 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
             UIAlertController *alert = [[UIAlertController alloc] initWithTitle:kAlertTitle preferredStyle:UIAlertControllerStyleActionSheet];
             [alert addCancelAction:@"Cancel" handler:nil];
             [alert addDestructiveActionWithTitle:@"Erase All Restaurant Data" handler:^{
-                [[RLMRealm defaultRealm] beginWriteTransaction];
-                [[RLMRealm defaultRealm] deleteObjects:[User objectForPrimaryKey:@1].blacklistedRestaurants];
-                [[RLMRealm defaultRealm] deleteObjects:[User objectForPrimaryKey:@1].savedRestaurants];
-                [[RLMRealm defaultRealm] deleteObjects:[Restaurant allObjects]];
-                [[RLMRealm defaultRealm] commitWriteTransaction];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserCreatedFlag];
+
+                /*
+                NSLog(@"%@", [User objectForPrimaryKey:@1]);
+                RLMRealm *realm = [RLMRealm defaultRealm];
+                [realm beginWriteTransaction];
+                [realm deleteAllObjects];
+                [realm commitWriteTransaction];
+                */
+
                 [self performSegueWithIdentifier:kSegueToOnboardingFlowAfterDestruction sender:self];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserCreatedFlag];
             }];
 
             [self presentViewController:alert animated:YES completion:nil];
