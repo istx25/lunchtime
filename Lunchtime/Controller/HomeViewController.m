@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
+#import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
 #import "LunchtimeGeocoder.h"
 #import "LunchtimeMaps.h"
@@ -16,10 +17,12 @@
 #import "User.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
+static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 
 @interface HomeViewController () <LunchtimeLocationManagerDelegate>
 
+@property (nonatomic, weak) IBOutlet UIView *currentRestaurantView;
 @property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 
@@ -35,6 +38,21 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 @end
 
 @implementation HomeViewController
+
+#pragma mark - Controller Lifecycle
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
+
+
+}
+
+- (void)loadView {
+    [super loadView];
+    CurrentRestaurantView *mainView = [[CurrentRestaurantView alloc] init];
+    [self.currentRestaurantView addSubview:mainView];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
