@@ -28,7 +28,7 @@ static NSString *kSetupStoryboardName = @"Setup";
 - (void)checkIfUserExists {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-     [defaults removeObjectForKey:kUserCreatedFlag];
+    // [defaults removeObjectForKey:kUserCreatedFlag];
 
     if (![defaults objectForKey:kUserCreatedFlag]) {
         UIStoryboard *setup = [UIStoryboard storyboardWithName:kSetupStoryboardName bundle:[NSBundle mainBundle]];
