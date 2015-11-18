@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-//#import "UIAlertController+Extras.h"
 #import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
 #import "Realm+Convenience.h"
@@ -78,7 +77,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
     [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.locationLabel setText:[NSString stringWithFormat:@"%@ (%@)", kLocationLabelConstant, placemark.thoroughfare]];
+            [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
         });
     }];
 }
