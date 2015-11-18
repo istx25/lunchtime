@@ -27,6 +27,7 @@
 		A5C074901BF6C8D900F23533 /* LunchtimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */; };
 		A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */; };
 		A5C1EE611BFC2A2200DACF7F /* SetupPageFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C1EE601BFC2A2200DACF7F /* SetupPageFourthViewController.m */; };
+		A5C1EE641BFC395900DACF7F /* SetupPageFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */; };
 		A5CE1B891BFBE901001B675E /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */; };
 		A5CE1B921BFBEB8F001B675E /* SetupPageSixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B8B1BFBEB8F001B675E /* SetupPageSixthViewController.m */; };
 		A5CE1B931BFBEB8F001B675E /* SetupPageSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B8D1BFBEB8F001B675E /* SetupPageSecondViewController.m */; };
@@ -87,6 +88,8 @@
 		A5C0749D1BF6CA5F00F23533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
 		A5C1EE5F1BFC2A2200DACF7F /* SetupPageFourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageFourthViewController.h; path = Controller/SetupPageFourthViewController.h; sourceTree = "<group>"; };
 		A5C1EE601BFC2A2200DACF7F /* SetupPageFourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupPageFourthViewController.m; path = Controller/SetupPageFourthViewController.m; sourceTree = "<group>"; };
+		A5C1EE621BFC395900DACF7F /* SetupPageFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageFirstViewController.h; path = Controller/SetupPageFirstViewController.h; sourceTree = "<group>"; };
+		A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupPageFirstViewController.m; path = Controller/SetupPageFirstViewController.m; sourceTree = "<group>"; };
 		A5CE1B871BFBE901001B675E /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationViewController.h; path = Controller/ConfigurationViewController.h; sourceTree = "<group>"; };
 		A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationViewController.m; path = Controller/ConfigurationViewController.m; sourceTree = "<group>"; };
 		A5CE1B8A1BFBEB8F001B675E /* SetupPageSixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageSixthViewController.h; path = Controller/SetupPageSixthViewController.h; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 		A5E105911BF6DAEB00C71023 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				A5C1EE621BFC395900DACF7F /* SetupPageFirstViewController.h */,
+				A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */,
 				A5CE1B8C1BFBEB8F001B675E /* SetupPageSecondViewController.h */,
 				A5CE1B8D1BFBEB8F001B675E /* SetupPageSecondViewController.m */,
 				A5CE1B8E1BFBEB8F001B675E /* SetupPageThirdViewController.h */,
@@ -471,6 +476,7 @@
 				A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */,
 				A5C074771BF6C8D900F23533 /* main.m in Sources */,
 				A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */,
+				A5C1EE641BFC395900DACF7F /* SetupPageFirstViewController.m in Sources */,
 				A5C1EE611BFC2A2200DACF7F /* SetupPageFourthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
