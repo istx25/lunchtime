@@ -24,6 +24,10 @@ public extension UIAlertController {
         addAction(UIAlertAction(title: title, style: style, handler: { _ in handler?() }))
     }
 
+    func addDestructiveAction(title title: String, handler: (() -> Void)? = nil) {
+        addAction(UIAlertAction(title: title, style: .Destructive, handler: { _ in handler?() }))
+    }
+
     func addDefaultAction(title title: String, handler: (() -> Void)? = nil) {
         addAction(UIAlertAction(title: title, style: .Default, handler: { _ in handler?() }))
     }

@@ -1,5 +1,5 @@
 //
-//  SetupPageFourthViewController.h
+//  SetupPageFirstViewController.h
 //  Lunchtime
 //
 //  Created by Willow Belle on 2015-11-17.
@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetupPageFourthViewController : UIViewController
+@interface SetupPageFirstViewController : UIViewController
 @end

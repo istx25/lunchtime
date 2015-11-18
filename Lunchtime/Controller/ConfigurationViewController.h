@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface ConfigurationViewController : UITableViewController
 @end
