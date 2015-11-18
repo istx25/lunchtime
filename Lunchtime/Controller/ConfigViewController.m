@@ -6,13 +6,13 @@
 //  Copyright © 2015 Cosmic Labs. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "ConfigViewController.h"
 #import "LunchtimeNotification.h"
 #import "User.h"
 
-static NSString *kDistanceLabel = @"Set Distance:";
+static NSString *kDistanceLabel = @"Search Distance";
 
-@interface SettingsViewController ()
+@interface ConfigViewController ()
 
 @property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *priceLimitSegmentedControl;
@@ -23,7 +23,7 @@ static NSString *kDistanceLabel = @"Set Distance:";
 
 @end
 
-@implementation SettingsViewController
+@implementation ConfigViewController
 
 #pragma mark - Controller Lifecycle
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -34,11 +34,6 @@ static NSString *kDistanceLabel = @"Set Distance:";
     }
 
     return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,13 +52,13 @@ static NSString *kDistanceLabel = @"Set Distance:";
 #pragma mark - Actions
 - (IBAction)distanceSliderValueDidChange:(UISlider *)sender {
     NSNumber *distance = [NSNumber numberWithInt:(int)self.distanceSlider.value];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%@ %@ m", kDistanceLabel, [distance stringValue]];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ (%@ meters)", kDistanceLabel, [distance stringValue]];
 }
 
 #pragma mark - Data
 - (void)configureLayout {
     self.distanceSlider.value = [self.user.preferredDistance floatValue];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%@ %@ m", kDistanceLabel, [self.user.preferredDistance stringValue]];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ (%@ meters)", kDistanceLabel, [self.user.preferredDistance stringValue]];
     self.priceLimitSegmentedControl.selectedSegmentIndex = self.user.priceLimit;
     self.lunchtimeDatePicker.date = self.user.lunchtime;
     self.lunchtimeDatePicker.datePickerMode = UIDatePickerModeTime;

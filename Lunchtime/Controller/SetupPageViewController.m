@@ -7,10 +7,11 @@
 //
 
 #import "SetupPageViewController.h"
+#import "SetupPageFifthViewController.h"
+#import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
-#import "SetupPageSecondViewController.h"
-#import "SetupPageFifthViewController.h"
+#import "SetupPageSixthViewController.h"
 #import "LunchtimeLocationManager.h"
 
 static NSString *kSetupPageFirstScene = @"setupPageFirstScene";
@@ -18,6 +19,7 @@ static NSString *kSetupPageSecondScene = @"setupPageSecondScene";
 static NSString *kSetupPageThirdScene = @"setupPageThirdScene";
 static NSString *kSetupPageFourthScene = @"setupPageFourthScene";
 static NSString *kSetupPageFifthScene = @"setupPageFifthScene";
+static NSString *kSetupPageSixthScene = @"setupPageSixthScene";
 
 @interface SetupPageViewController () <UIPageViewControllerDataSource>
 
@@ -38,13 +40,9 @@ static NSString *kSetupPageFifthScene = @"setupPageFifthScene";
     SetupPageThirdViewController *thirdViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageThirdScene];
     SetupPageFourthViewController *fourthViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFourthScene];
     SetupPageFifthViewController *fifthViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFifthScene];
+    SetupPageSixthViewController *sixthViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageSixthScene];
 
-    self.scenes = @[firstViewController, secondViewController, thirdViewController, fifthViewController];
-
-    if ([self.locationManager needsSetup] || [[UIApplication sharedApplication] currentUserNotificationSettings]) {
-        self.scenes = @[firstViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController];
-    }
-
+    self.scenes = @[firstViewController, secondViewController, thirdViewController, fourthViewController, fifthViewController, sixthViewController];
     [self setViewControllers:@[firstViewController] direction:(UIPageViewControllerNavigationDirectionForward) animated:YES completion:nil];
 }
 
