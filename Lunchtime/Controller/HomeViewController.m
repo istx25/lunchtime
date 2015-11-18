@@ -63,6 +63,10 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (void)updateUI {
+    if ([RLMRealm defaultRealm].isEmpty) {
+        return;
+    }
+
     if (self.currentRestaurant.thoroughfare) {
         [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
     } else {
