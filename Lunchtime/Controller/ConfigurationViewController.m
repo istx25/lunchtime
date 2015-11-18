@@ -7,10 +7,15 @@
 //
 
 #import "ConfigurationViewController.h"
+#import "Lunchtime-Swift.h"
 #import "LunchtimeNotification.h"
 #import "User.h"
 
+static NSString *kAlertTitle = @"This will delete all restaurant data and reset all settings.";
 static NSString *kDistanceLabel = @"Search Distance";
+
+static NSString *kSegueToOnboardingFlowAfterDestruction = @"segueToOnboardingFlowAfterDestruction";
+static NSString *kUserCreatedFlag = @"USER_CREATED";
 
 @interface ConfigurationViewController ()
 
@@ -70,6 +75,32 @@ static NSString *kDistanceLabel = @"Search Distance";
     [self.user setPriceLimit:(unsigned)self.priceLimitSegmentedControl.selectedSegmentIndex];
     [self.user setLunchtime:self.lunchtimeDatePicker.date];
     [[RLMRealm defaultRealm] commitWriteTransaction];
+}
+
+#pragma mark - <UITableViewDataSource>
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 4:
+        {
+            UIAlertController *alert = [[UIAlertController alloc] initWithTitle:kAlertTitle preferredStyle:UIAlertControllerStyleActionSheet];
+            [alert addCancelAction:@"Cancel" handler:nil];
+            [alert addDestructiveActionWithTitle:@"Erase All Restaurant Data" handler:^{
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                [[RLMRealm defaultRealm] deleteObjects:[User objectForPrimaryKey:@1].blacklistedRestaurants];
+                [[RLMRealm defaultRealm] deleteObjects:[User objectForPrimaryKey:@1].savedRestaurants];
+                [[RLMRealm defaultRealm] deleteObjects:[Restaurant allObjects]];
+                [[RLMRealm defaultRealm] commitWriteTransaction];
+                [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserCreatedFlag];
+                [self performSegueWithIdentifier:kSegueToOnboardingFlowAfterDestruction sender:self];
+            }];
+
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+            break;
+        default:
+            NSLog(@"Default state");
+            break;
+    }
 }
 
 @end

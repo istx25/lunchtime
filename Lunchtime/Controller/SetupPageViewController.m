@@ -7,10 +7,11 @@
 //
 
 #import "SetupPageViewController.h"
-#import "SetupPageFifthViewController.h"
+#import "SetupPageFirstViewController.h"
 #import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
+#import "SetupPageFifthViewController.h"
 #import "SetupPageSixthViewController.h"
 #import "LunchtimeLocationManager.h"
 
@@ -35,7 +36,7 @@ static NSString *kSetupPageSixthScene = @"setupPageSixthScene";
 
     [self setupUI];
 
-    UIViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFirstScene];
+    SetupPageFirstViewController *firstViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFirstScene];
     SetupPageSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageSecondScene];
     SetupPageThirdViewController *thirdViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageThirdScene];
     SetupPageFourthViewController *fourthViewController = [self.storyboard instantiateViewControllerWithIdentifier:kSetupPageFourthScene];
