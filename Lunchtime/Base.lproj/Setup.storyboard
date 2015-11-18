@@ -244,6 +244,7 @@
                                     <constraint firstAttribute="width" constant="280" id="hmk-lC-807"/>
                                     <constraint firstAttribute="height" constant="45" id="oqn-ob-VEd"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
