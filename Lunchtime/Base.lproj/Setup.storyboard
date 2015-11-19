@@ -368,7 +368,7 @@
         <!--Setup Page Fourth View Controller-->
         <scene sceneID="bdq-ah-RBI">
             <objects>
-                <viewController storyboardIdentifier="setupPageFourthScene" id="lwF-U0-zAD" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFourthScene" id="lwF-U0-zAD" customClass="SetupPageFourthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wOZ-Wl-el5"/>
                         <viewControllerLayoutGuide type="bottom" id="ghW-Zw-Ch4"/>
@@ -404,7 +404,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareNotificationsPrivilegeButtonPressed:" destination="lwF-U0-zAD" eventType="touchUpInside" id="3vG-bj-xk1"/>
+                                    <action selector="sharePrivilegeButtonPressed:" destination="lwF-U0-zAD" eventType="touchUpInside" id="hPP-jC-nvr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Un0-I9-4E6">
@@ -439,7 +439,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="shareNotificationsPrivilegeButton" destination="TIs-yf-Kao" id="VCd-7S-Hbh"/>
+                        <outlet property="sharePrivilegeButton" destination="TIs-yf-Kao" id="7Km-cM-hRT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HR9-gd-LCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
