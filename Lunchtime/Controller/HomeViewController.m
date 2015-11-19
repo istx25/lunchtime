@@ -75,8 +75,13 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    if (!self.restaurants) {
+        
+        [[LunchtimeLocationManager defaultManager] start];
+    }
 }
 
 #pragma mark - Setup
@@ -103,7 +108,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (void)updateUI {
-    if ([User objectForPrimaryKey:@1].isInvalidated) {
+    if ([RLMRealm defaultRealm].isEmpty || [User objectForPrimaryKey:@1].isInvalidated || self.currentRestaurant.isInvalidated) {
         return;
     }
 
@@ -136,7 +141,11 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
-
+    
+    if (!self.currentRestaurant) {
+        return;
+    }
+    
     if (!self.isCheckedIn) {
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }
