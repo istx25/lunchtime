@@ -23,6 +23,7 @@
 		A55FBBDE1BFAD56A00C30763 /* Realm+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */; };
 		A575591F1BFD502800BD8E37 /* EnjoyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575591E1BFD502800BD8E37 /* EnjoyNotification.swift */; };
 		A57559211BFD52B600BD8E37 /* SetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57559201BFD52B600BD8E37 /* SetupPageViewController.swift */; };
+		A57559241BFD5EF000BD8E37 /* SetupPageFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57559231BFD5EF000BD8E37 /* SetupPageFirstViewController.swift */; };
 		A5C074771BF6C8D900F23533 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074761BF6C8D900F23533 /* main.m */; };
 		A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C074791BF6C8D900F23533 /* AppDelegate.m */; };
 		A5C074801BF6C8D900F23533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0747E1BF6C8D900F23533 /* Main.storyboard */; };
@@ -31,7 +32,6 @@
 		A5C074901BF6C8D900F23533 /* LunchtimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */; };
 		A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */; };
 		A5C1EE611BFC2A2200DACF7F /* SetupPageFourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C1EE601BFC2A2200DACF7F /* SetupPageFourthViewController.m */; };
-		A5C1EE641BFC395900DACF7F /* SetupPageFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */; };
 		A5CE1B891BFBE901001B675E /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */; };
 		A5CE1B921BFBEB8F001B675E /* SetupPageSixthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B8B1BFBEB8F001B675E /* SetupPageSixthViewController.m */; };
 		A5CE1B931BFBEB8F001B675E /* SetupPageSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B8D1BFBEB8F001B675E /* SetupPageSecondViewController.m */; };
@@ -83,6 +83,7 @@
 		A575591E1BFD502800BD8E37 /* EnjoyNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnjoyNotification.swift; path = Model/Notification/EnjoyNotification.swift; sourceTree = "<group>"; };
 		A57559201BFD52B600BD8E37 /* SetupPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupPageViewController.swift; path = Controller/SetupPageViewController.swift; sourceTree = "<group>"; };
 		A57559221BFD52EE00BD8E37 /* Lunchtime-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lunchtime-Bridging-Header.h"; sourceTree = "<group>"; };
+		A57559231BFD5EF000BD8E37 /* SetupPageFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupPageFirstViewController.swift; path = Controller/SetupPageFirstViewController.swift; sourceTree = "<group>"; };
 		A5C074721BF6C8D900F23533 /* Lunchtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C074761BF6C8D900F23533 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A5C074781BF6C8D900F23533 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,8 +98,6 @@
 		A5C0749D1BF6CA5F00F23533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
 		A5C1EE5F1BFC2A2200DACF7F /* SetupPageFourthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageFourthViewController.h; path = Controller/SetupPageFourthViewController.h; sourceTree = "<group>"; };
 		A5C1EE601BFC2A2200DACF7F /* SetupPageFourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupPageFourthViewController.m; path = Controller/SetupPageFourthViewController.m; sourceTree = "<group>"; };
-		A5C1EE621BFC395900DACF7F /* SetupPageFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageFirstViewController.h; path = Controller/SetupPageFirstViewController.h; sourceTree = "<group>"; };
-		A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupPageFirstViewController.m; path = Controller/SetupPageFirstViewController.m; sourceTree = "<group>"; };
 		A5CE1B871BFBE901001B675E /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationViewController.h; path = Controller/ConfigurationViewController.h; sourceTree = "<group>"; };
 		A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationViewController.m; path = Controller/ConfigurationViewController.m; sourceTree = "<group>"; };
 		A5CE1B8A1BFBEB8F001B675E /* SetupPageSixthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupPageSixthViewController.h; path = Controller/SetupPageSixthViewController.h; sourceTree = "<group>"; };
@@ -300,8 +299,7 @@
 		A5E105911BF6DAEB00C71023 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				A5C1EE621BFC395900DACF7F /* SetupPageFirstViewController.h */,
-				A5C1EE631BFC395900DACF7F /* SetupPageFirstViewController.m */,
+				A57559231BFD5EF000BD8E37 /* SetupPageFirstViewController.swift */,
 				A5CE1B8C1BFBEB8F001B675E /* SetupPageSecondViewController.h */,
 				A5CE1B8D1BFBEB8F001B675E /* SetupPageSecondViewController.m */,
 				A5CE1B8E1BFBEB8F001B675E /* SetupPageThirdViewController.h */,
@@ -489,7 +487,7 @@
 				A5C0747A1BF6C8D900F23533 /* AppDelegate.m in Sources */,
 				A5C074771BF6C8D900F23533 /* main.m in Sources */,
 				A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */,
-				A5C1EE641BFC395900DACF7F /* SetupPageFirstViewController.m in Sources */,
+				A57559241BFD5EF000BD8E37 /* SetupPageFirstViewController.swift in Sources */,
 				A5C1EE611BFC2A2200DACF7F /* SetupPageFourthViewController.m in Sources */,
 				A535BA471BFD2913005F93F4 /* CurrentRestaurantView.m in Sources */,
 			);
