@@ -11,6 +11,5 @@
 #import "User.h"
 #import "Restaurant.h"
 
-#import "SetupPageFourthViewController.h"
 #import "SetupPageFifthViewController.h"
 #import "SetupPageSixthViewController.h"
