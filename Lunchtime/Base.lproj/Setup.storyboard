@@ -75,7 +75,7 @@
         <!--Setup Page View Controller-->
         <scene sceneID="dRd-3M-gXM">
             <objects>
-                <pageViewController storyboardIdentifier="SetupPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pMK-qj-g8S" customClass="SetupPageViewController" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="SetupPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pMK-qj-g8S" customClass="SetupPageViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="491-YX-nZG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </pageViewController>
