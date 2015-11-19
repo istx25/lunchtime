@@ -9,7 +9,6 @@
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
 #import "Lunchtime-Swift.h"
-#import "LunchtimeTableViewCell.h"
 #import "Realm+Convenience.h"
 #import "LunchtimeMaps.h"
 #import "Restaurant.h"
