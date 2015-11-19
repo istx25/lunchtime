@@ -12,6 +12,10 @@ class SetupPageFirstViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        guard let navigationController = navigationController else {
+            return
+        }
+
+        navigationController.setNavigationBarHidden(true, animated: false)
     }
 }
