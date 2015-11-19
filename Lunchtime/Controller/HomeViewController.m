@@ -55,7 +55,17 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 #pragma mark - Controller Lifecycle
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//
+//    [self setShouldHideOpenInMapsButton:YES];
+//    [self checkInStatusDidChange];
+//
+//}
+
+
 - (void)viewDidLoad {
+
     [super viewDidLoad];
 
     [self setShouldHideOpenInMapsButton:YES];
@@ -64,7 +74,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-    [self setupUI];
+//    [self setupUI];
 
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
         [self updateUI];
@@ -75,18 +85,22 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    if (!self.restaurants) {
+        
+        [[LunchtimeLocationManager defaultManager] start];
+    }
 }
 
 #pragma mark - Setup
 - (void)setupUI {
-    [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-    [self restaurantObjectAtRandomIndex];
+    [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
 }
 
-- (void)configureLayout {
+- (void)configureLocationLabel {
     CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
 
     [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:coordinate handler:^(CLPlacemark *placemark) {
@@ -103,7 +117,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (void)updateUI {
-    if ([User objectForPrimaryKey:@1].isInvalidated) {
+    if ([RLMRealm defaultRealm].isEmpty || [User objectForPrimaryKey:@1].isInvalidated || self.currentRestaurant.isInvalidated) {
         return;
     }
 
@@ -136,14 +150,17 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
-
+    
+    if (!self.currentRestaurant) {
+        return;
+    }
+    
     if (!self.isCheckedIn) {
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }
 
     [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
     [self checkInStatusDidChange];
-    [self setEnjoyNotification];
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
@@ -168,7 +185,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 #pragma mark - Data
 - (void)restaurantObjectAtRandomIndex {
-    if (0 < self.restaurants.count > 0) {
+    if (0 < self.restaurants.count) {
         NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
         self.currentRestaurant = [self.restaurants objectAtIndex:index];
     }
@@ -178,7 +195,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     if (self.shouldHideOpenInMapsButton) {
         [self.currentRestaurantView.openInMapsButton setHidden:YES];
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
-        [self updateUIWithNewRestaurantObject];
+//        [self updateUIWithNewRestaurantObject];
         [self.somethingElseButton setEnabled:YES];
         [self.somethingElseButton setAlpha:1.0];
         [self setIsCheckedIn:NO];
@@ -188,6 +205,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
         [self.somethingElseButton setEnabled:NO];
         [self.somethingElseButton setAlpha:0.7];
         [self setIsCheckedIn:YES];
+        
+        [self setEnjoyNotification];
     }
 }
 
@@ -211,7 +230,9 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
     [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1] withCompletionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self configureLayout];
+            [self setupUI];
+            [self updateUIWithNewRestaurantObject];
+            [self configureLocationLabel];
             [self.locationManager stop];
         });
     }];
