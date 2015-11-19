@@ -55,7 +55,17 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 #pragma mark - Controller Lifecycle
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//
+//    [self setShouldHideOpenInMapsButton:YES];
+//    [self checkInStatusDidChange];
+//
+//}
+
+
 - (void)viewDidLoad {
+
     [super viewDidLoad];
 
     [self setShouldHideOpenInMapsButton:YES];
@@ -64,7 +74,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
     [self.locationManager start];
-    [self setupUI];
+//    [self setupUI];
 
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
         [self updateUI];
@@ -86,12 +96,11 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 #pragma mark - Setup
 - (void)setupUI {
-    [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-    [self restaurantObjectAtRandomIndex];
+    [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
 }
 
-- (void)configureLayout {
+- (void)configureLocationLabel {
     CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
 
     [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:coordinate handler:^(CLPlacemark *placemark) {
@@ -176,7 +185,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 #pragma mark - Data
 - (void)restaurantObjectAtRandomIndex {
-    if (0 < self.restaurants.count > 0) {
+    if (0 < self.restaurants.count) {
         NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
         self.currentRestaurant = [self.restaurants objectAtIndex:index];
     }
@@ -186,7 +195,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     if (self.shouldHideOpenInMapsButton) {
         [self.currentRestaurantView.openInMapsButton setHidden:YES];
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
-        [self updateUIWithNewRestaurantObject];
+//        [self updateUIWithNewRestaurantObject];
         [self.somethingElseButton setEnabled:YES];
         [self.somethingElseButton setAlpha:1.0];
         [self setIsCheckedIn:NO];
@@ -221,7 +230,9 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     FoursquareAPI *fourSquareRequest = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
     [fourSquareRequest findRestaurantsForUser:[User objectForPrimaryKey:@1] withCompletionHandler:^{
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self configureLayout];
+            [self setupUI];
+            [self updateUIWithNewRestaurantObject];
+            [self configureLocationLabel];
             [self.locationManager stop];
         });
     }];
