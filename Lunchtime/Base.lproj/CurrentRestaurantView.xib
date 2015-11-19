@@ -23,40 +23,43 @@
                     <animations/>
                     <color key="backgroundColor" red="0.20392156862745098" green="0.42745098039215684" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="280" id="6eP-ll-Q3a"/>
-                        <constraint firstAttribute="height" constant="45" id="xL6-VV-A2V"/>
+                        <constraint firstAttribute="height" constant="45" id="2ap-MB-eg0"/>
+                        <constraint firstAttribute="width" constant="280" id="5r9-ZU-a64"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                     <state key="normal" title="Open Restaurant in Maps">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="openInMapsButtonPressed:" destination="WRa-Ff-qcp" eventType="touchUpInside" id="wje-dl-Ll4"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBy-5b-u9r">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.92549019610000005" green="0.56470588239999997" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni5-Y0-oup">
                     <rect key="frame" x="0.0" y="124" width="320" height="55"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.92549019610000005" green="0.56470588239999997" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Ni5-Y0-oup" firstAttribute="height" secondItem="eBy-5b-u9r" secondAttribute="height" placeholder="YES" id="1zu-d4-4Xg"/>
-                <constraint firstItem="Ni5-Y0-oup" firstAttribute="top" secondItem="cZ7-a7-VMT" secondAttribute="bottom" constant="8" symbolic="YES" placeholder="YES" id="5T5-8R-GL2"/>
-                <constraint firstItem="7sU-io-0hS" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" placeholder="YES" id="Bqd-N1-mjK"/>
-                <constraint firstAttribute="bottom" secondItem="7sU-io-0hS" secondAttribute="bottom" constant="7" placeholder="YES" id="EL5-1o-LvG"/>
-                <constraint firstItem="cZ7-a7-VMT" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" placeholder="YES" id="FOh-CI-amg"/>
-                <constraint firstAttribute="trailing" secondItem="Ni5-Y0-oup" secondAttribute="trailing" placeholder="YES" id="K4g-vS-i9S"/>
-                <constraint firstItem="7sU-io-0hS" firstAttribute="top" secondItem="Ni5-Y0-oup" secondAttribute="bottom" constant="8" symbolic="YES" placeholder="YES" id="KUi-uT-QLI"/>
-                <constraint firstItem="cZ7-a7-VMT" firstAttribute="top" secondItem="eBy-5b-u9r" secondAttribute="bottom" constant="8" symbolic="YES" placeholder="YES" id="SI9-rI-khB"/>
-                <constraint firstItem="Ni5-Y0-oup" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" placeholder="YES" id="WQd-XQ-ZAC"/>
-                <constraint firstItem="eBy-5b-u9r" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" placeholder="YES" id="YIG-mb-bUP"/>
-                <constraint firstAttribute="trailing" secondItem="eBy-5b-u9r" secondAttribute="trailing" placeholder="YES" id="alj-5B-EWj"/>
-                <constraint firstItem="eBy-5b-u9r" firstAttribute="top" secondItem="WRa-Ff-qcp" secondAttribute="top" placeholder="YES" id="gND-4y-GZ7"/>
+                <constraint firstItem="eBy-5b-u9r" firstAttribute="top" secondItem="WRa-Ff-qcp" secondAttribute="top" id="3hV-US-FPb"/>
+                <constraint firstItem="7sU-io-0hS" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" id="7AA-IT-c96"/>
+                <constraint firstAttribute="bottom" secondItem="7sU-io-0hS" secondAttribute="bottom" constant="7" id="8jO-WC-4Ny"/>
+                <constraint firstAttribute="trailing" secondItem="cZ7-a7-VMT" secondAttribute="trailing" constant="25" id="BRf-gh-Bph"/>
+                <constraint firstItem="7sU-io-0hS" firstAttribute="top" secondItem="Ni5-Y0-oup" secondAttribute="bottom" constant="8" id="D9y-pZ-WtU"/>
+                <constraint firstItem="eBy-5b-u9r" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" id="EQD-ke-UfA"/>
+                <constraint firstItem="Ni5-Y0-oup" firstAttribute="top" secondItem="cZ7-a7-VMT" secondAttribute="bottom" constant="8" id="L0O-wh-6Cq"/>
+                <constraint firstAttribute="trailing" secondItem="Ni5-Y0-oup" secondAttribute="trailing" id="PIb-Os-NDH"/>
+                <constraint firstAttribute="trailing" secondItem="eBy-5b-u9r" secondAttribute="trailing" id="SAR-Ms-Ist"/>
+                <constraint firstItem="cZ7-a7-VMT" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" constant="26.5" id="YAX-aT-kry"/>
+                <constraint firstItem="Ni5-Y0-oup" firstAttribute="height" secondItem="eBy-5b-u9r" secondAttribute="height" id="YJI-Ow-sQ1"/>
+                <constraint firstItem="cZ7-a7-VMT" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" id="l2Y-Eb-TSG"/>
+                <constraint firstItem="Ni5-Y0-oup" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" id="ogk-gI-UX9"/>
+                <constraint firstItem="cZ7-a7-VMT" firstAttribute="top" secondItem="eBy-5b-u9r" secondAttribute="bottom" constant="8" id="rRP-pP-jGG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
