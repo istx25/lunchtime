@@ -11,7 +11,6 @@
 #import "LunchtimeLocationManager.h"
 #import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
-#import "LunchtimeGeocoder.h"
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
@@ -89,8 +88,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 - (void)configureLayout {
     CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
-    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
-    [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
+
+    [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:coordinate handler:^(CLPlacemark *placemark) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
         });
