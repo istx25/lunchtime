@@ -41,7 +41,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="noButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tM0-TJ-x9k"/>
+                                    <action selector="somethingElseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xCM-6X-plt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCB-Ky-oxf">
@@ -57,7 +57,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="yesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DoD-B1-JwK"/>
+                                    <action selector="checkInOutButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q5y-U1-Gin"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWI-2t-9jN">
@@ -151,10 +151,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="blockButton" destination="eWI-2t-9jN" id="g9u-DK-97z"/>
+                        <outlet property="checkInOutButton" destination="KCB-Ky-oxf" id="pFV-7P-1MY"/>
                         <outlet property="currentRestaurantViewContainer" destination="nGl-NR-YuW" id="Bxi-ze-Q7V"/>
                         <outlet property="locationLabel" destination="BbW-PZ-6TM" id="5Tf-RW-Wtm"/>
-                        <outlet property="noButton" destination="KQ0-fS-eXO" id="f4R-eu-yBe"/>
-                        <outlet property="yesButton" destination="KCB-Ky-oxf" id="Xn8-iA-pP2"/>
+                        <outlet property="somethingElseButton" destination="KQ0-fS-eXO" id="7xG-ZX-CFL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

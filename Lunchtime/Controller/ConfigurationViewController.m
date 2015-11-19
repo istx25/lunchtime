@@ -54,15 +54,13 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
 
     [self commitRealmChanges];
     [self setLunchtimeNotification];
-    
 }
 
 - (void)setLunchtimeNotification {
-    
     if (!self.notificationSwitch.on) {
-        
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         NSLog(@"%ld", [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+
         return;
     }
     

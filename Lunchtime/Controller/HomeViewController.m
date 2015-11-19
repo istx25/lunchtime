@@ -28,8 +28,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 // Controller Outlets
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
-@property (nonatomic, weak) IBOutlet UIButton *yesButton;
-@property (nonatomic, weak) IBOutlet UIButton *noButton;
+@property (nonatomic, weak) IBOutlet UIButton *checkInOutButton;
+@property (nonatomic, weak) IBOutlet UIButton *somethingElseButton;
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
 @property (nonatomic) BOOL shouldHideOpenInMapsButton;
 
@@ -134,14 +134,14 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
 }
 
-- (IBAction)yesButtonPressed:(UIButton *)sender {
+- (IBAction)checkInOutButtonPressed:(UIButton *)sender {
     [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
     [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     [self checkInStatusDidChange];
     [self setEnjoyNotification];
 }
 
-- (IBAction)noButtonPressed:(UIButton *)sender {
+- (IBAction)somethingElseButtonPressed:(UIButton *)sender {
     [self updateUIWithNewRestaurantObject];
 }
 
@@ -169,15 +169,15 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 - (void)checkInStatusDidChange {
     if (self.shouldHideOpenInMapsButton) {
         [self.currentRestaurantView.openInMapsButton setHidden:YES];
-        [self.yesButton setTitle:@"Check me in" forState:UIControlStateNormal];
+        [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         [self updateUIWithNewRestaurantObject];
-        [self.noButton setEnabled:YES];
-        [self.noButton setAlpha:1.0];
+        [self.somethingElseButton setEnabled:YES];
+        [self.somethingElseButton setAlpha:1.0];
     } else {
-        [self.yesButton setTitle:@"Check me out" forState:UIControlStateNormal];
+        [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
         [self.currentRestaurantView.openInMapsButton setHidden:NO];
-        [self.noButton setEnabled:NO];
-        [self.noButton setAlpha:0.7];
+        [self.somethingElseButton setEnabled:NO];
+        [self.somethingElseButton setAlpha:0.7];
     }
 }
 
