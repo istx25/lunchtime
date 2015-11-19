@@ -11,7 +11,6 @@
 #import "LunchtimeLocationManager.h"
 #import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
-#import "LunchtimeGeocoder.h"
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
@@ -28,10 +27,12 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 // Controller Outlets
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
-@property (nonatomic, weak) IBOutlet UIButton *yesButton;
-@property (nonatomic, weak) IBOutlet UIButton *noButton;
+@property (nonatomic, weak) IBOutlet UIButton *checkInOutButton;
+@property (nonatomic, weak) IBOutlet UIButton *somethingElseButton;
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
+
 @property (nonatomic) BOOL shouldHideOpenInMapsButton;
+@property (nonatomic) BOOL isCheckedIn;
 
 // Model Properties
 @property (nonatomic) LunchtimeLocationManager *locationManager;
@@ -87,8 +88,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 - (void)configureLayout {
     CLLocationCoordinate2D coordinate = self.locationManager.currentLocation.coordinate;
-    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
-    [geocoder reverseGeocodeLocationWithCoordinate:coordinate withCompletionHandler:^(CLPlacemark *placemark) {
+
+    [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:coordinate handler:^(CLPlacemark *placemark) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
         });
@@ -134,14 +135,18 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
 }
 
-- (IBAction)yesButtonPressed:(UIButton *)sender {
+- (IBAction)checkInOutButtonPressed:(UIButton *)sender {
+
+    if (!self.isCheckedIn) {
+        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
+    }
+
     [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
-    [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     [self checkInStatusDidChange];
     [self setEnjoyNotification];
 }
 
-- (IBAction)noButtonPressed:(UIButton *)sender {
+- (IBAction)somethingElseButtonPressed:(UIButton *)sender {
     [self updateUIWithNewRestaurantObject];
 }
 
@@ -152,7 +157,10 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
         [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
         [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
-        [self checkInStatusDidChange];
+        
+        if (self.isCheckedIn) {
+            [self checkInStatusDidChange];
+        }
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -169,15 +177,17 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 - (void)checkInStatusDidChange {
     if (self.shouldHideOpenInMapsButton) {
         [self.currentRestaurantView.openInMapsButton setHidden:YES];
-        [self.yesButton setTitle:@"Check me in" forState:UIControlStateNormal];
+        [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         [self updateUIWithNewRestaurantObject];
-        [self.noButton setEnabled:YES];
-        [self.noButton setAlpha:1.0];
+        [self.somethingElseButton setEnabled:YES];
+        [self.somethingElseButton setAlpha:1.0];
+        [self setIsCheckedIn:NO];
     } else {
-        [self.yesButton setTitle:@"Check me out" forState:UIControlStateNormal];
+        [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
         [self.currentRestaurantView.openInMapsButton setHidden:NO];
-        [self.noButton setEnabled:NO];
-        [self.noButton setAlpha:0.7];
+        [self.somethingElseButton setEnabled:NO];
+        [self.somethingElseButton setAlpha:0.7];
+        [self setIsCheckedIn:YES];
     }
 }
 

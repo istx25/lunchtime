@@ -8,7 +8,6 @@
 
 #import "PreviousDaysMapViewController.h"
 #import "LunchtimeLocationManager.h"
-#import "LunchtimeGeocoder.h"
 #import <MapKit/MapKit.h>
 #import "Restaurant.h"
 #import "User.h"
@@ -42,7 +41,6 @@ static int const kMapZoomValue = 2100;
 
     for (Restaurant *restaurant in self.user.savedRestaurants) {
         restaurant.coordinate = CLLocationCoordinate2DMake(restaurant.latitude, restaurant.longitude);
-//        restaurant.title = restaurant.name;
         [self.mapView addAnnotation:restaurant];
     }
 }
@@ -59,7 +57,7 @@ static int const kMapZoomValue = 2100;
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     static NSString *identifier = @"MyAnnotationView";
-    
+
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
     }
@@ -68,12 +66,17 @@ static int const kMapZoomValue = 2100;
     if (view) {
         view.annotation = annotation;
     } else {
+
         view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         view.canShowCallout = true;
         view.animatesDrop = true;
+
+        Restaurant *restaurant = view.annotation;
+        if (!restaurant.url) {
+            return view;
+        }
         
         UIImage *image = [UIImage imageNamed:@"internet54"];
-        
         UIButton *openURLButton = [UIButton buttonWithType:UIButtonTypeCustom];
         openURLButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
         [openURLButton setImage:image forState:UIControlStateNormal];
@@ -85,11 +88,8 @@ static int const kMapZoomValue = 2100;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    
     Restaurant *restaurant = view.annotation;
-    
     SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:restaurant.url]];
-    
     [self presentViewController:safariViewController animated:YES completion:nil];
 }
 
