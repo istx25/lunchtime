@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
+#import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
 #import "LunchtimeGeocoder.h"
 #import "LunchtimeMaps.h"
@@ -16,13 +17,15 @@
 #import "User.h"
 
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
+static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 
 @interface HomeViewController () <LunchtimeLocationManagerDelegate>
 
-@property (nonatomic, weak) IBOutlet UILabel *suggestionLabel;
-@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+@property (nonatomic, weak) IBOutlet UIView *currentRestaurantViewContainer;
+@property (nonatomic) CurrentRestaurantView *currentRestaurantView;
 
+@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
@@ -32,13 +35,27 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 @property (nonatomic) RLMNotificationToken *token;
 @property (nonatomic) Restaurant *currentRestaurant;
 
+@property (nonatomic) BOOL shouldHideOpenInMapsButton;
+
 @end
 
 @implementation HomeViewController
 
+#pragma mark - Controller Lifecycle
+- (void)loadView {
+    [super loadView];
+
+    [self setCurrentRestaurantView:[[CurrentRestaurantView alloc] init]];
+    [self.currentRestaurantViewContainer addSubview:self.currentRestaurantView];
+    [self.currentRestaurantView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.currentRestaurantView addConstraintsTo:self.currentRestaurantView onContainingView:self.currentRestaurantViewContainer];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setShouldHideOpenInMapsButton:YES];
+    [self checkInStatusDidChange];
     [self setLocationManager:[LunchtimeLocationManager defaultManager]];
     [self.locationManager setDelegate:self];
     [self.locationManager setup];
@@ -48,30 +65,42 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
         [self updateUI];
     }];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+
 }
 
 - (void)setupUI {
-    [self.suggestionLabel setText:@"Fetching..."];
+    [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
     [self findNewRandomRestaurantObject];
 }
 
 - (void)updateUI {
-    if ([RLMRealm defaultRealm].isEmpty) {
+    if ([User objectForPrimaryKey:@1].isInvalidated) {
         return;
     }
 
-    if (self.currentRestaurant.thoroughfare) {
-        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
+    if (self.shouldHideOpenInMapsButton) {
+        if (self.currentRestaurant.thoroughfare) {
+            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
+        } else {
+            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
+        }
     } else {
-        [self.suggestionLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
+        if (self.currentRestaurant.thoroughfare) {
+            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kCheckedInLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
+        } else {
+            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kCheckedInLabelConstant, self.currentRestaurant.title]];
+        }
     }
+
 }
 
 #pragma mark - Conv
@@ -98,22 +127,30 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 #pragma mark - Actions
+- (void)openInMapsButtonPressed {
+    [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
+}
+
 - (IBAction)yesButtonPressed:(UIButton *)sender {
-
-    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addCancelAction:@"Cancel" handler:nil];
-
-    [alert addDefaultActionWithTitle:@"I know where it is" handler:^{
-        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
-    }];
-
-    [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
-        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
-        [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
-    }];
-
-    [self presentViewController:alert animated:YES completion:nil];
+    self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
+    [self checkInStatusDidChange];
+    [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     [[UIApplication sharedApplication] scheduleLocalNotification:[EnjoyNotification enjoyNotification]];
+}
+
+- (void)checkInStatusDidChange {
+    if (self.shouldHideOpenInMapsButton) {
+        [self.currentRestaurantView.openInMapsButton setHidden:YES];
+        [self.yesButton setTitle:@"Check me in" forState:UIControlStateNormal];
+        [self updateUIWithNewRestaurantObject];
+        [self.noButton setEnabled:YES];
+        [self.noButton setAlpha:1.0];
+    } else {
+        [self.yesButton setTitle:@"Check me out" forState:UIControlStateNormal];
+        [self.currentRestaurantView.openInMapsButton setHidden:NO];
+        [self.noButton setEnabled:NO];
+        [self.noButton setAlpha:0.7];
+    }
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
