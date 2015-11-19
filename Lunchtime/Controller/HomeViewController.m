@@ -70,7 +70,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 
-    if (!self.restaurants) { //<>MAYBE<>//
+    if (!self.restaurants) {
         [[LunchtimeLocationManager defaultManager] start];
     }
 }
@@ -162,8 +162,9 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
         if (self.hasUserCheckedIn) {
             [self checkinStatusDidChange];
-            // call method that gets new randomised restaurant. //<>MAYBE<>//
         }
+
+        [self newRestaurant];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
