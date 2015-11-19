@@ -13,6 +13,8 @@
 #import "Restaurant.h"
 #import "User.h"
 
+@import SafariServices;
+
 static int const kMapZoomValue = 2100;
 
 @interface PreviousDaysMapViewController ()
@@ -51,6 +53,44 @@ static int const kMapZoomValue = 2100;
 
     [self.mapView setRegion:adjustedRegion animated:YES];
     [self addRestaurantAnnotationsToMapView];
+}
+
+#pragma mark Map Delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *identifier = @"MyAnnotationView";
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+    
+    MKPinAnnotationView *view = (id)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (view) {
+        view.annotation = annotation;
+    } else {
+        view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        view.canShowCallout = true;
+        view.animatesDrop = true;
+        
+        UIImage *image = [UIImage imageNamed:@"internet54"];
+        
+        UIButton *openURLButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        openURLButton.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+        [openURLButton setImage:image forState:UIControlStateNormal];
+        
+        view.rightCalloutAccessoryView = openURLButton;
+    }
+    
+    return view;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    Restaurant *restaurant = view.annotation;
+    
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:restaurant.url]];
+    
+    [self presentViewController:safariViewController animated:YES completion:nil];
 }
 
 @end
