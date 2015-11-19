@@ -11,15 +11,14 @@ import UIKit
 
 public class EnjoyNotification: UILocalNotification {
     
-    public class func enjoyNotification() -> EnjoyNotification {
+    public class func enjoyNotification() -> EnjoyNotification! {
         
         let notification = EnjoyNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 60*60*60)
+        notification.fireDate = NSDate(timeIntervalSinceNow: 60*60)
         notification.alertTitle = "We hope you enjoyed your meal!"
         notification.alertBody = "Consider giving the restaurant a rating."
-        
-        print("notification set")
-        
+        notification.userInfo = ["notification":"enjoy"]
+                
         return notification
     }
 }
