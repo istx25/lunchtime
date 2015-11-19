@@ -8,7 +8,7 @@
         <!--Setup Page First View Controller-->
         <scene sceneID="wqN-wM-FUK">
             <objects>
-                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4c-uj-6P8"/>
                         <viewControllerLayoutGuide type="bottom" id="FZ0-JI-94l"/>

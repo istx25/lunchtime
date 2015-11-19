@@ -8,7 +8,6 @@
 
 #import "LunchtimeLocationManager.h"
 
-#import "SetupPageFirstViewController.h"
 #import "SetupPageSecondViewController.h"
 #import "SetupPageThirdViewController.h"
 #import "SetupPageFourthViewController.h"
