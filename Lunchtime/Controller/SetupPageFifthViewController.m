@@ -41,6 +41,7 @@
     // Setup and schedule the lunchtime notification
     LunchtimeNotification *notification = [LunchtimeNotification lunchtimeNotificationWithDate:self.lunchtimeDatePicker.date];
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSLog(@"firedate = %@", notification.fireDate);
 }
 
 @end

@@ -20,6 +20,8 @@ static NSString *kAlertBody = @"Open the app to see where to go!";
     notification.alertTitle = kAlertTitle;
     notification.alertBody = kAlertBody;
     
+    notification.userInfo = @{@"notification":@"lunchtime"};
+    
     return notification;
 }
 

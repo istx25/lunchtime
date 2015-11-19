@@ -19,6 +19,7 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
 
 @interface ConfigurationViewController ()
 
+@property (weak, nonatomic) IBOutlet UISwitch *notificationSwitch;
 @property (nonatomic, weak) IBOutlet UIDatePicker *lunchtimeDatePicker;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *priceLimitSegmentedControl;
 @property (nonatomic, weak) IBOutlet UISlider *distanceSlider;
@@ -52,6 +53,30 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
     [super viewWillDisappear:animated];
 
     [self commitRealmChanges];
+    [self setLunchtimeNotification];
+    
+}
+
+- (void)setLunchtimeNotification {
+    
+    if (!self.notificationSwitch.on) {
+        
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        NSLog(@"%ld", [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+        return;
+    }
+    
+    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *notification in notifications) {
+        NSDictionary *userInfo = notification.userInfo;
+        if ([[userInfo objectForKey:@"notification"] isEqualToString:@"lunchtime"]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:notification];
+        }
+    }
+    
+    LunchtimeNotification *notification = [LunchtimeNotification lunchtimeNotificationWithDate:self.lunchtimeDatePicker.date];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSLog(@"new notification = %@, notification count = %lu", notification.fireDate, [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
 }
 
 #pragma mark - Actions
