@@ -16,32 +16,34 @@
 #import "FoursquareAPI.h"
 #import "User.h"
 
+static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
-static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 
 @interface HomeViewController () <LunchtimeLocationManagerDelegate>
 
+// Custom CurrentRestaurantView Properties
 @property (nonatomic, weak) IBOutlet UIView *currentRestaurantViewContainer;
 @property (nonatomic) CurrentRestaurantView *currentRestaurantView;
 
+// Controller Outlets
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @property (nonatomic, weak) IBOutlet UIButton *yesButton;
 @property (nonatomic, weak) IBOutlet UIButton *noButton;
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
+@property (nonatomic) BOOL shouldHideOpenInMapsButton;
 
+// Model Properties
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 @property (nonatomic) RLMResults<Restaurant *> *restaurants;
 @property (nonatomic) RLMNotificationToken *token;
 @property (nonatomic) Restaurant *currentRestaurant;
 
-@property (nonatomic) BOOL shouldHideOpenInMapsButton;
-
 @end
 
 @implementation HomeViewController
 
-#pragma mark - Controller Lifecycle
+#pragma mark - View Instantiation
 - (void)loadView {
     [super loadView];
 
@@ -51,6 +53,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     [self.currentRestaurantView addConstraintsTo:self.currentRestaurantView onContainingView:self.currentRestaurantViewContainer];
 }
 
+#pragma mark - Controller Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -73,47 +76,13 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-
 }
 
+#pragma mark - Setup
 - (void)setupUI {
     [self.currentRestaurantView.headerTextLabel setText:@"Fetching..."];
     [self setRestaurants:[Restaurant allObjects]];
-    [self findNewRandomRestaurantObject];
-}
-
-- (void)updateUI {
-    if ([User objectForPrimaryKey:@1].isInvalidated) {
-        return;
-    }
-
-    if (self.shouldHideOpenInMapsButton) {
-        if (self.currentRestaurant.thoroughfare) {
-            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
-        } else {
-            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
-        }
-    } else {
-        if (self.currentRestaurant.thoroughfare) {
-            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@ on %@", kCheckedInLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare]];
-        } else {
-            [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kCheckedInLabelConstant, self.currentRestaurant.title]];
-        }
-    }
-
-}
-
-#pragma mark - Conv
-- (void)updateUIWithNewRestaurantObject {
-    [self findNewRandomRestaurantObject];
-    [self updateUI];
-}
-
-- (void)findNewRandomRestaurantObject {
-    if (0 < self.restaurants.count > 0) {
-        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
-        self.currentRestaurant = [self.restaurants objectAtIndex:index];
-    }
+    [self restaurantObjectAtRandomIndex];
 }
 
 - (void)configureLayout {
@@ -126,32 +95,75 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     }];
 }
 
+#pragma mark - Convenience Update View Methods
+- (void)updateUIWithNewRestaurantObject {
+    [self restaurantObjectAtRandomIndex];
+    [self updateUI];
+}
+
+- (void)updateUI {
+    if ([User objectForPrimaryKey:@1].isInvalidated) {
+        return;
+    }
+
+    if (self.shouldHideOpenInMapsButton) {
+        if (self.currentRestaurant.thoroughfare) {
+            NSString *headerText = [NSString stringWithFormat:@"%@ %@ on %@", kSuggestionLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare];
+            [self.currentRestaurantView.headerTextLabel setText:headerText];
+
+            return;
+        }
+
+        [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kSuggestionLabelConstant, self.currentRestaurant.title]];
+    }
+
+    if (!self.shouldHideOpenInMapsButton) {
+        if (self.currentRestaurant.thoroughfare) {
+            NSString *headerText = [NSString stringWithFormat:@"%@ %@ on %@", kCheckedInLabelConstant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare];
+            [self.currentRestaurantView.headerTextLabel setText:headerText];
+
+            return;
+        }
+
+        [self.currentRestaurantView.headerTextLabel setText:[NSString stringWithFormat:@"%@ %@", kCheckedInLabelConstant, self.currentRestaurant.title]];
+    }
+}
+
 #pragma mark - Actions
 - (void)openInMapsButtonPressed {
     [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
 }
 
 - (IBAction)yesButtonPressed:(UIButton *)sender {
-    self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
-    [self checkInStatusDidChange];
+    [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
     [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
-    
+    [self checkInStatusDidChange];
     [self setEnjoyNotification];
 }
 
-- (void)setEnjoyNotification {
-    
-    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    for (UILocalNotification *notification in notifications) {
-        NSDictionary *userInfo = notification.userInfo;
-        if ([[userInfo objectForKey:@"notification"] isEqualToString:@"enjoy"]) {
-            [[UIApplication sharedApplication] cancelLocalNotification:notification];
-        }
+- (IBAction)noButtonPressed:(UIButton *)sender {
+    [self updateUIWithNewRestaurantObject];
+}
+
+- (IBAction)blockButtonPressed:(UIButton *)sender {
+    NSString *alertTitle = [NSString stringWithFormat:@"This will block %@ from ever being presented again.", self.currentRestaurant.title];
+    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:alertTitle preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancelAction:@"Cancel" handler:nil];
+    [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
+        [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
+        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+        [self checkInStatusDidChange];
+    }];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - Data
+- (void)restaurantObjectAtRandomIndex {
+    if (0 < self.restaurants.count > 0) {
+        NSUInteger index = arc4random_uniform((u_int32_t)self.restaurants.count);
+        self.currentRestaurant = [self.restaurants objectAtIndex:index];
     }
-    
-    EnjoyNotification *notification = [EnjoyNotification enjoyNotification];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    NSLog(@"%@ \n total = %lu", notification.fireDate, [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
 }
 
 - (void)checkInStatusDidChange {
@@ -169,22 +181,19 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     }
 }
 
-- (IBAction)noButtonPressed:(UIButton *)sender {
-    [self updateUIWithNewRestaurantObject];
-}
+#pragma mark - Notifications
+- (void)setEnjoyNotification {
+    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *notification in notifications) {
+        NSDictionary *userInfo = notification.userInfo;
+        if ([[userInfo objectForKey:@"notification"] isEqualToString:@"enjoy"]) {
+            [[UIApplication sharedApplication] cancelLocalNotification:notification];
+        }
+    }
 
-- (IBAction)blockButtonPressed:(UIButton *)sender {
-
-    NSString *alertTitle = [NSString stringWithFormat:@"This will block %@ from ever being presented again.", self.currentRestaurant.title];
-    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:alertTitle preferredStyle:UIAlertControllerStyleActionSheet];
-    [alert addCancelAction:@"Cancel" handler:nil];
-    [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
-        self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
-        [self checkInStatusDidChange];
-        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
-    }];
-
-    [self presentViewController:alert animated:YES completion:nil];
+    EnjoyNotification *notification = [EnjoyNotification enjoyNotification];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSLog(@"%@ \n total = %lu", notification.fireDate, [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
 }
 
 #pragma mark - <LunchtimeLocationManagerDelegate>
