@@ -60,20 +60,12 @@ static NSString *kReuseIdentifier = @"previousCell";
     Restaurant *restaurant = self.user.savedRestaurants[indexPath.row];
     [alert addCancelAction:@"Cancel" handler:nil];
 
-    [alert addDefaultActionWithTitle:@"I know where it is" handler:^{
-        [RealmConvenience addRestaurantToSavedArray:restaurant];
-        [self.tableView reloadData];
-    }];
-
     [alert addDefaultActionWithTitle:@"I didn't go here" handler:^{
         [RealmConvenience removeRestaurantFromSavedArrayAtIndex:indexPath.row];
-        [RealmConvenience addRestaurantToBlacklistedArray:restaurant];
         [self.tableView reloadData];
     }];
 
     [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
-        [RealmConvenience addRestaurantToSavedArray:restaurant];
-        [self.tableView reloadData];
         [LunchtimeMaps openInMapsWithAddress:restaurant.address];
     }];
 
