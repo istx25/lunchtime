@@ -171,7 +171,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="previousCell" textLabel="S0f-Wi-KzX" detailTextLabel="qu3-dj-ZTe" rowHeight="50" style="IBUITableViewCellStyleValue1" id="IpF-Ly-NDj" customClass="LunchtimeTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="previousCell" textLabel="S0f-Wi-KzX" detailTextLabel="qu3-dj-ZTe" rowHeight="50" style="IBUITableViewCellStyleValue1" id="IpF-Ly-NDj" customClass="LunchtimeTableViewCell" customModule="Lunchtime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IpF-Ly-NDj" id="P2n-2B-QNs">
@@ -429,7 +429,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Df4-hB-oaz" rowHeight="68" style="IBUITableViewCellStyleDefault" id="HNh-PU-DfF" customClass="LunchtimeTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Df4-hB-oaz" rowHeight="68" style="IBUITableViewCellStyleDefault" id="HNh-PU-DfF" customClass="LunchtimeTableViewCell" customModule="Lunchtime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="563" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNh-PU-DfF" id="LZV-zX-KjB">
