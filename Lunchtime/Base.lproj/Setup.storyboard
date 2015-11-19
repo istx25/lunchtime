@@ -86,7 +86,7 @@
         <!--Setup Page Fifth View Controller-->
         <scene sceneID="8jc-sd-Lob">
             <objects>
-                <viewController storyboardIdentifier="setupPageFifthScene" id="cqU-H5-jMb" customClass="SetupPageFifthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFifthScene" id="cqU-H5-jMb" customClass="SetupPageFifthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yis-PG-VQc"/>
                         <viewControllerLayoutGuide type="bottom" id="jRJ-TN-6PR"/>
@@ -132,7 +132,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="lunchtimeDatePicker" destination="maP-Kw-Tjf" id="QD3-yp-BTm"/>
+                        <outlet property="picker" destination="maP-Kw-Tjf" id="k4e-7E-U6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaY-Mq-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
