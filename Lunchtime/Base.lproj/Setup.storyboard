@@ -213,7 +213,7 @@
         <!--Setup Page Sixth View Controller-->
         <scene sceneID="HOh-aa-5Pv">
             <objects>
-                <viewController storyboardIdentifier="setupPageSixthScene" id="TTf-Cn-AhO" customClass="SetupPageSixthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSixthScene" id="TTf-Cn-AhO" customClass="SetupPageSixthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iSd-NV-go4"/>
                         <viewControllerLayoutGuide type="bottom" id="vTK-vY-hRb"/>
@@ -249,7 +249,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="TTf-Cn-AhO" eventType="touchUpInside" id="h1E-B0-UBP"/>
+                                    <action selector="doneButtonPressed:" destination="TTf-Cn-AhO" eventType="touchUpInside" id="8ZT-XC-VLT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -268,7 +268,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="doneButton" destination="gNB-KC-aPh" id="Obd-xa-RrY"/>
+                        <outlet property="doneButton" destination="gNB-KC-aPh" id="yLd-5D-NxE"/>
                         <segue destination="1A4-5Y-iWi" kind="show" identifier="segueFromSetupFlow" id="RrN-Gs-lDs"/>
                     </connections>
                 </viewController>

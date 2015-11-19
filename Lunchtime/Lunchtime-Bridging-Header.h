@@ -8,8 +8,5 @@
 
 #import "LunchtimeLocationManager.h"
 #import "LunchtimeNotification.h"
-
-#import "User.h"
 #import "Restaurant.h"
-
-#import "SetupPageSixthViewController.h"
+#import "User.h"
