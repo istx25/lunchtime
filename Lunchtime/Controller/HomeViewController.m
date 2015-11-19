@@ -31,7 +31,9 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 @property (nonatomic, weak) IBOutlet UIButton *checkInOutButton;
 @property (nonatomic, weak) IBOutlet UIButton *somethingElseButton;
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
+
 @property (nonatomic) BOOL shouldHideOpenInMapsButton;
+@property (nonatomic) BOOL isCheckedIn;
 
 // Model Properties
 @property (nonatomic) LunchtimeLocationManager *locationManager;
@@ -152,7 +154,10 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
         [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
         [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
-        [self checkInStatusDidChange];
+        
+        if (self.isCheckedIn) {
+            [self checkInStatusDidChange];
+        }
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
@@ -173,11 +178,13 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
         [self updateUIWithNewRestaurantObject];
         [self.somethingElseButton setEnabled:YES];
         [self.somethingElseButton setAlpha:1.0];
+        [self setIsCheckedIn:NO];
     } else {
         [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
         [self.currentRestaurantView.openInMapsButton setHidden:NO];
         [self.somethingElseButton setEnabled:NO];
         [self.somethingElseButton setAlpha:0.7];
+        [self setIsCheckedIn:YES];
     }
 }
 
