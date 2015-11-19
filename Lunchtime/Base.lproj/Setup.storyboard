@@ -8,7 +8,7 @@
         <!--Setup Page First View Controller-->
         <scene sceneID="wqN-wM-FUK">
             <objects>
-                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFirstScene" id="gUY-6P-fh0" customClass="SetupPageFirstViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4c-uj-6P8"/>
                         <viewControllerLayoutGuide type="bottom" id="FZ0-JI-94l"/>
@@ -75,7 +75,7 @@
         <!--Setup Page View Controller-->
         <scene sceneID="dRd-3M-gXM">
             <objects>
-                <pageViewController storyboardIdentifier="SetupPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pMK-qj-g8S" customClass="SetupPageViewController" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="SetupPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="pMK-qj-g8S" customClass="SetupPageViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="491-YX-nZG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </pageViewController>
@@ -86,7 +86,7 @@
         <!--Setup Page Fifth View Controller-->
         <scene sceneID="8jc-sd-Lob">
             <objects>
-                <viewController storyboardIdentifier="setupPageFifthScene" id="cqU-H5-jMb" customClass="SetupPageFifthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFifthScene" id="cqU-H5-jMb" customClass="SetupPageFifthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yis-PG-VQc"/>
                         <viewControllerLayoutGuide type="bottom" id="jRJ-TN-6PR"/>
@@ -132,7 +132,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="lunchtimeDatePicker" destination="maP-Kw-Tjf" id="QD3-yp-BTm"/>
+                        <outlet property="picker" destination="maP-Kw-Tjf" id="k4e-7E-U6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaY-Mq-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,7 +142,7 @@
         <!--Setup Page Second View Controller-->
         <scene sceneID="qTt-ra-wFc">
             <objects>
-                <viewController storyboardIdentifier="setupPageSecondScene" id="qce-pi-ydj" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSecondScene" id="qce-pi-ydj" customClass="SetupPageSecondViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="apy-1i-Qi4"/>
                         <viewControllerLayoutGuide type="bottom" id="Tcz-o3-QXQ"/>
@@ -203,7 +203,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="priceLimitSegmentedControl" destination="IEA-c1-8OP" id="8HM-qU-OVU"/>
+                        <outlet property="priceLimitSegmentedControl" destination="IEA-c1-8OP" id="a7f-3C-mjy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-23-NKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,7 +213,7 @@
         <!--Setup Page Sixth View Controller-->
         <scene sceneID="HOh-aa-5Pv">
             <objects>
-                <viewController storyboardIdentifier="setupPageSixthScene" id="TTf-Cn-AhO" customClass="SetupPageSixthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSixthScene" id="TTf-Cn-AhO" customClass="SetupPageSixthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iSd-NV-go4"/>
                         <viewControllerLayoutGuide type="bottom" id="vTK-vY-hRb"/>
@@ -249,7 +249,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="TTf-Cn-AhO" eventType="touchUpInside" id="h1E-B0-UBP"/>
+                                    <action selector="doneButtonPressed:" destination="TTf-Cn-AhO" eventType="touchUpInside" id="8ZT-XC-VLT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -268,7 +268,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="doneButton" destination="gNB-KC-aPh" id="Obd-xa-RrY"/>
+                        <outlet property="doneButton" destination="gNB-KC-aPh" id="yLd-5D-NxE"/>
                         <segue destination="1A4-5Y-iWi" kind="show" identifier="segueFromSetupFlow" id="RrN-Gs-lDs"/>
                     </connections>
                 </viewController>
@@ -287,7 +287,7 @@
         <!--Setup Page Third View Controller-->
         <scene sceneID="OAz-Xl-R8c">
             <objects>
-                <viewController storyboardIdentifier="setupPageThirdScene" id="AB3-lR-DlV" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageThirdScene" id="AB3-lR-DlV" customClass="SetupPageThirdViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xh-xG-f6p"/>
                         <viewControllerLayoutGuide type="bottom" id="BRW-5F-XwJ"/>
@@ -316,7 +316,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareLocationPrivilegeButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="UAm-Hg-9iS"/>
+                                    <action selector="sharePrivilegeButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="S1B-Xd-6c8"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-fc-tva">
@@ -358,7 +358,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="shareLocationPrivilegeButton" destination="AXk-ld-hgi" id="gvj-dI-xa4"/>
+                        <outlet property="sharePrivilegeButton" destination="AXk-ld-hgi" id="eCD-Lg-LpN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ma-xV-x6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,7 +368,7 @@
         <!--Setup Page Fourth View Controller-->
         <scene sceneID="bdq-ah-RBI">
             <objects>
-                <viewController storyboardIdentifier="setupPageFourthScene" id="lwF-U0-zAD" customClass="SetupPageFourthViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageFourthScene" id="lwF-U0-zAD" customClass="SetupPageFourthViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wOZ-Wl-el5"/>
                         <viewControllerLayoutGuide type="bottom" id="ghW-Zw-Ch4"/>
@@ -404,7 +404,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareNotificationsPrivilegeButtonPressed:" destination="lwF-U0-zAD" eventType="touchUpInside" id="3vG-bj-xk1"/>
+                                    <action selector="sharePrivilegeButtonPressed:" destination="lwF-U0-zAD" eventType="touchUpInside" id="hPP-jC-nvr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Un0-I9-4E6">
@@ -439,7 +439,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="shareNotificationsPrivilegeButton" destination="TIs-yf-Kao" id="VCd-7S-Hbh"/>
+                        <outlet property="sharePrivilegeButton" destination="TIs-yf-Kao" id="7Km-cM-hRT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HR9-gd-LCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
