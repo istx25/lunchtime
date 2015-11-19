@@ -142,7 +142,7 @@
         <!--Setup Page Second View Controller-->
         <scene sceneID="qTt-ra-wFc">
             <objects>
-                <viewController storyboardIdentifier="setupPageSecondScene" id="qce-pi-ydj" customClass="SetupPageSecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageSecondScene" id="qce-pi-ydj" customClass="SetupPageSecondViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="apy-1i-Qi4"/>
                         <viewControllerLayoutGuide type="bottom" id="Tcz-o3-QXQ"/>
@@ -203,7 +203,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="priceLimitSegmentedControl" destination="IEA-c1-8OP" id="8HM-qU-OVU"/>
+                        <outlet property="priceLimitSegmentedControl" destination="IEA-c1-8OP" id="a7f-3C-mjy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-23-NKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
