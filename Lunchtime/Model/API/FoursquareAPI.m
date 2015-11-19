@@ -8,7 +8,7 @@
 
 #import "FoursquareAPI.h"
 #import "LunchtimeLocationManager.h"
-#import "LunchtimeGeocoder.h"
+#import "Lunchtime-Swift.h"
 #import "Restaurant.h"
 #import "User.h"
 
@@ -42,7 +42,7 @@ static NSString *kResultsLimit = @"&limit=50";
     __block NSArray *restaurantsArray = [NSArray new];
     
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
-    NSString *price = [NSString stringWithFormat:@"&price=%u", user.priceLimit + 1];
+    NSString *price = [NSString stringWithFormat:@"&price=%ld", user.priceLimit + 1];
     NSString *radius = [NSString stringWithFormat:@"&radius=%@", user.preferredDistance];
     
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
@@ -78,8 +78,6 @@ static NSString *kResultsLimit = @"&limit=50";
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm beginWriteTransaction];
 
-    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
-
     for (NSDictionary *restaurant in restaurants) {
 
         Restaurant *newRestaurant = [[Restaurant alloc] init];
@@ -103,16 +101,15 @@ static NSString *kResultsLimit = @"&limit=50";
 
         [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
 
-        [geocoder reverseGeocodeLocationWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) withCompletionHandler:^(CLPlacemark *placemark) {
+        [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) handler:^(CLPlacemark *placemark) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 newRestaurant.thoroughfare = placemark.thoroughfare;
-                
+
                 [[RLMRealm defaultRealm] beginWriteTransaction];
                 [Restaurant createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:newRestaurant];
                 [[RLMRealm defaultRealm] commitWriteTransaction];
             });
         }];
-
     }
 
     [realm commitWriteTransaction];

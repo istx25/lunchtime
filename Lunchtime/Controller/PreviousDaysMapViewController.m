@@ -8,7 +8,6 @@
 
 #import "PreviousDaysMapViewController.h"
 #import "LunchtimeLocationManager.h"
-#import "LunchtimeGeocoder.h"
 #import <MapKit/MapKit.h>
 #import "Restaurant.h"
 #import "User.h"
@@ -42,7 +41,6 @@ static int const kMapZoomValue = 2100;
 
     for (Restaurant *restaurant in self.user.savedRestaurants) {
         restaurant.coordinate = CLLocationCoordinate2DMake(restaurant.latitude, restaurant.longitude);
-//        restaurant.title = restaurant.name;
         [self.mapView addAnnotation:restaurant];
     }
 }
