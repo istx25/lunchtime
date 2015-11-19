@@ -158,7 +158,8 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)blockButtonPressed:(UIButton *)sender {
-    [self updateUIWithNewRestaurantObject];
+    self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
+    [self checkInStatusDidChange];
     [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 }
 
