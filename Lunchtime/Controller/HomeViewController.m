@@ -143,7 +143,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
     [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
     [self checkInStatusDidChange];
-    [self setEnjoyNotification];
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
@@ -188,6 +187,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
         [self.somethingElseButton setEnabled:NO];
         [self.somethingElseButton setAlpha:0.7];
         [self setIsCheckedIn:YES];
+        
+        [self setEnjoyNotification];
     }
 }
 
