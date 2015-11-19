@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A50C5DDB1BFBB3C2003E3516 /* UIAlertController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */; };
 		A50C5DE21BFBBCAC003E3516 /* LunchtimeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */; };
+		A535BA441BFD205E005F93F4 /* CurrentRestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */; };
+		A535BA471BFD2913005F93F4 /* CurrentRestaurantView.m in Sources */ = {isa = PBXBuildFile; fileRef = A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */; };
 		A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */; };
 		A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */; };
 		A55FBB921BF96A2300C30763 /* LunchtimeGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB911BF96A2300C30763 /* LunchtimeGeocoder.m */; };
@@ -55,6 +57,9 @@
 		A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Extras.swift"; path = "Lib/UIAlertController+Extras.swift"; sourceTree = "<group>"; };
 		A50C5DE01BFBBCAC003E3516 /* LunchtimeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeNotification.h; path = Model/Notification/LunchtimeNotification.h; sourceTree = "<group>"; };
 		A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeNotification.m; path = Model/Notification/LunchtimeNotification.m; sourceTree = "<group>"; };
+		A535BA431BFD205E005F93F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CurrentRestaurantView.xib; sourceTree = "<group>"; };
+		A535BA451BFD2913005F93F4 /* CurrentRestaurantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentRestaurantView.h; path = View/CurrentRestaurantView.h; sourceTree = "<group>"; };
+		A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentRestaurantView.m; path = View/CurrentRestaurantView.m; sourceTree = "<group>"; };
 		A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysTableViewController.h; path = Controller/PreviousDaysTableViewController.h; sourceTree = "<group>"; };
 		A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysTableViewController.m; path = Controller/PreviousDaysTableViewController.m; sourceTree = "<group>"; };
 		A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeLocationManager.h; path = Model/Location/LunchtimeLocationManager.h; sourceTree = "<group>"; };
@@ -161,6 +166,8 @@
 				A55FBBC71BFA70C200C30763 /* Helper */,
 				A55FBBC41BFA6FC900C30763 /* LunchtimeTableViewCell.h */,
 				A55FBBC51BFA6FC900C30763 /* LunchtimeTableViewCell.m */,
+				A535BA451BFD2913005F93F4 /* CurrentRestaurantView.h */,
+				A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -275,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */,
+				A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -419,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A535BA441BFD205E005F93F4 /* CurrentRestaurantView.xib in Resources */,
 				A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */,
 				A5C074851BF6C8D900F23533 /* LaunchScreen.storyboard in Resources */,
 				A5C074821BF6C8D900F23533 /* Assets.xcassets in Resources */,
@@ -482,6 +491,7 @@
 				A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */,
 				A5C1EE641BFC395900DACF7F /* SetupPageFirstViewController.m in Sources */,
 				A5C1EE611BFC2A2200DACF7F /* SetupPageFourthViewController.m in Sources */,
+				A535BA471BFD2913005F93F4 /* CurrentRestaurantView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +514,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A535BA431BFD205E005F93F4 /* Base */,
+			);
+			name = CurrentRestaurantView.xib;
+			sourceTree = "<group>";
+		};
 		A5C0747E1BF6C8D900F23533 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
