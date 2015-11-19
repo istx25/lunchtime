@@ -174,9 +174,17 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 }
 
 - (IBAction)blockButtonPressed:(UIButton *)sender {
-    self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
-    [self checkInStatusDidChange];
-    [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+
+    NSString *alertTitle = [NSString stringWithFormat:@"This will block %@ from ever being presented again.", self.currentRestaurant.title];
+    UIAlertController *alert = [[UIAlertController alloc] initWithTitle:alertTitle preferredStyle:UIAlertControllerStyleActionSheet];
+    [alert addCancelAction:@"Cancel" handler:nil];
+    [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
+        self.shouldHideOpenInMapsButton = !self.shouldHideOpenInMapsButton;
+        [self checkInStatusDidChange];
+        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+    }];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - <LunchtimeLocationManagerDelegate>
