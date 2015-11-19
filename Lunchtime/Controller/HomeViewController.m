@@ -137,8 +137,12 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
+
+    if (!self.isCheckedIn) {
+        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
+    }
+
     [self setShouldHideOpenInMapsButton:!self.shouldHideOpenInMapsButton];
-    [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     [self checkInStatusDidChange];
     [self setEnjoyNotification];
 }
