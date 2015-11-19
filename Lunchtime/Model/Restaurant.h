@@ -19,6 +19,7 @@
 @property (nonatomic) NSString *category;
 @property (nonatomic) NSString *thoroughfare;
 @property (nonatomic) NSString *address;
+@property (nonatomic) NSString *url;
 
 @end
 
