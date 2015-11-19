@@ -7,7 +7,7 @@
 //
 
 #import "LunchtimeMaps.h"
-#import "LunchtimeGeocoder.h"
+#import "Lunchtime-Swift.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
@@ -30,8 +30,7 @@ static NSString *kBaseGoogleMapsURL = @"comgooglemaps://?";
         return;
     }
 
-    LunchtimeGeocoder *geocoder = [LunchtimeGeocoder new];
-    [geocoder geocodeLocationWithAddress:address withCompletionHandler:^(CLLocationDegrees latitude, CLLocationDegrees longitude) {
+    [LunchtimeGeocoder geocodeRequestWithAddress:address handler:^(CLLocationDegrees latitude, CLLocationDegrees longitude) {
         MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude) addressDictionary:nil];
         [[[MKMapItem alloc] initWithPlacemark:endLocation] openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeTransit}];
     }];

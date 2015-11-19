@@ -54,15 +54,13 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
 
     [self commitRealmChanges];
     [self setLunchtimeNotification];
-    
 }
 
 - (void)setLunchtimeNotification {
-    
     if (!self.notificationSwitch.on) {
-        
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         NSLog(@"%ld", [[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+
         return;
     }
     
@@ -92,6 +90,12 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
     self.priceLimitSegmentedControl.selectedSegmentIndex = self.user.priceLimit;
     self.lunchtimeDatePicker.date = self.user.lunchtime;
     self.lunchtimeDatePicker.datePickerMode = UIDatePickerModeTime;
+
+    if (![[UIApplication sharedApplication] scheduledLocalNotifications].count == 0) {
+        self.notificationSwitch.on = YES;
+    } else {
+        self.notificationSwitch.on = NO;
+    }
 }
 
 - (void)commitRealmChanges {
