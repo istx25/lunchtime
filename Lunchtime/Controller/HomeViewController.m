@@ -113,6 +113,7 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
+    [[UIApplication sharedApplication] scheduleLocalNotification:[EnjoyNotification enjoyNotification]];
 }
 
 - (IBAction)noButtonPressed:(UIButton *)sender {
