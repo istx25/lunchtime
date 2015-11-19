@@ -56,14 +56,12 @@
 
     switch ([CLLocationManager authorizationStatus]) {
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            break;
+            [self.manager startUpdatingLocation];
         case kCLAuthorizationStatusAuthorizedAlways:
-            break;
+            [self.manager startUpdatingLocation];
         default:
             [self setup];
     }
-
-    [self.manager startUpdatingLocation];
 }
 
 - (void)stop {

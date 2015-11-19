@@ -7,7 +7,6 @@
 //
 
 #import "FoursquareAPI.h"
-#import "LunchtimeLocationManager.h"
 #import "Lunchtime-Swift.h"
 #import "Restaurant.h"
 #import "User.h"
@@ -37,39 +36,37 @@ static NSString *kResultsLimit = @"&limit=50";
     return self;
 }
 
-- (void)findRestaurantsForUser:(User *)user withCompletionHandler:(void (^)(void))completionHandler {
-    
+- (void)findRestaurantsForUser:(User *)user {
+
     __block NSArray *restaurantsArray = [NSArray new];
-    
+
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
     NSString *price = [NSString stringWithFormat:@"&price=%ld", user.priceLimit + 1];
     NSString *radius = [NSString stringWithFormat:@"&radius=%@", user.preferredDistance];
-    
+
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
-    
+
     NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius];
 
-    
+
     NSURL *url = [NSURL URLWithString:URLString];
-    
+
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (!error) {
-            
-            NSError *jsonError = nil;
-            
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-            
-            restaurantsArray = jsonDict[@"response"][@"groups"][0][@"items"];
-            
-            [self createRestaurants:restaurantsArray];
-            
-        }
 
-        completionHandler();
+        if (!error) {
+
+            NSError *jsonError = nil;
+
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+
+            restaurantsArray = jsonDict[@"response"][@"groups"][0][@"items"];
+
+            [self createRestaurants:restaurantsArray];
+
+        }
     }];
-                            
+
     [task resume];
 }
 
@@ -113,6 +110,7 @@ static NSString *kResultsLimit = @"&limit=50";
     }
 
     [realm commitWriteTransaction];
+    [self.delegate requestDidFinish];
 }
 
 @end

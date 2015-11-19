@@ -6,15 +6,22 @@
 //  Copyright © 2015 Alex. All rights reserved.
 //
 
-#import <Realm/Realm.h>
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+
+@protocol FoursquareAPIDelegate <NSObject>
+
+- (void)requestDidFinish;
+
+@end
 
 @class User;
 
 @interface FoursquareAPI : NSObject
 
+@property (nonatomic, weak) id <FoursquareAPIDelegate> delegate;
+
 - (instancetype)initWithLocation:(CLLocation *)location;
-- (void)findRestaurantsForUser:(User *)user withCompletionHandler:(void (^)(void))completionHandler;
+- (void)findRestaurantsForUser:(User *)user;
 
 @end
