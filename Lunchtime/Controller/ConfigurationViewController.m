@@ -90,6 +90,12 @@ static NSString *kUserCreatedFlag = @"USER_CREATED";
     self.priceLimitSegmentedControl.selectedSegmentIndex = self.user.priceLimit;
     self.lunchtimeDatePicker.date = self.user.lunchtime;
     self.lunchtimeDatePicker.datePickerMode = UIDatePickerModeTime;
+
+    if (![[UIApplication sharedApplication] scheduledLocalNotifications].count == 0) {
+        self.notificationSwitch.on = YES;
+    } else {
+        self.notificationSwitch.on = NO;
+    }
 }
 
 - (void)commitRealmChanges {
