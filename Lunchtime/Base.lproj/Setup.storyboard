@@ -287,7 +287,7 @@
         <!--Setup Page Third View Controller-->
         <scene sceneID="OAz-Xl-R8c">
             <objects>
-                <viewController storyboardIdentifier="setupPageThirdScene" id="AB3-lR-DlV" customClass="SetupPageThirdViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setupPageThirdScene" id="AB3-lR-DlV" customClass="SetupPageThirdViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Xh-xG-f6p"/>
                         <viewControllerLayoutGuide type="bottom" id="BRW-5F-XwJ"/>
@@ -316,7 +316,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareLocationPrivilegeButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="UAm-Hg-9iS"/>
+                                    <action selector="sharePrivilegeButtonPressed:" destination="AB3-lR-DlV" eventType="touchUpInside" id="S1B-Xd-6c8"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-fc-tva">
@@ -358,7 +358,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="shareLocationPrivilegeButton" destination="AXk-ld-hgi" id="gvj-dI-xa4"/>
+                        <outlet property="sharePrivilegeButton" destination="AXk-ld-hgi" id="eCD-Lg-LpN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ma-xV-x6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
