@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 static NSString *kOpenInMapsButtonPressed = @"OpenInMapsButtonPressed";
+static NSString *kCategoryButtonPressed = @"CategoryButtonPressed";
 
 @interface CurrentRestaurantView : UIView
 
 @property (nonatomic, weak) IBOutlet UIButton *openInMapsButton;
+@property (nonatomic, weak) IBOutlet UIButton *categoryButton;
 @property (nonatomic, weak) IBOutlet UILabel *headerTextLabel;
 
 - (void)addConstraintsTo:(UIView *)currentRestaurantView onContainingView:(UIView *)currentRestaurantViewContainer;
