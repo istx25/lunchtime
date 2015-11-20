@@ -26,14 +26,6 @@
     return defaultManager;
 }
 
-- (BOOL)needsSetup {
-    if (kCLAuthorizationStatusNotDetermined == [CLLocationManager authorizationStatus]) {
-        return YES;
-    }
-
-    return NO;
-}
-
 #pragma mark - Location Manager Lifecycle
 - (void)setup {
     if (self.manager) {
