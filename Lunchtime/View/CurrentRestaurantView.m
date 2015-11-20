@@ -25,6 +25,14 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kOpenInMapsButtonPressed object:nil];
 }
 
+- (IBAction)categoryButtonPressed:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kCategoryButtonPressed object:nil];
+}
+
+- (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kReloadButtonPressed object:nil];
+}
+
 - (void)addConstraintsTo:(UIView *)currentRestaurantView onContainingView:(UIView *)currentRestaurantViewContainer {
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:currentRestaurantView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:currentRestaurantViewContainer attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:currentRestaurantView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:currentRestaurantViewContainer attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
