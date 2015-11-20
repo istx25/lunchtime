@@ -16,7 +16,6 @@
 #import "FoursquareAPI.h"
 #import "User.h"
 
-static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
@@ -38,7 +37,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 @property (nonatomic) BOOL shouldDisplayMapsButton;
 @property (nonatomic) BOOL hasUserCheckedIn;
 @property (nonatomic) BOOL hasReceivedDataBack;
-
 @end
 
 @implementation HomeViewController
@@ -96,7 +94,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
 #pragma mark - Update/Configure UI Methods
 - (void)reloadHeaderLabel {
-
     if (self.shouldDisplayMapsButton) {
         [self.restaurantView.headerTextLabel setText:[self headerTextLabelWithStateConstant:kCheckedInLabelConstant]];
     } else {
@@ -137,6 +134,15 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
     
     [self.restaurants removeObject:self.currentRestaurant];
+
+    if (self.restaurants.count == 0) {
+        [self headerTextLabelWithStateConstant:nil];
+        [self somethingElseButtonStateUI:YES];
+
+        return;
+    }
+
+    [self somethingElseButtonStateUI:NO];
     [self newRestaurant];
 }
 
@@ -174,18 +180,31 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     if (self.shouldDisplayMapsButton) {
         [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
         [self.restaurantView.openInMapsButton setHidden:NO];
-        [self.somethingElseButton setEnabled:NO];
-        [self.somethingElseButton setAlpha:0.7];
+        [self somethingElseButtonStateUI:YES];
         [self scheduleEnjoyNotification];
     } else {
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         [self.restaurantView.openInMapsButton setHidden:YES];
-        [self.somethingElseButton setEnabled:YES];
-        [self.somethingElseButton setAlpha:1.0];
+        [self somethingElseButtonStateUI:NO];
         [self newRestaurant];
     }
 
     [self reloadHeaderLabel];
+}
+
+- (void)somethingElseButtonStateUI:(BOOL)state {
+    if (state) {
+
+        if (self.restaurants.count == 0) {
+            [self.restaurantView.headerTextLabel setText:[NSString stringWithFormat:@"There are no more restaurants to display. Please refresh."]];
+        }
+
+        [self.somethingElseButton setEnabled:NO];
+        [self.somethingElseButton setAlpha:0.7];
+    } else {
+        [self.somethingElseButton setEnabled:YES];
+        [self.somethingElseButton setAlpha:1.0];
+    }
 }
 
 - (void)newRestaurant {
@@ -245,6 +264,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
         [self setRestaurants:[BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants]];
         [self restaurantObjectAtRandomIndex];
         [self reloadHeaderLabel];
+        [self somethingElseButtonStateUI:NO];
     });
 }
 
