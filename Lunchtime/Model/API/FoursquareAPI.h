@@ -11,7 +11,7 @@
 
 @protocol FoursquareAPIDelegate <NSObject>
 
-- (void)requestDidFinish;
+- (void)requestDidFinishWithRestaurants:(NSMutableArray *)restaurants;
 
 @end
 
