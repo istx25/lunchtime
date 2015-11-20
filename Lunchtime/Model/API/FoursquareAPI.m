@@ -43,10 +43,11 @@ static NSString *kResultsLimit = @"&limit=50";
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
     NSString *price = [NSString stringWithFormat:@"&price=%ld", user.priceLimit + 1];
     NSString *radius = [NSString stringWithFormat:@"&radius=%@", user.preferredDistance];
+    NSString *category = [NSString stringWithFormat:@"&section=%@", user.category];
 
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
 
-    NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius];
+    NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius, category];
 
 
     NSURL *url = [NSURL URLWithString:URLString];
