@@ -60,7 +60,7 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [super viewDidLoad];
 
     [self instantiateLocationManager];
-
+    [self setupNotificationCenter];
     [self launchSetup];
 }
 
@@ -75,9 +75,13 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 }
 
 #pragma mark - Setup Methods
-- (void)launchSetup {
+- (void)setupNotificationCenter {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(categoryButtonPressed) name:kCategoryButtonPressed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadButtonPressed) name:kReloadButtonPressed object:nil];
+}
+
+- (void)launchSetup {
     [self setHasReceivedDataBack:NO];
     [self.restaurantView.headerTextLabel setText:@"Fetching..."];
     [self.restaurantView.openInMapsButton setHidden:YES];
@@ -120,6 +124,11 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [self performSegueWithIdentifier:kSegueToCategoryPopover sender:self];
 }
 
+- (void)reloadButtonPressed {
+    [self launchSetup];
+    [self.locationManager start];
+}
+
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
 
     if (!self.hasUserCheckedIn) {
@@ -157,14 +166,6 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-
-- (IBAction)refresh:(id)sender {
-    
-    [self launchSetup];
-    [self.locationManager start];
-    
 }
 
 #pragma mark - State Selection
@@ -240,17 +241,16 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 
 #pragma mark - FoursquareAPIDelegate
 - (void)requestDidFinishWithRestaurants:(NSMutableArray *)restaurants {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hasReceivedDataBack) {
             return;
         }
 
+        [self configureLocationLabel];
         [self setHasReceivedDataBack:YES];
         [self.locationManager stop];
         [self setRestaurants:[BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants]];
         [self restaurantObjectAtRandomIndex];
-        [self configureLocationLabel];
         [self reloadHeaderLabel];
     });
 }

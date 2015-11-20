@@ -10,12 +10,15 @@
 
 static NSString *kOpenInMapsButtonPressed = @"OpenInMapsButtonPressed";
 static NSString *kCategoryButtonPressed = @"CategoryButtonPressed";
+static NSString *kReloadButtonPressed = @"ReloadButtonPressed";
 
 @interface CurrentRestaurantView : UIView
 
 @property (nonatomic, weak) IBOutlet UIButton *openInMapsButton;
-@property (nonatomic, weak) IBOutlet UIButton *categoryButton;
 @property (nonatomic, weak) IBOutlet UILabel *headerTextLabel;
+
+@property (nonatomic, weak) IBOutlet UIButton *categoryButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *reloadButton;
 
 - (void)addConstraintsTo:(UIView *)currentRestaurantView onContainingView:(UIView *)currentRestaurantViewContainer;
 

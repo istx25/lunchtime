@@ -42,21 +42,25 @@
                     <rect key="frame" x="0.0" y="134" width="320" height="45"/>
                     <animations/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPo-oK-lrF">
-                    <rect key="frame" x="16" y="5" width="77" height="30"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ST-F1-S1l">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                    <state key="normal" title="Categories">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="categoryButtonPressed:" destination="WRa-Ff-qcp" eventType="touchUpInside" id="JRp-Qg-cdO"/>
-                    </connections>
-                </button>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="D5Z-MT-bmH"/>
+                        <barButtonItem systemItem="refresh" id="q0Z-6K-eSa">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="reloadButtonPressed:" destination="WRa-Ff-qcp" id="40i-6M-fa3"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </toolbar>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="4ST-F1-S1l" secondAttribute="trailing" id="5Fw-99-ig4"/>
                 <constraint firstItem="7sU-io-0hS" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" id="7AA-IT-c96"/>
                 <constraint firstAttribute="bottom" secondItem="7sU-io-0hS" secondAttribute="bottom" constant="7" id="8jO-WC-4Ny"/>
                 <constraint firstAttribute="trailing" secondItem="cZ7-a7-VMT" secondAttribute="trailing" constant="20" symbolic="YES" id="BRf-gh-Bph"/>
@@ -67,9 +71,9 @@
                 <constraint firstAttribute="trailing" secondItem="eBy-5b-u9r" secondAttribute="trailing" id="SAR-Ms-Ist"/>
                 <constraint firstItem="cZ7-a7-VMT" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" constant="20" symbolic="YES" id="YAX-aT-kry"/>
                 <constraint firstItem="Ni5-Y0-oup" firstAttribute="height" secondItem="eBy-5b-u9r" secondAttribute="height" id="YJI-Ow-sQ1"/>
-                <constraint firstItem="EPo-oK-lrF" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" constant="16" id="bgs-Ir-dMK"/>
-                <constraint firstItem="EPo-oK-lrF" firstAttribute="top" secondItem="WRa-Ff-qcp" secondAttribute="top" constant="5" id="gyw-Lo-rxh"/>
+                <constraint firstItem="4ST-F1-S1l" firstAttribute="top" secondItem="WRa-Ff-qcp" secondAttribute="top" id="dG5-7J-1wJ"/>
                 <constraint firstItem="cZ7-a7-VMT" firstAttribute="centerX" secondItem="WRa-Ff-qcp" secondAttribute="centerX" id="l2Y-Eb-TSG"/>
+                <constraint firstItem="4ST-F1-S1l" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" id="mfr-40-dMd"/>
                 <constraint firstItem="Ni5-Y0-oup" firstAttribute="leading" secondItem="WRa-Ff-qcp" secondAttribute="leading" id="ogk-gI-UX9"/>
                 <constraint firstItem="eBy-5b-u9r" firstAttribute="top" secondItem="WRa-Ff-qcp" secondAttribute="top" constant="20" symbolic="YES" id="qcg-N2-Bla"/>
                 <constraint firstItem="cZ7-a7-VMT" firstAttribute="top" secondItem="eBy-5b-u9r" secondAttribute="bottom" constant="8" symbolic="YES" id="rRP-pP-jGG"/>
@@ -81,9 +85,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomSpacerView" destination="Ni5-Y0-oup" id="T0g-YE-7Ej"/>
-                <outlet property="categoryButton" destination="EPo-oK-lrF" id="qJd-PJ-wd5"/>
                 <outlet property="headerTextLabel" destination="cZ7-a7-VMT" id="Q5C-1Q-vtK"/>
                 <outlet property="openInMapsButton" destination="7sU-io-0hS" id="0KV-v2-Ph4"/>
+                <outlet property="reloadButton" destination="q0Z-6K-eSa" id="Uwq-Ib-29a"/>
                 <outlet property="topSpacerView" destination="eBy-5b-u9r" id="jSp-fc-KQf"/>
             </connections>
             <point key="canvasLocation" x="389" y="69.5"/>
