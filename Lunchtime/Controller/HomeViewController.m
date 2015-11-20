@@ -11,6 +11,7 @@
 #import "LunchtimeLocationManager.h"
 #import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
+#import "BlockedRestaurantsFilter.h"
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
@@ -75,10 +76,11 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 #pragma mark - Setup Methods
 - (void)launchSetup {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
-    [self setHasReceivedDataBack:NO];
     [self.restaurantView.headerTextLabel setText:@"Fetching..."];
     [self.restaurantView.openInMapsButton setHidden:YES];
     [self setShouldDisplayMapsButton:NO];
+    [self setHasReceivedDataBack:NO];
+    [self setHasUserCheckedIn:NO];
 }
 
 - (void)instantiateLocationManager {
@@ -118,6 +120,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     }
 
     [self setShouldDisplayMapsButton:!self.shouldDisplayMapsButton];
+    [self setHasUserCheckedIn:!self.hasUserCheckedIn];
+    
     [self checkinStatusDidChange];
 }
 
@@ -133,13 +137,15 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [alert addCancelAction:@"Cancel" handler:nil];
 
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
-        [self setShouldDisplayMapsButton:!self.shouldDisplayMapsButton];
-        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 
-        if (self.hasUserCheckedIn) {
+        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+        
+        if (self.shouldDisplayMapsButton) {
+            
+            self.shouldDisplayMapsButton = NO;
             [self checkinStatusDidChange];
         }
-
+        
         [self newRestaurant];
     }];
 
@@ -162,13 +168,11 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
         [self.somethingElseButton setEnabled:NO];
         [self.somethingElseButton setAlpha:0.7];
         [self scheduleEnjoyNotification];
-        [self setHasUserCheckedIn:YES];
     } else {
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         [self.restaurantView.openInMapsButton setHidden:YES];
         [self.somethingElseButton setEnabled:YES];
         [self.somethingElseButton setAlpha:1.0];
-        [self setHasUserCheckedIn:NO];
         [self newRestaurant];
     }
 
@@ -229,7 +233,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
         [self setHasReceivedDataBack:YES];
         [self.locationManager stop];
-        [self setRestaurants:restaurants];
+        [self setRestaurants:[BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants]];
         [self restaurantObjectAtRandomIndex];
         [self configureLocationLabel];
         [self reloadHeaderLabel];
