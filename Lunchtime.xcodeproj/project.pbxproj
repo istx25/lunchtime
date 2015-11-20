@@ -41,6 +41,7 @@
 		A5E105A41BF6F1AA00C71023 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105A31BF6F1AA00C71023 /* User.m */; };
 		A5E105AA1BF7C95600C71023 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E105A91BF7C95600C71023 /* MapKit.framework */; };
 		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
+		FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		A5E105A31BF6F1AA00C71023 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
 		A5E105A91BF7C95600C71023 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
+		FA414E7C1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockedRestaurantsFilter.h; sourceTree = "<group>"; };
+		FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockedRestaurantsFilter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,8 @@
 				A5E105A31BF6F1AA00C71023 /* User.m */,
 				A55FBBD11BFAA42300C30763 /* Restaurant.h */,
 				A55FBBD21BFAA42300C30763 /* Restaurant.m */,
+				FA414E7C1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.h */,
+				FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				A57559301BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift in Sources */,
 				A55FBBDE1BFAD56A00C30763 /* Realm+Convenience.m in Sources */,
 				A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */,
+				FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */,
 				A51E60841BFE4EC800F65055 /* LunchtimeGeocoder.swift in Sources */,
 				A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */,
 				A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */,
