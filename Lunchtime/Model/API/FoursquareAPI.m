@@ -43,10 +43,11 @@ static NSString *kResultsLimit = @"&limit=50";
     NSString *location = [NSString stringWithFormat:@"&ll=%f,%f", self.latitude, self.longitude];
     NSString *price = [NSString stringWithFormat:@"&price=%ld", user.priceLimit + 1];
     NSString *radius = [NSString stringWithFormat:@"&radius=%@", user.preferredDistance];
+    NSString *category = [NSString stringWithFormat:@"&section=%@", user.category];
 
     NSString *exploreAPI = [NSString stringWithFormat:@"%@&client_id=%@&client_secret=%@", kExploreAPIURL, kClientID, kClientSecret];
 
-    NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius];
+    NSString *URLString = [NSString stringWithFormat:@"%@%@%@%@%@%@", exploreAPI, kResultsLimit, location, price, radius, category];
 
 
     NSURL *url = [NSURL URLWithString:URLString];
@@ -72,8 +73,7 @@ static NSString *kResultsLimit = @"&limit=50";
 
 - (void)createRestaurants:(NSArray *)restaurants {
 
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
+    NSMutableArray *finishedRestaurants = [NSMutableArray new];
 
     for (NSDictionary *restaurant in restaurants) {
 
@@ -96,21 +96,19 @@ static NSString *kResultsLimit = @"&limit=50";
             newRestaurant.address = formattedAddress[0];
         }
 
-        [Restaurant createOrUpdateInRealm:realm withValue:newRestaurant];
-
         [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) handler:^(CLPlacemark *placemark) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 newRestaurant.thoroughfare = placemark.thoroughfare;
 
-                [[RLMRealm defaultRealm] beginWriteTransaction];
-                [Restaurant createOrUpdateInRealm:[RLMRealm defaultRealm] withValue:newRestaurant];
-                [[RLMRealm defaultRealm] commitWriteTransaction];
-            });
+           });
         }];
-    }
+        
+        [finishedRestaurants addObject:newRestaurant];
+        
+        }
 
-    [realm commitWriteTransaction];
-    [self.delegate requestDidFinish];
+    [self.delegate requestDidFinishWithRestaurants:finishedRestaurants];
 }
 
 @end

@@ -34,6 +34,7 @@ class SetupPageFifthViewController: UIViewController {
         user.lunchtime = picker.date
         user.preferredDistance = NSNumber(integer: 1500)
         user.identifier = NSNumber(integer: 1)
+        user.category = "food"
 
         do {
             realm.beginWriteTransaction()
