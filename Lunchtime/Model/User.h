@@ -21,6 +21,7 @@
 @property (nonatomic) NSNumber<RLMInt> *preferredDistance;
 @property (nonatomic) NSInteger priceLimit;
 @property (nonatomic) NSNumber<RLMInt> *identifier;
+@property (nonatomic) NSString *category;
 
 @property (nonatomic) RLMArray<Restaurant *><Restaurant> *blacklistedRestaurants;
 @property (nonatomic) RLMArray<Restaurant *><Restaurant> *savedRestaurants;

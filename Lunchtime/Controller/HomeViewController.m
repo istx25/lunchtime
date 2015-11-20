@@ -11,6 +11,7 @@
 #import "LunchtimeLocationManager.h"
 #import "CurrentRestaurantView.h"
 #import "Realm+Convenience.h"
+#import "BlockedRestaurantsFilter.h"
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
@@ -32,8 +33,8 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 @property (nonatomic, weak) CurrentRestaurantView *restaurantView;
 
 @property (nonatomic) LunchtimeLocationManager *locationManager;
-@property (nonatomic) RLMResults<Restaurant *> *restaurants;
-@property (nonatomic) RLMNotificationToken *token;
+
+@property (nonatomic) NSMutableArray *restaurants;
 @property (nonatomic) Restaurant *currentRestaurant;
 
 @property (nonatomic) BOOL shouldDisplayMapsButton;
@@ -61,10 +62,6 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [self instantiateLocationManager];
 
     [self launchSetup];
-
-    self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
-        [self setRestaurants:[Restaurant allObjects]];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,7 +70,7 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 
     if (!self.restaurants) {
-        [[LunchtimeLocationManager defaultManager] start];
+        [self.locationManager start];
     }
 }
 
@@ -85,37 +82,19 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [self.restaurantView.headerTextLabel setText:@"Fetching..."];
     [self.restaurantView.openInMapsButton setHidden:YES];
     [self setShouldDisplayMapsButton:NO];
+    [self setHasReceivedDataBack:NO];
+    [self setHasUserCheckedIn:NO];
 }
 
 - (void)instantiateLocationManager {
     [self setLocationManager:[LunchtimeLocationManager defaultManager]];
     [self.locationManager setDelegate:self];
 
-    if ([self.locationManager needsSetup]) {
-        [self.locationManager setup];
-    }
-
     [self.locationManager start];
-}
-
-#pragma mark - Error Checking Methods
-- (BOOL)isRealmDataValid {
-    if ([RLMRealm defaultRealm].isEmpty || [User objectForPrimaryKey:@1].isInvalidated || self.currentRestaurant.isInvalidated) {
-        return NO;
-    }
-
-    if (!self.currentRestaurant) {
-        return NO;
-    }
-
-    return YES;
 }
 
 #pragma mark - Update/Configure UI Methods
 - (void)reloadHeaderLabel {
-    if (![self isRealmDataValid]) {
-        return;
-    }
 
     if (self.shouldDisplayMapsButton) {
         [self.restaurantView.headerTextLabel setText:[self headerTextLabelWithStateConstant:kCheckedInLabelConstant]];
@@ -142,19 +121,20 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
-    if (![self isRealmDataValid]) {
-        return;
-    }
 
     if (!self.hasUserCheckedIn) {
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }
 
     [self setShouldDisplayMapsButton:!self.shouldDisplayMapsButton];
+    [self setHasUserCheckedIn:!self.hasUserCheckedIn];
+    
     [self checkinStatusDidChange];
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
+    
+    [self.restaurants removeObject:self.currentRestaurant];
     [self newRestaurant];
 }
 
@@ -164,17 +144,27 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [alert addCancelAction:@"Cancel" handler:nil];
 
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
-        [self setShouldDisplayMapsButton:!self.shouldDisplayMapsButton];
-        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
 
-        if (self.hasUserCheckedIn) {
+        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+        
+        if (self.shouldDisplayMapsButton) {
+            
+            self.shouldDisplayMapsButton = NO;
             [self checkinStatusDidChange];
         }
-
+        
         [self newRestaurant];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (IBAction)refresh:(id)sender {
+    
+    [self launchSetup];
+    [self.locationManager start];
+    
 }
 
 #pragma mark - State Selection
@@ -193,13 +183,11 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
         [self.somethingElseButton setEnabled:NO];
         [self.somethingElseButton setAlpha:0.7];
         [self scheduleEnjoyNotification];
-        [self setHasUserCheckedIn:YES];
     } else {
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         [self.restaurantView.openInMapsButton setHidden:YES];
         [self.somethingElseButton setEnabled:YES];
         [self.somethingElseButton setAlpha:1.0];
-        [self setHasUserCheckedIn:NO];
         [self newRestaurant];
     }
 
@@ -251,7 +239,8 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 }
 
 #pragma mark - FoursquareAPIDelegate
-- (void)requestDidFinish {
+- (void)requestDidFinishWithRestaurants:(NSMutableArray *)restaurants {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hasReceivedDataBack) {
             return;
@@ -259,7 +248,7 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 
         [self setHasReceivedDataBack:YES];
         [self.locationManager stop];
-        [self setRestaurants:[Restaurant allObjects]];
+        [self setRestaurants:[BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants]];
         [self restaurantObjectAtRandomIndex];
         [self configureLocationLabel];
         [self reloadHeaderLabel];
