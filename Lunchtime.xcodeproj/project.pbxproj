@@ -40,6 +40,7 @@
 		A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105961BF6DB2500C71023 /* HomeViewController.m */; };
 		A5E105A41BF6F1AA00C71023 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105A31BF6F1AA00C71023 /* User.m */; };
 		A5E105AA1BF7C95600C71023 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E105A91BF7C95600C71023 /* MapKit.framework */; };
+		A5F24A331BFE9A0800622940 /* CategoryPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */; };
 		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		A5E105A21BF6F1AA00C71023 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
 		A5E105A31BF6F1AA00C71023 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
 		A5E105A91BF7C95600C71023 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryPopoverViewController.swift; path = Controller/CategoryPopoverViewController.swift; sourceTree = "<group>"; };
 		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -257,6 +259,7 @@
 				A5E105831BF6CFA300C71023 /* Setup */,
 				A5E105951BF6DB2500C71023 /* HomeViewController.h */,
 				A5E105961BF6DB2500C71023 /* HomeViewController.m */,
+				A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */,
 				A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */,
 				A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */,
 				A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */,
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E105A41BF6F1AA00C71023 /* User.m in Sources */,
+				A5F24A331BFE9A0800622940 /* CategoryPopoverViewController.swift in Sources */,
 				A55FBBD31BFAA42300C30763 /* Restaurant.m in Sources */,
 				A57559211BFD52B600BD8E37 /* SetupPageViewController.swift in Sources */,
 				A57559321BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift in Sources */,
