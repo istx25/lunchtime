@@ -33,7 +33,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 
 @property (nonatomic) NSMutableArray *restaurants;
-@property (nonatomic) NSMutableArray *checkedOutRestaurants;
 @property (nonatomic) Restaurant *currentRestaurant;
 
 @property (nonatomic) BOOL shouldDisplayMapsButton;
@@ -150,6 +149,14 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+- (IBAction)refresh:(id)sender {
+    
+    [self launchSetup];
+    [self.locationManager start];
+    
 }
 
 #pragma mark - State Selection
