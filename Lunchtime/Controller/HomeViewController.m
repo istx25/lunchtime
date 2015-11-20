@@ -30,8 +30,9 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 @property (nonatomic, weak) CurrentRestaurantView *restaurantView;
 
 @property (nonatomic) LunchtimeLocationManager *locationManager;
-@property (nonatomic) RLMResults<Restaurant *> *restaurants;
-@property (nonatomic) RLMNotificationToken *token;
+
+@property (nonatomic) NSMutableArray *restaurants;
+@property (nonatomic) NSMutableArray *checkedOutRestaurants;
 @property (nonatomic) Restaurant *currentRestaurant;
 
 @property (nonatomic) BOOL shouldDisplayMapsButton;
@@ -59,10 +60,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [self instantiateLocationManager];
 
     [self launchSetup];
-
-    self.token = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
-        [self setRestaurants:[Restaurant allObjects]];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +68,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 
     if (!self.restaurants) {
-        [[LunchtimeLocationManager defaultManager] start];
+        [self.locationManager start];
     }
 }
 
@@ -88,31 +85,11 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
     [self setLocationManager:[LunchtimeLocationManager defaultManager]];
     [self.locationManager setDelegate:self];
 
-    if ([self.locationManager needsSetup]) {
-        [self.locationManager setup];
-    }
-
     [self.locationManager start];
-}
-
-#pragma mark - Error Checking Methods
-- (BOOL)isRealmDataValid {
-    if ([RLMRealm defaultRealm].isEmpty || [User objectForPrimaryKey:@1].isInvalidated || self.currentRestaurant.isInvalidated) {
-        return NO;
-    }
-
-    if (!self.currentRestaurant) {
-        return NO;
-    }
-
-    return YES;
 }
 
 #pragma mark - Update/Configure UI Methods
 - (void)reloadHeaderLabel {
-    if (![self isRealmDataValid]) {
-        return;
-    }
 
     if (self.shouldDisplayMapsButton) {
         [self.restaurantView.headerTextLabel setText:[self headerTextLabelWithStateConstant:kCheckedInLabelConstant]];
@@ -135,9 +112,6 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
-    if (![self isRealmDataValid]) {
-        return;
-    }
 
     if (!self.hasUserCheckedIn) {
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
@@ -148,6 +122,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
+    
+    [self.restaurants removeObject:self.currentRestaurant];
     [self newRestaurant];
 }
 
@@ -244,7 +220,8 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 }
 
 #pragma mark - FoursquareAPIDelegate
-- (void)requestDidFinish {
+- (void)requestDidFinishWithRestaurants:(NSMutableArray *)restaurants {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hasReceivedDataBack) {
             return;
@@ -252,7 +229,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
         [self setHasReceivedDataBack:YES];
         [self.locationManager stop];
-        [self setRestaurants:[Restaurant allObjects]];
+        [self setRestaurants:restaurants];
         [self restaurantObjectAtRandomIndex];
         [self configureLocationLabel];
         [self reloadHeaderLabel];

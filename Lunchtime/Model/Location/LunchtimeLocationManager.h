@@ -21,7 +21,6 @@
 @property (nonatomic) CLLocation *currentLocation;
 
 + (instancetype)defaultManager;
-- (BOOL)needsSetup;
 
 - (void)setup;
 - (void)start;
