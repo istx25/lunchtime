@@ -19,6 +19,8 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 
+static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
+
 @interface HomeViewController () <LunchtimeLocationManagerDelegate, FoursquareAPIDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *checkInOutButton;
@@ -78,6 +80,7 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 #pragma mark - Setup Methods
 - (void)launchSetup {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(categoryButtonPressed) name:kCategoryButtonPressed object:nil];
     [self setHasReceivedDataBack:NO];
     [self.restaurantView.headerTextLabel setText:@"Fetching..."];
     [self.restaurantView.openInMapsButton setHidden:YES];
@@ -132,6 +135,10 @@ static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 #pragma mark - Actions
 - (void)openInMapsButtonPressed {
     [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
+}
+
+- (void)categoryButtonPressed {
+    [self performSegueWithIdentifier:kSegueToCategoryPopover sender:self];
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {

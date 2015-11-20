@@ -6,6 +6,112 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Category Popover View Controller-->
+        <scene sceneID="Ya0-z9-Whc">
+            <objects>
+                <viewController id="ea9-6S-H26" customClass="CategoryPopoverViewController" customModule="Lunchtime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KPL-CO-kkc"/>
+                        <viewControllerLayoutGuide type="bottom" id="u54-B3-c93"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iK4-FG-kFM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-Co-gLI">
+                                <rect key="frame" x="0.0" y="108" width="320" height="160"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="aue-jl-sgv" style="IBUITableViewCellStyleDefault" id="tO0-AZ-4Yo" customClass="LunchtimeTableViewCell" customModule="Lunchtime" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tO0-AZ-4Yo" id="IEa-ig-Fpa">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aue-jl-sgv">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ea9-6S-H26" id="GpJ-T1-Cep"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rg-XC-nEu">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem style="plain" id="e75-Rc-fD6">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vBv-py-1Zi">
+                                            <rect key="frame" x="16" y="7" width="49" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <state key="normal" title="Cancel">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TLX-ON-B1i"/>
+                                    <barButtonItem style="plain" id="gwd-aM-VYV">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="g85-ez-eRj">
+                                            <rect key="frame" x="255" y="7" width="49" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                            <state key="normal" title="Save">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.72858488475177308" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PWh-Co-gLI" secondAttribute="trailing" id="7fk-LI-SWd"/>
+                            <constraint firstItem="8rg-XC-nEu" firstAttribute="centerX" secondItem="iK4-FG-kFM" secondAttribute="centerX" id="Fsn-J4-k3k"/>
+                            <constraint firstItem="u54-B3-c93" firstAttribute="top" secondItem="PWh-Co-gLI" secondAttribute="bottom" constant="300" id="HVy-Pa-5dL"/>
+                            <constraint firstItem="8rg-XC-nEu" firstAttribute="leading" secondItem="iK4-FG-kFM" secondAttribute="leading" id="a56-Wd-GUB"/>
+                            <constraint firstItem="PWh-Co-gLI" firstAttribute="top" secondItem="8rg-XC-nEu" secondAttribute="bottom" id="aJD-Hn-Fk7"/>
+                            <constraint firstItem="PWh-Co-gLI" firstAttribute="leading" secondItem="iK4-FG-kFM" secondAttribute="leading" id="bhr-eC-Yzl"/>
+                            <constraint firstItem="8rg-XC-nEu" firstAttribute="top" secondItem="KPL-CO-kkc" secondAttribute="bottom" constant="44" id="fWF-Qs-27k"/>
+                            <constraint firstAttribute="trailing" secondItem="8rg-XC-nEu" secondAttribute="trailing" id="rsx-9U-a1E"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ejv-tX-6li" appends="YES" id="ga7-a0-Qmf"/>
+                        </connections>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="PWh-Co-gLI" id="nDG-IA-B8h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSV-db-YqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ejv-tX-6li">
+                    <connections>
+                        <action selector="gestureReceived:" destination="ea9-6S-H26" id="oe5-0B-5rB"/>
+                        <outlet property="delegate" destination="ea9-6S-H26" id="HLA-bS-gid"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1105" y="-312"/>
+        </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -155,6 +261,7 @@
                         <outlet property="locationLabel" destination="BbW-PZ-6TM" id="5Tf-RW-Wtm"/>
                         <outlet property="restaurantViewContainer" destination="nGl-NR-YuW" id="b73-Q8-Z3b"/>
                         <outlet property="somethingElseButton" destination="KQ0-fS-eXO" id="7xG-ZX-CFL"/>
+                        <segue destination="ea9-6S-H26" kind="presentation" identifier="SegueToCategoryPopover" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="mVI-it-FJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
