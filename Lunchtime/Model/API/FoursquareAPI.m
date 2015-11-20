@@ -98,9 +98,10 @@ static NSString *kResultsLimit = @"&limit=50";
 
         [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:CLLocationCoordinate2DMake(newRestaurant.latitude, newRestaurant.longitude) handler:^(CLPlacemark *placemark) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                newRestaurant.thoroughfare = placemark.thoroughfare;
 
+                [[RLMRealm defaultRealm] beginWriteTransaction];
+                newRestaurant.thoroughfare = placemark.thoroughfare;
+                [[RLMRealm defaultRealm] commitWriteTransaction];
            });
         }];
         
