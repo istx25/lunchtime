@@ -1,6 +1,6 @@
 # Lunchtime
 
-Lunchtime was built as a midterm project during the October 2015 iOS cohort at Lighthouse Labs. The team behind Lunchtime is [Alex Robertson](https://github.com/dcalexrobertson) and [Willow Belle](http://www.github.com/istx25) *(also known as Douglas)*. 
+Lunchtime was built as a midterm project during the October 2015 iOS cohort at Lighthouse Labs. The team behind Lunchtime is [Alex Robertson](https://github.com/dcalexrobertson) and [Willow Bumby](http://www.github.com/istx25) *(also known as Douglas)*. 
 
 ## License
 Lunchtime is released under the terms of the MIT license. See LICENSE.txt for more information or see http://opensource.org/licenses/MIT.
