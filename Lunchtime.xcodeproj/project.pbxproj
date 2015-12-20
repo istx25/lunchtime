@@ -267,7 +267,6 @@
 				A5E105831BF6CFA300C71023 /* Setup */,
 				A5E105951BF6DB2500C71023 /* HomeViewController.h */,
 				A5E105961BF6DB2500C71023 /* HomeViewController.m */,
-				A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */,
 				A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */,
 				A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */,
 				A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */,
@@ -463,7 +462,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E105A41BF6F1AA00C71023 /* User.m in Sources */,
-				A5F24A331BFE9A0800622940 /* CategoryPopoverViewController.swift in Sources */,
 				A55FBBD31BFAA42300C30763 /* Restaurant.m in Sources */,
 				A57559211BFD52B600BD8E37 /* SetupPageViewController.swift in Sources */,
 				A57559321BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift in Sources */,
