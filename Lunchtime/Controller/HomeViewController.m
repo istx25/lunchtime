@@ -2,8 +2,8 @@
 //  ViewController.m
 //  Lunchtime
 //
-//  Created by Willow Belle on 2015-11-13.
-//  Copyright © 2015 Cosmic Labs. All rights reserved.
+//  Created by Willow Bumby on 2015-11-13.
+//  Copyright © 2015 Lighthouse Labs. All rights reserved.
 //
 
 #import "HomeViewController.h"
@@ -15,10 +15,12 @@
 #import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
+#import "UILocalNotification+ScheduleEnjoyNotification.h"
 
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
+static NSString *kFetchingLabelConstant = @"Fetching...";
 
 static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 
@@ -30,15 +32,14 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 
 @property (nonatomic, weak) IBOutlet UIView *restaurantViewContainer;
-@property (nonatomic, weak) CurrentRestaurantView *restaurantView;
+@property (nonatomic) CurrentRestaurantView *restaurantView;
 
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 
 @property (nonatomic) NSMutableArray *restaurants;
 @property (nonatomic) Restaurant *currentRestaurant;
 
-@property (nonatomic) BOOL shouldDisplayMapsButton;
-@property (nonatomic) BOOL hasUserCheckedIn;
+@property (nonatomic) BOOL isCheckedIn;
 @property (nonatomic) BOOL hasReceivedDataBack;
 
 @end
@@ -49,9 +50,9 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 - (void)loadView {
     [super loadView];
 
-    [self setRestaurantView:[[CurrentRestaurantView alloc] init]];
+    self.restaurantView = [CurrentRestaurantView new];
+    self.restaurantView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.restaurantViewContainer addSubview:self.restaurantView];
-    [self.restaurantView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.restaurantView addConstraintsTo:self.restaurantView onContainingView:self.restaurantViewContainer];
 }
 
@@ -59,8 +60,14 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self instantiateLocationManager];
-    [self setupNotificationCenter];
+    self.locationManager = [LunchtimeLocationManager defaultManager];
+    self.locationManager.delegate = self;
+    [self.locationManager start];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(categoryButtonPressed) name:kCategoryButtonPressed object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadButtonPressed) name:kReloadButtonPressed object:nil];
+
     [self launchSetup];
 }
 
@@ -75,44 +82,29 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 }
 
 #pragma mark - Setup Methods
-- (void)setupNotificationCenter {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(categoryButtonPressed) name:kCategoryButtonPressed object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadButtonPressed) name:kReloadButtonPressed object:nil];
-}
-
 - (void)launchSetup {
-    [self setHasReceivedDataBack:NO];
-    [self.restaurantView.headerTextLabel setText:@"Fetching..."];
-    [self.restaurantView.openInMapsButton setHidden:YES];
-    [self setShouldDisplayMapsButton:NO];
-    [self setHasReceivedDataBack:NO];
-    [self setHasUserCheckedIn:NO];
+    self.hasReceivedDataBack = NO;
+    self.isCheckedIn = NO;
+    self.restaurantView.headerTextLabel.text = kFetchingLabelConstant;
+    self.restaurantView.openInMapsButton.hidden = YES;
 }
 
-- (void)instantiateLocationManager {
-    [self setLocationManager:[LunchtimeLocationManager defaultManager]];
-    [self.locationManager setDelegate:self];
-
-    [self.locationManager start];
-}
-
-#pragma mark - Update/Configure UI Methods
-- (void)reloadHeaderLabel {
-
-    if (self.shouldDisplayMapsButton) {
-        [self.restaurantView.headerTextLabel setText:[self headerTextLabelWithStateConstant:kCheckedInLabelConstant]];
+- (void)reloadLayout {
+    if (self.isCheckedIn) {
+        [UILocalNotification scheduleEnjoyNotification];
+        [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
+        self.restaurantView.headerTextLabel.text = [self headerTextLabelWithStateConstant:kCheckedInLabelConstant];
+        self.restaurantView.openInMapsButton.hidden = NO;
+        self.somethingElseButton.enabled = NO;
+        self.somethingElseButton.alpha = 0.7;
     } else {
-        [self.restaurantView.headerTextLabel setText:[self headerTextLabelWithStateConstant:kSuggestionLabelConstant]];
+        [self restaurantObjectAtRandomIndex];
+        [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
+        self.restaurantView.headerTextLabel.text = [self headerTextLabelWithStateConstant:kSuggestionLabelConstant];
+        self.restaurantView.openInMapsButton.hidden = YES;
+        self.somethingElseButton.enabled = YES;
+        self.somethingElseButton.alpha = 1.0;
     }
-}
-
-- (void)configureLocationLabel {
-    [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:self.locationManager.currentLocation.coordinate handler:^(CLPlacemark *placemark) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
-        });
-    }];
 }
 
 #pragma mark - Actions
@@ -125,26 +117,22 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
 }
 
 - (void)reloadButtonPressed {
-    [self launchSetup];
     [self.locationManager start];
+    [self launchSetup];
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
-
-    if (!self.hasUserCheckedIn) {
+    if (!self.isCheckedIn) {
         [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
     }
 
-    [self setShouldDisplayMapsButton:!self.shouldDisplayMapsButton];
-    [self setHasUserCheckedIn:!self.hasUserCheckedIn];
-    
-    [self checkinStatusDidChange];
+    self.isCheckedIn = !self.isCheckedIn;
+    [self reloadLayout];
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
-    
     [self.restaurants removeObject:self.currentRestaurant];
-    [self newRestaurant];
+    [self reloadLayout];
 }
 
 - (IBAction)blockButtonPressed:(UIButton *)sender {
@@ -153,67 +141,16 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     [alert addCancelAction:@"Cancel" handler:nil];
 
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
-
         [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
-        
-        if (self.shouldDisplayMapsButton) {
-            
-            self.shouldDisplayMapsButton = NO;
-            [self checkinStatusDidChange];
+
+        if (self.isCheckedIn) {
+            self.isCheckedIn = NO;
         }
-        
-        [self newRestaurant];
+
+        [self reloadLayout];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-#pragma mark - State Selection
-- (NSString *)headerTextLabelWithStateConstant:(NSString *)constant {
-    if (!self.currentRestaurant.thoroughfare) {
-        return [NSString stringWithFormat:@"%@ %@", constant, self.currentRestaurant.title];
-    }
-
-    return [NSString stringWithFormat:@"%@ %@ on %@", constant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare];
-}
-
-- (void)checkinStatusDidChange {
-    if (self.shouldDisplayMapsButton) {
-        [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
-        [self.restaurantView.openInMapsButton setHidden:NO];
-        [self.somethingElseButton setEnabled:NO];
-        [self.somethingElseButton setAlpha:0.7];
-        [self scheduleEnjoyNotification];
-    } else {
-        [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
-        [self.restaurantView.openInMapsButton setHidden:YES];
-        [self.somethingElseButton setEnabled:YES];
-        [self.somethingElseButton setAlpha:1.0];
-        [self newRestaurant];
-    }
-
-    [self reloadHeaderLabel];
-}
-
-- (void)newRestaurant {
-    [self restaurantObjectAtRandomIndex];
-    [self reloadHeaderLabel];
-}
-
-#pragma mark - Notifications
-- (void)scheduleEnjoyNotification {
-    NSArray *notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-
-    for (UILocalNotification *notification in notifications) {
-        NSDictionary *userInfo = notification.userInfo;
-
-        if ([[userInfo objectForKey:@"notification"] isEqualToString:@"enjoy"]) {
-            [[UIApplication sharedApplication] cancelLocalNotification:notification];
-        }
-    }
-
-    EnjoyNotification *notification = [EnjoyNotification enjoyNotification];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 #pragma mark - Data Methods
@@ -228,15 +165,15 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
     self.currentRestaurant = [self.restaurants objectAtIndex:index];
 }
 
-- (void)dispatchFoursquareRequest {
-    FoursquareAPI *request = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
-    [request setDelegate:self];
-    [request findRestaurantsForUser:[User objectForPrimaryKey:@1]];
-}
-
 #pragma mark - LunchtimeLocationManagerDelegate
 - (void)receivedLocation {
-    [self dispatchFoursquareRequest];
+    FoursquareAPI *request = [[FoursquareAPI alloc] initWithLocation:self.locationManager.currentLocation];
+    request.delegate = self;
+    [request findRestaurantsForUser:[User objectForPrimaryKey:@1]];
+
+    [LunchtimeGeocoder reverseGeocodeRequestWithCoordinate:self.locationManager.currentLocation.coordinate handler:^(CLPlacemark *placemark) {
+        [self.locationLabel setText:[NSString stringWithFormat:@"%@", placemark.thoroughfare]];
+    }];
 }
 
 #pragma mark - FoursquareAPIDelegate
@@ -246,13 +183,21 @@ static NSString *kSegueToCategoryPopover = @"SegueToCategoryPopover";
             return;
         }
 
-        [self configureLocationLabel];
-        [self setHasReceivedDataBack:YES];
-        [self.locationManager stop];
-        [self setRestaurants:[BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants]];
-        [self restaurantObjectAtRandomIndex];
-        [self reloadHeaderLabel];
+        self.restaurants = [BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants];
+        self.hasReceivedDataBack = YES;
+        [self reloadLayout];
     });
+
+    [self.locationManager stop];
+}
+
+#pragma mark - State Selection
+- (NSString *)headerTextLabelWithStateConstant:(NSString *)constant {
+    if (!self.currentRestaurant.thoroughfare) {
+        return [NSString stringWithFormat:@"%@ %@", constant, self.currentRestaurant.title];
+    }
+
+    return [NSString stringWithFormat:@"%@ %@ on %@", constant, self.currentRestaurant.title, self.currentRestaurant.thoroughfare];
 }
 
 @end
