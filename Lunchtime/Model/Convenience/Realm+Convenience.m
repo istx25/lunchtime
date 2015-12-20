@@ -2,8 +2,8 @@
 //  Realm+Convenience.m
 //  Lunchtime
 //
-//  Created by Willow Belle on 2015-11-16.
-//  Copyright © 2015 Cosmic Labs. All rights reserved.
+//  Created by Willow Bumby on 2015-11-16.
+//  Copyright © 2015 Lighthouse Labs. All rights reserved.
 //
 
 #import "Realm+Convenience.h"
