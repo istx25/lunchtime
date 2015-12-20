@@ -11,7 +11,6 @@
 #import "LunchtimeLocationManager.h"
 //#import "CurrentRestaurantView.h"
 #import "BlockedRestaurantsFilter.h"
-#import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
 #import "UILocalNotification+ScheduleEnjoyNotification.h"
@@ -97,7 +96,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 
 #pragma mark - Actions
 - (IBAction)openInMapsButtonPressed:(UIButton *)sender {
-    [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
+    [CosmicMaps openInMapsWithAddress:self.currentRestaurant.address];
 }
 
 - (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {

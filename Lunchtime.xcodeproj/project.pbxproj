@@ -12,7 +12,6 @@
 		A51E60841BFE4EC800F65055 /* LunchtimeGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51E60831BFE4EC800F65055 /* LunchtimeGeocoder.swift */; };
 		A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */; };
 		A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */; };
-		A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */; };
 		A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */; };
 		A55FBBD31BFAA42300C30763 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD21BFAA42300C30763 /* Restaurant.m */; };
 		A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD61BFAA43900C30763 /* FoursquareAPI.m */; };
@@ -40,6 +39,7 @@
 		A5F8A4621C2754F6007A8D60 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4611C2754F6007A8D60 /* ConfigurationViewController.swift */; };
 		A5F8A4641C275D0D007A8D60 /* PreviousDaysMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */; };
 		A5F8A4661C275EB2007A8D60 /* Realm+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */; };
+		A5F8A46E1C2772C6007A8D60 /* CosmicMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */; };
 		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
 		FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */; };
 /* End PBXBuildFile section */
@@ -63,8 +63,6 @@
 		A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysTableViewController.m; path = Controller/PreviousDaysTableViewController.m; sourceTree = "<group>"; };
 		A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeLocationManager.h; path = Model/Location/LunchtimeLocationManager.h; sourceTree = "<group>"; };
 		A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeLocationManager.m; path = Model/Location/LunchtimeLocationManager.m; sourceTree = "<group>"; };
-		A55FBBCB1BFA817F00C30763 /* LunchtimeMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeMaps.h; path = Model/Location/LunchtimeMaps.h; sourceTree = "<group>"; };
-		A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeMaps.m; path = Model/Location/LunchtimeMaps.m; sourceTree = "<group>"; };
 		A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysMapViewController.h; path = Controller/PreviousDaysMapViewController.h; sourceTree = "<group>"; };
 		A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysMapViewController.m; path = Controller/PreviousDaysMapViewController.m; sourceTree = "<group>"; };
 		A55FBBD11BFAA42300C30763 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = Model/Restaurant.h; sourceTree = "<group>"; };
@@ -104,6 +102,7 @@
 		A5F8A4611C2754F6007A8D60 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationViewController.swift; path = Controller/ConfigurationViewController.swift; sourceTree = "<group>"; };
 		A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviousDaysMapViewController.swift; path = Controller/PreviousDaysMapViewController.swift; sourceTree = "<group>"; };
 		A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Realm+Convenience.swift"; path = "Model/Convenience/Realm+Convenience.swift"; sourceTree = "<group>"; };
+		A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmicMaps.swift; path = Model/Location/CosmicMaps.swift; sourceTree = "<group>"; };
 		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		FA414E7C1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockedRestaurantsFilter.h; sourceTree = "<group>"; };
 		FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockedRestaurantsFilter.m; sourceTree = "<group>"; };
@@ -144,11 +143,10 @@
 		A55FBB891BF94CBE00C30763 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBCB1BFA817F00C30763 /* LunchtimeMaps.h */,
-				A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */,
 				A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */,
 				A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */,
 				A51E60831BFE4EC800F65055 /* LunchtimeGeocoder.swift */,
+				A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */,
 			);
 			name = Location;
 			sourceTree = "<group>";
@@ -455,12 +453,12 @@
 				A57559321BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift in Sources */,
 				A5F8A4601C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.m in Sources */,
 				A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */,
+				A5F8A46E1C2772C6007A8D60 /* CosmicMaps.swift in Sources */,
 				A575592C1BFD670500BD8E37 /* SetupPageFifthViewController.swift in Sources */,
 				A5F8A4661C275EB2007A8D60 /* Realm+Convenience.swift in Sources */,
 				A57559261BFD5F8600BD8E37 /* SetupPageSecondViewController.swift in Sources */,
 				A5F8A4621C2754F6007A8D60 /* ConfigurationViewController.swift in Sources */,
 				A57559301BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift in Sources */,
-				A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */,
 				FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */,
 				A51E60841BFE4EC800F65055 /* LunchtimeGeocoder.swift in Sources */,
 				A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */,
