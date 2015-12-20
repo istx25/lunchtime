@@ -20,6 +20,7 @@
 @property (nonatomic) NSString *thoroughfare;
 @property (nonatomic) NSString *address;
 @property (nonatomic) NSString *url;
+@property (nonatomic) NSString *identifier;
 
 @end
 

@@ -82,6 +82,7 @@ static NSString *kResultsLimit = @"&limit=50";
         newRestaurant.title = restaurant[@"venue"][@"name"];
         newRestaurant.category = restaurant[@"venue"][@"categories"][0][@"name"];
         newRestaurant.url = restaurant[@"venue"][@"url"];
+        newRestaurant.identifier = [NSString stringWithFormat:@"%i", arc4random_uniform(1215752191)];
 
         NSNumber *latitude = restaurant[@"venue"][@"location"][@"lat"];
         NSNumber *longitude = restaurant[@"venue"][@"location"][@"lng"];
