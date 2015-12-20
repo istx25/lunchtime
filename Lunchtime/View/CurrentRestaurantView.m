@@ -25,10 +25,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kOpenInMapsButtonPressed object:nil];
 }
 
-- (IBAction)categoryButtonPressed:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kCategoryButtonPressed object:nil];
-}
-
 - (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:kReloadButtonPressed object:nil];
 }
