@@ -9,7 +9,6 @@
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
 #import "Lunchtime-Swift.h"
-#import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
@@ -65,7 +64,7 @@ static NSString *kReuseIdentifier = @"previousCell";
     }];
 
     [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
-        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+        [CosmicMaps openInMapsWithAddress:restaurant.address];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];
