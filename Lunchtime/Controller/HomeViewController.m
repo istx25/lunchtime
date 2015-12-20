@@ -96,7 +96,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
         self.somethingElseButton.enabled = NO;
         self.somethingElseButton.alpha = 0.7;
     } else {
-        [self restaurantObjectAtRandomIndex];
+//        [self restaurantObjectAtRandomIndex];
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         self.restaurantView.headerTextLabel.text = [self headerTextLabelWithStateConstant:kSuggestionLabelConstant];
         self.restaurantView.openInMapsButton.hidden = YES;
@@ -121,11 +121,30 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
     }
 
     self.isCheckedIn = !self.isCheckedIn;
+    [self restaurantObjectAtRandomIndex];
     [self reloadLayout];
 }
 
 - (IBAction)somethingElseButtonPressed:(UIButton *)sender {
+    if (self.restaurants.count <= 1) {
+        NSString *title = @"Please Refresh";
+        NSString *message = @"We have ran out of places to display. Please refresh for a new list.";
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        alert.view.tintColor = [UIColor blackColor];
+        [alert addCancelAction:@"Okay" handler:nil];
+        [alert addDefaultActionWithTitle:@"Refresh" handler:^{
+            [self reloadButtonPressed];
+        }];
+
+        [self presentViewController:alert animated:YES completion:^{
+            alert.view.tintColor = [UIColor blackColor];
+        }];
+    }
+
+
     [self.restaurants removeObject:self.currentRestaurant];
+    [self restaurantObjectAtRandomIndex];
     [self reloadLayout];
 }
 
@@ -136,11 +155,11 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
         [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
-
         if (self.isCheckedIn) {
             self.isCheckedIn = NO;
         }
 
+        [self restaurantObjectAtRandomIndex];
         [self reloadLayout];
     }];
 
@@ -177,8 +196,9 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
             return;
         }
 
-        self.restaurants = [BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants];
         self.hasReceivedDataBack = YES;
+        self.restaurants = [BlockedRestaurantsFilter filterBlockedRestaurantsFromArray:restaurants];
+        [self restaurantObjectAtRandomIndex];
         [self reloadLayout];
     });
 
