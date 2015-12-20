@@ -11,10 +11,10 @@ import UIKit
 class ConfigurationViewController: UITableViewController {
 
     // MARK: Constants
-    static let AlertTitle = "This will delete all restaurant data and reset all settings."
-    static let DistanceLabel = "Search Distance"
-    static let SegueToOnboardingFlowAfterDestruction = "segueToOnboardingFlowAfterDestruction"
-    static let UserCreatedFlag = "USER_CREATED"
+    private static let AlertTitle = "This will delete all restaurant data and reset all settings."
+    private static let DistanceLabel = "Search Distance"
+    private static let SegueToOnboardingFlowAfterDestruction = "segueToOnboardingFlowAfterDestruction"
+    private static let UserCreatedFlag = "USER_CREATED"
 
     // MARK: Properties
     @IBOutlet weak var notificationSwitch: UISwitch!
