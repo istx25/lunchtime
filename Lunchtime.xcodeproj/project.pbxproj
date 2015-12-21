@@ -154,18 +154,10 @@
 		A55FBBC31BFA6F7300C30763 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBC71BFA70C200C30763 /* Helper */,
+				A575592F1BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift */,
 				A57559311BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		A55FBBC71BFA70C200C30763 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				A575592F1BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift */,
-			);
-			name = Helper;
 			sourceTree = "<group>";
 		};
 		A55FBBD41BFAA42D00C30763 /* API */ = {
