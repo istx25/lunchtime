@@ -9,8 +9,6 @@
 #import "PreviousDaysTableViewController.h"
 #import "PreviousDaysMapViewController.h"
 #import "Lunchtime-Swift.h"
-#import "Realm+Convenience.h"
-#import "LunchtimeMaps.h"
 #import "Restaurant.h"
 #import "User.h"
 
@@ -61,12 +59,12 @@ static NSString *kReuseIdentifier = @"previousCell";
     [alert addCancelAction:@"Cancel" handler:nil];
 
     [alert addDefaultActionWithTitle:@"I didn't go here" handler:^{
-        [RealmConvenience removeRestaurantFromSavedArrayAtIndex:indexPath.row];
+        [RLMRealm removeRestaurantFromSavedArrayAtIndex:indexPath.row];
         [self.tableView reloadData];
     }];
 
     [alert addDefaultActionWithTitle:@"Open Restaurant in Maps" handler:^{
-        [LunchtimeMaps openInMapsWithAddress:restaurant.address];
+        [CosmicMaps openInMapsWithAddress:restaurant.address];
     }];
 
     [self presentViewController:alert animated:YES completion:nil];

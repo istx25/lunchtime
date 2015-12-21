@@ -10,15 +10,11 @@
 		A50C5DDB1BFBB3C2003E3516 /* UIAlertController+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DDA1BFBB3C2003E3516 /* UIAlertController+Extras.swift */; };
 		A50C5DE21BFBBCAC003E3516 /* LunchtimeNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */; };
 		A51E60841BFE4EC800F65055 /* LunchtimeGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51E60831BFE4EC800F65055 /* LunchtimeGeocoder.swift */; };
-		A535BA441BFD205E005F93F4 /* CurrentRestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */; };
-		A535BA471BFD2913005F93F4 /* CurrentRestaurantView.m in Sources */ = {isa = PBXBuildFile; fileRef = A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */; };
 		A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */; };
 		A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */; };
-		A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */; };
 		A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */; };
 		A55FBBD31BFAA42300C30763 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD21BFAA42300C30763 /* Restaurant.m */; };
 		A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBD61BFAA43900C30763 /* FoursquareAPI.m */; };
-		A55FBBDE1BFAD56A00C30763 /* Realm+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */; };
 		A575591F1BFD502800BD8E37 /* EnjoyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575591E1BFD502800BD8E37 /* EnjoyNotification.swift */; };
 		A57559211BFD52B600BD8E37 /* SetupPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57559201BFD52B600BD8E37 /* SetupPageViewController.swift */; };
 		A57559241BFD5EF000BD8E37 /* SetupPageFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57559231BFD5EF000BD8E37 /* SetupPageFirstViewController.swift */; };
@@ -36,12 +32,14 @@
 		A5C074851BF6C8D900F23533 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C074831BF6C8D900F23533 /* LaunchScreen.storyboard */; };
 		A5C074901BF6C8D900F23533 /* LunchtimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */; };
 		A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */; };
-		A5CE1B891BFBE901001B675E /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */; };
 		A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105961BF6DB2500C71023 /* HomeViewController.m */; };
 		A5E105A41BF6F1AA00C71023 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105A31BF6F1AA00C71023 /* User.m */; };
 		A5E105AA1BF7C95600C71023 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E105A91BF7C95600C71023 /* MapKit.framework */; };
-		A5F24A331BFE9A0800622940 /* CategoryPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */; };
 		A5F8A4601C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A45F1C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.m */; };
+		A5F8A4621C2754F6007A8D60 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4611C2754F6007A8D60 /* ConfigurationViewController.swift */; };
+		A5F8A4641C275D0D007A8D60 /* PreviousDaysMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */; };
+		A5F8A4661C275EB2007A8D60 /* Realm+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */; };
+		A5F8A46E1C2772C6007A8D60 /* CosmicMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */; };
 		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
 		FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */; };
 /* End PBXBuildFile section */
@@ -61,23 +59,16 @@
 		A50C5DE01BFBBCAC003E3516 /* LunchtimeNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeNotification.h; path = Model/Notification/LunchtimeNotification.h; sourceTree = "<group>"; };
 		A50C5DE11BFBBCAC003E3516 /* LunchtimeNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeNotification.m; path = Model/Notification/LunchtimeNotification.m; sourceTree = "<group>"; };
 		A51E60831BFE4EC800F65055 /* LunchtimeGeocoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LunchtimeGeocoder.swift; path = Model/Location/LunchtimeGeocoder.swift; sourceTree = "<group>"; };
-		A535BA431BFD205E005F93F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CurrentRestaurantView.xib; sourceTree = "<group>"; };
-		A535BA451BFD2913005F93F4 /* CurrentRestaurantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentRestaurantView.h; path = View/CurrentRestaurantView.h; sourceTree = "<group>"; };
-		A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentRestaurantView.m; path = View/CurrentRestaurantView.m; sourceTree = "<group>"; };
 		A55FBB861BF930C200C30763 /* PreviousDaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysTableViewController.h; path = Controller/PreviousDaysTableViewController.h; sourceTree = "<group>"; };
 		A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysTableViewController.m; path = Controller/PreviousDaysTableViewController.m; sourceTree = "<group>"; };
 		A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeLocationManager.h; path = Model/Location/LunchtimeLocationManager.h; sourceTree = "<group>"; };
 		A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeLocationManager.m; path = Model/Location/LunchtimeLocationManager.m; sourceTree = "<group>"; };
-		A55FBBCB1BFA817F00C30763 /* LunchtimeMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LunchtimeMaps.h; path = Model/Location/LunchtimeMaps.h; sourceTree = "<group>"; };
-		A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LunchtimeMaps.m; path = Model/Location/LunchtimeMaps.m; sourceTree = "<group>"; };
 		A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviousDaysMapViewController.h; path = Controller/PreviousDaysMapViewController.h; sourceTree = "<group>"; };
 		A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviousDaysMapViewController.m; path = Controller/PreviousDaysMapViewController.m; sourceTree = "<group>"; };
 		A55FBBD11BFAA42300C30763 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = Model/Restaurant.h; sourceTree = "<group>"; };
 		A55FBBD21BFAA42300C30763 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
 		A55FBBD51BFAA43900C30763 /* FoursquareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoursquareAPI.h; path = Model/API/FoursquareAPI.h; sourceTree = "<group>"; };
 		A55FBBD61BFAA43900C30763 /* FoursquareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoursquareAPI.m; path = Model/API/FoursquareAPI.m; sourceTree = "<group>"; };
-		A55FBBDC1BFAD56A00C30763 /* Realm+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Realm+Convenience.h"; path = "Model/Convenience/Realm+Convenience.h"; sourceTree = "<group>"; };
-		A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Realm+Convenience.m"; path = "Model/Convenience/Realm+Convenience.m"; sourceTree = "<group>"; };
 		A575591E1BFD502800BD8E37 /* EnjoyNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnjoyNotification.swift; path = Model/Notification/EnjoyNotification.swift; sourceTree = "<group>"; };
 		A57559201BFD52B600BD8E37 /* SetupPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetupPageViewController.swift; path = Controller/SetupPageViewController.swift; sourceTree = "<group>"; };
 		A57559221BFD52EE00BD8E37 /* Lunchtime-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lunchtime-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -101,16 +92,17 @@
 		A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LunchtimeTests.m; sourceTree = "<group>"; };
 		A5C074911BF6C8D900F23533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5C0749D1BF6CA5F00F23533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
-		A5CE1B871BFBE901001B675E /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationViewController.h; path = Controller/ConfigurationViewController.h; sourceTree = "<group>"; };
-		A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationViewController.m; path = Controller/ConfigurationViewController.m; sourceTree = "<group>"; };
 		A5E105951BF6DB2500C71023 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controller/HomeViewController.h; sourceTree = "<group>"; };
 		A5E105961BF6DB2500C71023 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controller/HomeViewController.m; sourceTree = "<group>"; };
 		A5E105A21BF6F1AA00C71023 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
 		A5E105A31BF6F1AA00C71023 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
 		A5E105A91BF7C95600C71023 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A5F24A321BFE9A0800622940 /* CategoryPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryPopoverViewController.swift; path = Controller/CategoryPopoverViewController.swift; sourceTree = "<group>"; };
 		A5F8A45E1C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILocalNotification+ScheduleEnjoyNotification.h"; path = "Model/Notification/UILocalNotification+ScheduleEnjoyNotification.h"; sourceTree = "<group>"; };
 		A5F8A45F1C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILocalNotification+ScheduleEnjoyNotification.m"; path = "Model/Notification/UILocalNotification+ScheduleEnjoyNotification.m"; sourceTree = "<group>"; };
+		A5F8A4611C2754F6007A8D60 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationViewController.swift; path = Controller/ConfigurationViewController.swift; sourceTree = "<group>"; };
+		A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviousDaysMapViewController.swift; path = Controller/PreviousDaysMapViewController.swift; sourceTree = "<group>"; };
+		A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Realm+Convenience.swift"; path = "Model/Convenience/Realm+Convenience.swift"; sourceTree = "<group>"; };
+		A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmicMaps.swift; path = Model/Location/CosmicMaps.swift; sourceTree = "<group>"; };
 		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		FA414E7C1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockedRestaurantsFilter.h; sourceTree = "<group>"; };
 		FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockedRestaurantsFilter.m; sourceTree = "<group>"; };
@@ -151,11 +143,10 @@
 		A55FBB891BF94CBE00C30763 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBCB1BFA817F00C30763 /* LunchtimeMaps.h */,
-				A55FBBCC1BFA817F00C30763 /* LunchtimeMaps.m */,
 				A55FBB8A1BF94CF800C30763 /* LunchtimeLocationManager.h */,
 				A55FBB8B1BF94CF800C30763 /* LunchtimeLocationManager.m */,
 				A51E60831BFE4EC800F65055 /* LunchtimeGeocoder.swift */,
+				A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */,
 			);
 			name = Location;
 			sourceTree = "<group>";
@@ -163,20 +154,10 @@
 		A55FBBC31BFA6F7300C30763 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBC71BFA70C200C30763 /* Helper */,
+				A575592F1BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift */,
 				A57559311BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift */,
-				A535BA451BFD2913005F93F4 /* CurrentRestaurantView.h */,
-				A535BA461BFD2913005F93F4 /* CurrentRestaurantView.m */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		A55FBBC71BFA70C200C30763 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				A575592F1BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift */,
-			);
-			name = Helper;
 			sourceTree = "<group>";
 		};
 		A55FBBD41BFAA42D00C30763 /* API */ = {
@@ -199,8 +180,7 @@
 		A55FBBDF1BFAD56F00C30763 /* Convenience */ = {
 			isa = PBXGroup;
 			children = (
-				A55FBBDC1BFAD56A00C30763 /* Realm+Convenience.h */,
-				A55FBBDD1BFAD56A00C30763 /* Realm+Convenience.m */,
+				A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */,
 			);
 			name = Convenience;
 			sourceTree = "<group>";
@@ -271,8 +251,8 @@
 				A55FBB871BF930C200C30763 /* PreviousDaysTableViewController.m */,
 				A55FBBCE1BFA934B00C30763 /* PreviousDaysMapViewController.h */,
 				A55FBBCF1BFA934B00C30763 /* PreviousDaysMapViewController.m */,
-				A5CE1B871BFBE901001B675E /* ConfigurationViewController.h */,
-				A5CE1B881BFBE901001B675E /* ConfigurationViewController.m */,
+				A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */,
+				A5F8A4611C2754F6007A8D60 /* ConfigurationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -281,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */,
-				A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -422,7 +401,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A535BA441BFD205E005F93F4 /* CurrentRestaurantView.xib in Resources */,
 				A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */,
 				A5C074851BF6C8D900F23533 /* LaunchScreen.storyboard in Resources */,
 				A5C074821BF6C8D900F23533 /* Assets.xcassets in Resources */,
@@ -467,16 +445,17 @@
 				A57559321BFD6E2700BD8E37 /* LunchtimeTableViewCell.swift in Sources */,
 				A5F8A4601C27397C007A8D60 /* UILocalNotification+ScheduleEnjoyNotification.m in Sources */,
 				A55FBB8C1BF94CF800C30763 /* LunchtimeLocationManager.m in Sources */,
+				A5F8A46E1C2772C6007A8D60 /* CosmicMaps.swift in Sources */,
 				A575592C1BFD670500BD8E37 /* SetupPageFifthViewController.swift in Sources */,
-				A5CE1B891BFBE901001B675E /* ConfigurationViewController.m in Sources */,
+				A5F8A4661C275EB2007A8D60 /* Realm+Convenience.swift in Sources */,
 				A57559261BFD5F8600BD8E37 /* SetupPageSecondViewController.swift in Sources */,
+				A5F8A4621C2754F6007A8D60 /* ConfigurationViewController.swift in Sources */,
 				A57559301BFD6D5A00BD8E37 /* UIColor+Lunchtime.swift in Sources */,
-				A55FBBDE1BFAD56A00C30763 /* Realm+Convenience.m in Sources */,
-				A55FBBCD1BFA817F00C30763 /* LunchtimeMaps.m in Sources */,
 				FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */,
 				A51E60841BFE4EC800F65055 /* LunchtimeGeocoder.swift in Sources */,
 				A55FBB881BF930C200C30763 /* PreviousDaysTableViewController.m in Sources */,
 				A55FBBD71BFAA43900C30763 /* FoursquareAPI.m in Sources */,
+				A5F8A4641C275D0D007A8D60 /* PreviousDaysMapViewController.swift in Sources */,
 				A575592E1BFD68E400BD8E37 /* SetupPageSixthViewController.swift in Sources */,
 				A55FBBD01BFA934B00C30763 /* PreviousDaysMapViewController.m in Sources */,
 				A50C5DDB1BFBB3C2003E3516 /* UIAlertController+Extras.swift in Sources */,
@@ -488,7 +467,6 @@
 				A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */,
 				A57559241BFD5EF000BD8E37 /* SetupPageFirstViewController.swift in Sources */,
 				A57559281BFD658F00BD8E37 /* SetupPageThirdViewController.swift in Sources */,
-				A535BA471BFD2913005F93F4 /* CurrentRestaurantView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,14 +489,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A535BA421BFD205E005F93F4 /* CurrentRestaurantView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A535BA431BFD205E005F93F4 /* Base */,
-			);
-			name = CurrentRestaurantView.xib;
-			sourceTree = "<group>";
-		};
 		A5C0747E1BF6C8D900F23533 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
