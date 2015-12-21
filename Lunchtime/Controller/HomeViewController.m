@@ -9,10 +9,8 @@
 #import "HomeViewController.h"
 #import "Lunchtime-Swift.h"
 #import "LunchtimeLocationManager.h"
-#import "CurrentRestaurantView.h"
-#import "Realm+Convenience.h"
+//#import "CurrentRestaurantView.h"
 #import "BlockedRestaurantsFilter.h"
-#import "LunchtimeMaps.h"
 #import "FoursquareAPI.h"
 #import "User.h"
 #import "UILocalNotification+ScheduleEnjoyNotification.h"
@@ -21,6 +19,9 @@ static NSString *kLocationLabelConstant = @"Proximity to restaurants is based of
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 static NSString *kFetchingLabelConstant = @"Fetching...";
+//
+//static NSString *kOpenInMapsButtonPressed = @"OpenInMapsButtonPressed";
+//static NSString *kReloadButtonPressed = @"ReloadButtonPressed";
 
 
 @interface HomeViewController () <LunchtimeLocationManagerDelegate, FoursquareAPIDelegate>
@@ -30,9 +31,6 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 @property (nonatomic, weak) IBOutlet UIButton *blockButton;
 @property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 
-@property (nonatomic, weak) IBOutlet UIView *restaurantViewContainer;
-@property (nonatomic) CurrentRestaurantView *restaurantView;
-
 @property (nonatomic) LunchtimeLocationManager *locationManager;
 
 @property (nonatomic) NSMutableArray *restaurants;
@@ -41,19 +39,13 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 @property (nonatomic) BOOL isCheckedIn;
 @property (nonatomic) BOOL hasReceivedDataBack;
 
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *reloadButton;
+@property (nonatomic, weak) IBOutlet UIButton *openInMapsButton;
+@property (nonatomic, weak) IBOutlet UILabel *headerTextLabel;
+
 @end
 
 @implementation HomeViewController
-
-#pragma mark - View Instantiation
-- (void)loadView {
-    [super loadView];
-
-    self.restaurantView = [CurrentRestaurantView new];
-    self.restaurantView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.restaurantViewContainer addSubview:self.restaurantView];
-    [self.restaurantView addConstraintsTo:self.restaurantView onContainingView:self.restaurantViewContainer];
-}
 
 #pragma mark - Controller Lifecycle
 - (void)viewDidLoad {
@@ -62,9 +54,6 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
     self.locationManager = [LunchtimeLocationManager defaultManager];
     self.locationManager.delegate = self;
     [self.locationManager start];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openInMapsButtonPressed) name:kOpenInMapsButtonPressed object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadButtonPressed) name:kReloadButtonPressed object:nil];
 
     [self launchSetup];
 }
@@ -83,41 +72,41 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 - (void)launchSetup {
     self.hasReceivedDataBack = NO;
     self.isCheckedIn = NO;
-    self.restaurantView.headerTextLabel.text = kFetchingLabelConstant;
-    self.restaurantView.openInMapsButton.hidden = YES;
+    self.headerTextLabel.text = kFetchingLabelConstant;
+    self.openInMapsButton.hidden = YES;
 }
 
 - (void)reloadLayout {
     if (self.isCheckedIn) {
         [UILocalNotification scheduleEnjoyNotification];
         [self.checkInOutButton setTitle:@"Check me out" forState:UIControlStateNormal];
-        self.restaurantView.headerTextLabel.text = [self headerTextLabelWithStateConstant:kCheckedInLabelConstant];
-        self.restaurantView.openInMapsButton.hidden = NO;
+        self.headerTextLabel.text = [self headerTextLabelWithStateConstant:kCheckedInLabelConstant];
+        self.openInMapsButton.hidden = NO;
         self.somethingElseButton.enabled = NO;
         self.somethingElseButton.alpha = 0.7;
     } else {
 //        [self restaurantObjectAtRandomIndex];
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
-        self.restaurantView.headerTextLabel.text = [self headerTextLabelWithStateConstant:kSuggestionLabelConstant];
-        self.restaurantView.openInMapsButton.hidden = YES;
+        self.headerTextLabel.text = [self headerTextLabelWithStateConstant:kSuggestionLabelConstant];
+        self.openInMapsButton.hidden = YES;
         self.somethingElseButton.enabled = YES;
         self.somethingElseButton.alpha = 1.0;
     }
 }
 
 #pragma mark - Actions
-- (void)openInMapsButtonPressed {
-    [LunchtimeMaps openInMapsWithAddress:self.currentRestaurant.address];
+- (IBAction)openInMapsButtonPressed:(UIButton *)sender {
+    [CosmicMaps openInMapsWithAddress:self.currentRestaurant.address];
 }
 
-- (void)reloadButtonPressed {
+- (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
     [self.locationManager start];
     [self launchSetup];
 }
 
 - (IBAction)checkInOutButtonPressed:(UIButton *)sender {
     if (!self.isCheckedIn) {
-        [RealmConvenience addRestaurantToSavedArray:self.currentRestaurant];
+        [RLMRealm addRestaurantToSavedArray:self.currentRestaurant];
     }
 
     self.isCheckedIn = !self.isCheckedIn;
@@ -134,7 +123,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
         alert.view.tintColor = [UIColor blackColor];
         [alert addCancelAction:@"Okay" handler:nil];
         [alert addDefaultActionWithTitle:@"Refresh" handler:^{
-            [self reloadButtonPressed];
+//            [self reloadButtonPressed];
         }];
 
         [self presentViewController:alert animated:YES completion:^{
@@ -154,7 +143,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
     [alert addCancelAction:@"Cancel" handler:nil];
 
     [alert addDestructiveActionWithTitle:@"Block Restaurant" handler:^{
-        [RealmConvenience addRestaurantToBlacklistedArray:self.currentRestaurant];
+        [RLMRealm addRestaurantToBlacklistedArray:self.currentRestaurant];
         if (self.isCheckedIn) {
             self.isCheckedIn = NO;
         }
