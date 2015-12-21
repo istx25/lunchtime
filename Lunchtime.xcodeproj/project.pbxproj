@@ -30,7 +30,6 @@
 		A5C074801BF6C8D900F23533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0747E1BF6C8D900F23533 /* Main.storyboard */; };
 		A5C074821BF6C8D900F23533 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C074811BF6C8D900F23533 /* Assets.xcassets */; };
 		A5C074851BF6C8D900F23533 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C074831BF6C8D900F23533 /* LaunchScreen.storyboard */; };
-		A5C074901BF6C8D900F23533 /* LunchtimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */; };
 		A5C0749E1BF6CA5F00F23533 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C0749C1BF6CA5F00F23533 /* Setup.storyboard */; };
 		A5E105991BF6DB2500C71023 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105961BF6DB2500C71023 /* HomeViewController.m */; };
 		A5E105A41BF6F1AA00C71023 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E105A31BF6F1AA00C71023 /* User.m */; };
@@ -40,12 +39,13 @@
 		A5F8A4641C275D0D007A8D60 /* PreviousDaysMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */; };
 		A5F8A4661C275EB2007A8D60 /* Realm+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */; };
 		A5F8A46E1C2772C6007A8D60 /* CosmicMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */; };
+		A5F8A47A1C27798D007A8D60 /* LunchtimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8A4791C27798D007A8D60 /* LunchtimeUITests.swift */; };
 		FA2594B21BFA77C10083F624 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2594B11BFA77C10083F624 /* Realm.framework */; };
 		FA414E7E1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A5C0748C1BF6C8D900F23533 /* PBXContainerItemProxy */ = {
+		A5F8A47C1C27798D007A8D60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5C0746A1BF6C8D900F23533 /* Project object */;
 			proxyType = 1;
@@ -88,9 +88,6 @@
 		A5C074811BF6C8D900F23533 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C074841BF6C8D900F23533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5C074861BF6C8D900F23533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5C0748B1BF6C8D900F23533 /* LunchtimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LunchtimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LunchtimeTests.m; sourceTree = "<group>"; };
-		A5C074911BF6C8D900F23533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5C0749D1BF6CA5F00F23533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
 		A5E105951BF6DB2500C71023 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controller/HomeViewController.h; sourceTree = "<group>"; };
 		A5E105961BF6DB2500C71023 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controller/HomeViewController.m; sourceTree = "<group>"; };
@@ -103,6 +100,9 @@
 		A5F8A4631C275D0D007A8D60 /* PreviousDaysMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviousDaysMapViewController.swift; path = Controller/PreviousDaysMapViewController.swift; sourceTree = "<group>"; };
 		A5F8A4651C275EB2007A8D60 /* Realm+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Realm+Convenience.swift"; path = "Model/Convenience/Realm+Convenience.swift"; sourceTree = "<group>"; };
 		A5F8A46D1C2772C6007A8D60 /* CosmicMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CosmicMaps.swift; path = Model/Location/CosmicMaps.swift; sourceTree = "<group>"; };
+		A5F8A4771C27798D007A8D60 /* LunchtimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LunchtimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5F8A4791C27798D007A8D60 /* LunchtimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchtimeUITests.swift; sourceTree = "<group>"; };
+		A5F8A47B1C27798D007A8D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA2594B11BFA77C10083F624 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		FA414E7C1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockedRestaurantsFilter.h; sourceTree = "<group>"; };
 		FA414E7D1BFE9D4400D3FAF8 /* BlockedRestaurantsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockedRestaurantsFilter.m; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5C074881BF6C8D900F23533 /* Frameworks */ = {
+		A5F8A4741C27798D007A8D60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C074741BF6C8D900F23533 /* Lunchtime */,
-				A5C0748E1BF6C8D900F23533 /* LunchtimeTests */,
+				A5F8A4781C27798D007A8D60 /* LunchtimeUITests */,
 				A5E105A61BF6F29C00C71023 /* Frameworks */,
 				A5C074731BF6C8D900F23533 /* Products */,
 			);
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C074721BF6C8D900F23533 /* Lunchtime.app */,
-				A5C0748B1BF6C8D900F23533 /* LunchtimeTests.xctest */,
+				A5F8A4771C27798D007A8D60 /* LunchtimeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,15 +230,6 @@
 				A5C074761BF6C8D900F23533 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A5C0748E1BF6C8D900F23533 /* LunchtimeTests */ = {
-			isa = PBXGroup;
-			children = (
-				A5C0748F1BF6C8D900F23533 /* LunchtimeTests.m */,
-				A5C074911BF6C8D900F23533 /* Info.plist */,
-			);
-			path = LunchtimeTests;
 			sourceTree = "<group>";
 		};
 		A5C0749A1BF6C94D00F23533 /* Controller */ = {
@@ -314,6 +305,15 @@
 			path = Lunchtime;
 			sourceTree = "<group>";
 		};
+		A5F8A4781C27798D007A8D60 /* LunchtimeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5F8A4791C27798D007A8D60 /* LunchtimeUITests.swift */,
+				A5F8A47B1C27798D007A8D60 /* Info.plist */,
+			);
+			path = LunchtimeUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,23 +335,23 @@
 			productReference = A5C074721BF6C8D900F23533 /* Lunchtime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A5C0748A1BF6C8D900F23533 /* LunchtimeTests */ = {
+		A5F8A4761C27798D007A8D60 /* LunchtimeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5C074971BF6C8D900F23533 /* Build configuration list for PBXNativeTarget "LunchtimeTests" */;
+			buildConfigurationList = A5F8A4801C27798D007A8D60 /* Build configuration list for PBXNativeTarget "LunchtimeUITests" */;
 			buildPhases = (
-				A5C074871BF6C8D900F23533 /* Sources */,
-				A5C074881BF6C8D900F23533 /* Frameworks */,
-				A5C074891BF6C8D900F23533 /* Resources */,
+				A5F8A4731C27798D007A8D60 /* Sources */,
+				A5F8A4741C27798D007A8D60 /* Frameworks */,
+				A5F8A4751C27798D007A8D60 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A5C0748D1BF6C8D900F23533 /* PBXTargetDependency */,
+				A5F8A47D1C27798D007A8D60 /* PBXTargetDependency */,
 			);
-			name = LunchtimeTests;
-			productName = LunchtimeTests;
-			productReference = A5C0748B1BF6C8D900F23533 /* LunchtimeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = LunchtimeUITests;
+			productName = LunchtimeUITests;
+			productReference = A5F8A4771C27798D007A8D60 /* LunchtimeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -359,6 +359,7 @@
 		A5C0746A1BF6C8D900F23533 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Lighthouse Labs";
 				TargetAttributes = {
@@ -371,8 +372,8 @@
 							};
 						};
 					};
-					A5C0748A1BF6C8D900F23533 = {
-						CreatedOnToolsVersion = 7.1;
+					A5F8A4761C27798D007A8D60 = {
+						CreatedOnToolsVersion = 7.2;
 						TestTargetID = A5C074711BF6C8D900F23533;
 					};
 				};
@@ -391,7 +392,7 @@
 			projectRoot = "";
 			targets = (
 				A5C074711BF6C8D900F23533 /* Lunchtime */,
-				A5C0748A1BF6C8D900F23533 /* LunchtimeTests */,
+				A5F8A4761C27798D007A8D60 /* LunchtimeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -408,7 +409,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5C074891BF6C8D900F23533 /* Resources */ = {
+		A5F8A4751C27798D007A8D60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,21 +471,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5C074871BF6C8D900F23533 /* Sources */ = {
+		A5F8A4731C27798D007A8D60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C074901BF6C8D900F23533 /* LunchtimeTests.m in Sources */,
+				A5F8A47A1C27798D007A8D60 /* LunchtimeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A5C0748D1BF6C8D900F23533 /* PBXTargetDependency */ = {
+		A5F8A47D1C27798D007A8D60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A5C074711BF6C8D900F23533 /* Lunchtime */;
-			targetProxy = A5C0748C1BF6C8D900F23533 /* PBXContainerItemProxy */;
+			targetProxy = A5F8A47C1C27798D007A8D60 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -633,27 +634,30 @@
 			};
 			name = Release;
 		};
-		A5C074981BF6C8D900F23533 /* Debug */ = {
+		A5F8A47E1C27798D007A8D60 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LunchtimeTests/Info.plist;
+				INFOPLIST_FILE = LunchtimeUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cosmiclabs.LunchtimeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cosmiclabs.LunchtimeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lunchtime.app/Lunchtime";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = Lunchtime;
+				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
 		};
-		A5C074991BF6C8D900F23533 /* Release */ = {
+		A5F8A47F1C27798D007A8D60 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LunchtimeTests/Info.plist;
+				INFOPLIST_FILE = LunchtimeUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cosmiclabs.LunchtimeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.cosmiclabs.LunchtimeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lunchtime.app/Lunchtime";
+				TEST_TARGET_NAME = Lunchtime;
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -678,14 +682,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5C074971BF6C8D900F23533 /* Build configuration list for PBXNativeTarget "LunchtimeTests" */ = {
+		A5F8A4801C27798D007A8D60 /* Build configuration list for PBXNativeTarget "LunchtimeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5C074981BF6C8D900F23533 /* Debug */,
-				A5C074991BF6C8D900F23533 /* Release */,
+				A5F8A47E1C27798D007A8D60 /* Debug */,
+				A5F8A47F1C27798D007A8D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
