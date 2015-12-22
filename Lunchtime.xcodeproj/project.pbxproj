@@ -689,6 +689,7 @@
 				A5F8A47F1C27798D007A8D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
