@@ -7,22 +7,17 @@
 //
 
 #import "HomeViewController.h"
-#import "Lunchtime-Swift.h"
+#import "UILocalNotification+ScheduleEnjoyNotification.h"
 #import "LunchtimeLocationManager.h"
-//#import "CurrentRestaurantView.h"
 #import "BlockedRestaurantsFilter.h"
+#import "Lunchtime-Swift.h"
 #import "FoursquareAPI.h"
 #import "User.h"
-#import "UILocalNotification+ScheduleEnjoyNotification.h"
 
 static NSString *kLocationLabelConstant = @"Proximity to restaurants is based off of \n your last known location.";
 static NSString *kSuggestionLabelConstant = @"We think you're going to like\n";
 static NSString *kCheckedInLabelConstant = @"We have checked you in at";
 static NSString *kFetchingLabelConstant = @"Fetching...";
-//
-//static NSString *kOpenInMapsButtonPressed = @"OpenInMapsButtonPressed";
-//static NSString *kReloadButtonPressed = @"ReloadButtonPressed";
-
 
 @interface HomeViewController () <LunchtimeLocationManagerDelegate, FoursquareAPIDelegate>
 
@@ -85,7 +80,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
         self.somethingElseButton.enabled = NO;
         self.somethingElseButton.alpha = 0.7;
     } else {
-//        [self restaurantObjectAtRandomIndex];
+        [self restaurantObjectAtRandomIndex];
         [self.checkInOutButton setTitle:@"Check me in" forState:UIControlStateNormal];
         self.headerTextLabel.text = [self headerTextLabelWithStateConstant:kSuggestionLabelConstant];
         self.openInMapsButton.hidden = YES;
@@ -100,6 +95,10 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
 }
 
 - (IBAction)reloadButtonPressed:(UIBarButtonItem *)sender {
+    [self reload];
+}
+
+- (void)reload {
     [self.locationManager start];
     [self launchSetup];
 }
@@ -110,7 +109,6 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
     }
 
     self.isCheckedIn = !self.isCheckedIn;
-    [self restaurantObjectAtRandomIndex];
     [self reloadLayout];
 }
 
@@ -123,7 +121,7 @@ static NSString *kFetchingLabelConstant = @"Fetching...";
         alert.view.tintColor = [UIColor blackColor];
         [alert addCancelAction:@"Okay" handler:nil];
         [alert addDefaultActionWithTitle:@"Refresh" handler:^{
-//            [self reloadButtonPressed];
+            [self reload];
         }];
 
         [self presentViewController:alert animated:YES completion:^{
