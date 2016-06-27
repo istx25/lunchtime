@@ -31,7 +31,9 @@ Alex primarily worked on...
 
 ### Build and Run
 
-This project is no longer maintained, but was in working condition on December 22nd, 2015. I was using Xcode 7.2 on mac OS 10.11.2. To build and run Lunchtime, run `carthage update --platform ios`. **Don't have Xcode?** Watch [this brief video demo](https://dl.dropboxusercontent.com/u/162794740/Demos/lunchtime-demo.mp4).
+This project is no longer maintained, but was in working condition on December 22nd, 2015. I was using Xcode 7.2 on mac OS 10.11.2. To build and run Lunchtime, run `carthage update --platform ios`. 
+
+**Don't have Xcode?** Watch [this brief video demo](https://dl.dropboxusercontent.com/u/162794740/Demos/lunchtime-demo.mp4).
 
 # License
 
