@@ -12,10 +12,10 @@ Lunchtime was originally written in Objective-C. However, we returned to the pro
 
 I primarily worked on...
 
-- Overal UI/UX of Lunchtime.
+- Overall UI/UX of Lunchtime.
 - Implementation for all CoreLocation and Geocoding aspects of the app.
 - AutoLayout (both in Interface Builder and in code).
-- The Google Maps (and Apple Maps) integrations (For directions and visualisation).
+- The Google Maps (and Apple Maps) integrations (for directions and visualisation).
 - The Restaurant array randomisation methods. 
 - The Realm data models.
 
@@ -31,7 +31,7 @@ Alex primarily worked on...
 
 ### Build and Run
 
-This project is no longer maintained, but was in working condition on December 22nd, 2015. I was using Xcode 7.2 on mac OS 10.11.2. To build and run Lunchtime, run `carthage update --platform ios`. 
+This project is no longer maintained, but was in working condition on December 22nd, 2015. We were using Xcode 7.2 on mac OS 10.11.2. To build and run Lunchtime, run `carthage update --platform ios`. 
 
 **Don't have Xcode?** Watch [this brief video demo](https://dl.dropboxusercontent.com/u/162794740/Demos/lunchtime-demo.mp4).
 
