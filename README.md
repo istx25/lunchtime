@@ -4,7 +4,7 @@ We designed and implemented an app that provides you with a _random_ best restau
 
 # Abstract
 
-The project was thought up by Alex and I when we were thinking about places to go for lunch. We realised we went to the same three restaurants every day and wanted to go somewhere new. Between the time constraints and stress of the bootcamp, we just wanted to find some good grub in Gastown. We asked around and found that other students experienced the same problem. So we designed and built a simple experience for finding a random restaurant near you that's decent.
+The project was thought up by Alex and I when we were thinking about places to go for lunch. We realized we went to the same three restaurants every day and wanted to go somewhere new. Between the time constraints and stress of the bootcamp, we just wanted to find some good grub in Gastown. We asked around and found that other students experienced the same problem. So we designed and built a simple experience for finding a random restaurant near you that's decent.
 
 Lunchtime was originally written in Objective-C, however, we decided to practice our Swift by translating and rethinking our parts of our Objective-C code for the Swift language.
 
@@ -12,23 +12,22 @@ Lunchtime was originally written in Objective-C, however, we decided to practice
 ## Who did what?
 ### Willow
 
-- Overall UI/UX of Lunchtime.
-- Implementation for all CoreLocation and Geocoding aspects of the app.
-- AutoLayout (both in Interface Builder and in code).
-- The Google Maps (and Apple Maps) integrations (for directions and visualisation).
-- The Restaurant array randomisation methods. 
-- The Realm data models.
+- Overall touch and feel, interface and user experience.
+- CoreLocation and `CLGeocoder` implementations.
+- IB-based and code-based AutoLayout constraints.
+- Apple Maps integration for in-app displays.
+- Google Maps integration for directions.
+- Restaurant array randomization functions/algorithm.
+- Realm data models.
 
 ### Alex
 
-- Communicating with the FourSquare API
-- All of the local notification work.
-- The UI for visualising the user's "Saved Restaurants" on a map.
-- The custom map annotation for opening a restaurant's website from the map.
+- All work pertaining to the Foursquare API.
+- Local notifications.
+- UI for _Saved Restaurants_.
+- Custom map annotation for opening a restaurant's website (from the map).
 - Logic for the settings panel.
-- Logic for filtering restaurants in Realm.
-- Logic for filtering restaurants against the blocked list. 
-
+- Restaurant array filtering functions/algorithms.
 
 ## Open Source Modules
 
